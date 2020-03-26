@@ -1,0 +1,12 @@
+{
+  "name": "vue-search-tree",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "package": "vue-cli-service build --target lib --name vue-search-tree ./src/components/vue-search-tree/src/index.js"
+  },
+  "keywords": [],
+  "author": "ldq <17778888138@189.cn>",
+  "license": "ISC"
+}
