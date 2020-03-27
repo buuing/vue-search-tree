@@ -17,11 +17,15 @@ export default {
   },
   components: { searchNode },
   data () {
-    return {}
+    return {
+      deepData: JSON.parse(JSON.stringify(this.data))
+    }
+  },
+  methods: {
   },
   render () {
     return <div class="ldq-tree">
-      { this.data.map(item => <search-node key={item.id} data={item}></search-node>) }
+      { this.deepData.map(item => <search-node key={item.id} data={item}></search-node>) }
     </div>
   }
 }
