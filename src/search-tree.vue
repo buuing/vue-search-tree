@@ -10,7 +10,7 @@ export default {
     props: {
       type: Object
     },
-    showCheckbox: {
+    checkbox: {
       type: Boolean,
       default: false
     }
@@ -25,8 +25,12 @@ export default {
   },
   render () {
     return <div class="ldq-tree">
-      { this.deepData.map(item => <search-node key={item.id} data={item}></search-node>) }
+      { this.deepData.map(item => <search-node key={item.id} data={item} checkbox={this.checkbox}></search-node>) }
     </div>
   }
 }
 </script>
+
+<style scoped>
+
+</style>
