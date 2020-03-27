@@ -1,1 +1,2 @@
-module.exports = require('./dist/vue-search-tree.common.js')
+require('./dist/index.css')
+module.exports = require('./dist/index.common.js')
