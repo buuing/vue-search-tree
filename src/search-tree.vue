@@ -9,6 +9,10 @@ export default {
       type: Array,
       required: true
     },
+    nodeKey: {
+      type: String,
+      default: 'id'
+    },
     props: {            // 配置项
       type: Object
     },
@@ -33,12 +37,12 @@ export default {
   },
   watch: {
     search (val) {
-      this.deepData = this.getLdqTree(this.deepData)
+      this.deepData = this._getLdqTree(this.deepData)
     }
   },
   created () {
     const deepData = JSON.parse(JSON.stringify(this.data))
-    this.deepData = this.getLdqTree(deepData)
+    this.deepData = this._getLdqTree(deepData)
   },
   render () {
     return <div class="ldq-tree">
@@ -46,18 +50,30 @@ export default {
     </div>
   },
   methods: {
-    getLdqTree (tree) {
+    _getLdqTree (tree) {
       tree = JSON.parse(JSON.stringify(tree))
       tree.forEach(_ => {
         const keys = getDictionary(_.name, this.search)
         this.$set(_, 'keys', keys)
         this.$set(_, 'sort', computSortNum(keys))
         if (_.children && _.children.length) {
-          _.children = this.getLdqTree(_.children)
+          _.children = this._getLdqTree(_.children)
           _.sort += _.children.reduce((max, _) => max > _.sort ? max : _.sort, 0)
         }
       })
       return getSortData(tree)
+    },
+    getCheckedKeys (data) { // 获取所有选中项的id值
+      data = data || this.deepData
+      const ids = []
+      data.forEach(item => {
+        if (item?.children?.length) {
+          ids.push(...this.getCheckedKeys(item.children))
+        } else {
+          item.checked && ids.push(item[this.nodeKey])
+        }
+      })
+      return ids
     }
   }
 }
