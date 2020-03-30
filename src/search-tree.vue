@@ -1,6 +1,6 @@
 <script>
 import searchNode from './search-node.vue'
-import { getLdqTree } from './utils.js'
+import { computSortNum, getSortData, getDictionary } from './utils.js'
 export default {
   name: 'search-tree',
   components: { searchNode },
@@ -33,17 +33,32 @@ export default {
   },
   watch: {
     search (val) {
-      this.deepData = getLdqTree(this.deepData, val)
+      this.deepData = this.getLdqTree(this.deepData)
     }
   },
   created () {
     const deepData = JSON.parse(JSON.stringify(this.data))
-    this.deepData = getLdqTree(deepData, this.search)
+    this.deepData = this.getLdqTree(deepData)
   },
   render () {
     return <div class="ldq-tree">
       { this.deepData.map(item => <search-node key={item.id} data={item}></search-node>) }
     </div>
+  },
+  methods: {
+    getLdqTree (tree) {
+      tree = JSON.parse(JSON.stringify(tree))
+      tree.forEach(_ => {
+        const keys = getDictionary(_.name, this.search)
+        this.$set(_, 'keys', keys)
+        this.$set(_, 'sort', computSortNum(keys))
+        if (_.children && _.children.length) {
+          _.children = this.getLdqTree(_.children)
+          _.sort += _.children.reduce((max, _) => max > _.sort ? max : _.sort, 0)
+        }
+      })
+      return getSortData(tree)
+    }
   }
 }
 </script>

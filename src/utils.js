@@ -1,19 +1,5 @@
-export const getLdqTree = (tree, input) => {
-  if (!input) return tree
-  // tree = JSON.parse(JSON.stringify(tree))
-  tree.forEach(_ => {
-    const keys = _getDictionary(_.name, input)
-    _.keys = keys
-    _.sort = _computSortNum(keys)
-    if (_.children && _.children.length) {
-      _.children = getLdqTree(_.children, input)
-      _.sort += _.children.reduce((max, _) => max > _.sort ? max : _.sort, 0)
-    }
-  })
-  return _getSortData(tree)
-}
 // 计算匹配优先值
-const _computSortNum = keys => {
+export const computSortNum = keys => {
   keys = JSON.parse(JSON.stringify(keys))
   let lev = 0, curr = keys.shift()
   return keys.length < 1 ? +!!(curr + 1) : keys.reduce((s, next, i) => {
@@ -25,7 +11,7 @@ const _computSortNum = keys => {
   }, 0)
 }
 // 根据优先度排序
-const _getSortData = arr => {
+export const getSortData = arr => {
   const usable = [], disable = []
   arr.forEach(_ => _.sort === 0 ? disable.push(_) : usable.push(_))
   for (let i = 0; i < usable.length - 1; i++) {
@@ -40,7 +26,7 @@ const _getSortData = arr => {
   return [...usable, ...disable]
 }
 // 反推字典表
-const _getDictionary = (name, word) => {
+export const getDictionary = (name, word) => {
   word = word.replace(/\s*/g, '')
   let res = []
   const _deep = word => {
