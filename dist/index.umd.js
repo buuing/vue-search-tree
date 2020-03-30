@@ -4507,26 +4507,25 @@ var component = normalizeComponent(
 
       return _deep(this.deepData);
     },
-    setCheckedKeys: function setCheckedKeys(keys, checked) {
+    setCheckedKeys: function setCheckedKeys(keys) {
       var _this3 = this;
 
-      // 通过key设置节点是否选中
+      // 覆盖选中项的值
       var _deep = function _deep(data) {
-        return data.some(function (item) {
+        return data.forEach(function (item) {
           var _item$children2;
 
           if (item === null || item === void 0 ? void 0 : (_item$children2 = item.children) === null || _item$children2 === void 0 ? void 0 : _item$children2.length) return !!_deep(item.children);
           var index = keys.indexOf(item[_this3.nodeKey]);
-          if (index === -1) return false;
+          if (index === -1) return _this3.$set(item, 'checked', false);
 
-          _this3.$set(item, 'checked', checked);
+          _this3.$set(item, 'checked', true);
 
           keys.splice(index, 1);
-          if (!keys.length) return true;else return false;
         });
       };
 
-      return _deep(this.deepData);
+      _deep(this.deepData);
     },
     updateCheckedKeys: function updateCheckedKeys(key, checked) {
       var _this4 = this;
@@ -4537,11 +4536,13 @@ var component = normalizeComponent(
           var _item$children3;
 
           if (item === null || item === void 0 ? void 0 : (_item$children3 = item.children) === null || _item$children3 === void 0 ? void 0 : _item$children3.length) return !!_deep(item.children);
-          if (item[_this4.nodeKey] != key) return false;
+          var index = keys.indexOf(item[_this4.nodeKey]);
+          if (index === -1) return false;
 
           _this4.$set(item, 'checked', checked);
 
-          return true;
+          keys.splice(index, 1);
+          if (!keys.length) return true;else return false;
         });
       };
 
@@ -4565,7 +4566,7 @@ var search_tree_component = normalizeComponent(
   search_tree_staticRenderFns,
   false,
   null,
-  "cbda5e44",
+  "40473095",
   null
   
 )

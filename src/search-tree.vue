@@ -77,7 +77,19 @@ export default {
       }
       return _deep(this.deepData)
     },
-    setCheckedKeys (keys, checked) { // 通过key设置节点是否选中
+    setCheckedKeys (keys) { // 覆盖选中项的值
+      const _deep = data => {
+        return data.forEach(item => {
+          if (item?.children?.length) return !!_deep(item.children)
+          let index = keys.indexOf(item[this.nodeKey])
+          if (index === -1) return this.$set(item, 'checked', false)
+          this.$set(item, 'checked', true)
+          keys.splice(index, 1)
+        })
+      }
+      _deep(this.deepData)
+    },
+    updateCheckedKeys (key, checked) { // 更新指定key的节点的checked
       const _deep = data => {
         return data.some(item => {
           if (item?.children?.length) return !!_deep(item.children)
@@ -87,17 +99,6 @@ export default {
           keys.splice(index, 1)
           if (!keys.length) return true
           else return false
-        })
-      }
-      return _deep(this.deepData)
-    },
-    updateCheckedKeys (key, checked) { // 更新指定key的节点的checked
-      const _deep = data => {
-        return data.some(item => {
-          if (item?.children?.length) return !!_deep(item.children)
-          if (item[this.nodeKey] != key) return false
-          this.$set(item, 'checked', checked)
-          return true
         })
       }
       return _deep(this.deepData)
