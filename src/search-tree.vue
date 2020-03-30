@@ -41,7 +41,6 @@ export default {
       { this.deepData.map(item => <search-node
         key={item.id}
         data={item}
-        checkbox={this.checkbox}
         onClickItem={e => console.log(e)}
       ></search-node>) }
     </div>
