@@ -40,13 +40,12 @@ export default {
         { root.checkbox && <input v-model={data.checked} onChange={e => {
           this.downwardUpdateChecked(data)
         }} type="checkbox" class="tree-checkbox point" /> }
-        { root.$scopedSlots.default ? root.$scopedSlots.default(data) : <p class="tree-name point">
-          {
-            data?.keys?.length ? data.name.split('').map(
+        <p class="tree-name point" onClick={e => root.$emit('click-item', data)}>
+          { root.$scopedSlots.default ? root.$scopedSlots.default(data) : data?.keys?.length ? data.name.split('').map(
               (curr, i) => <span style={{ color: data.keys.indexOf(i) > -1 ? 'red': '#666' }}>{curr}</span>
             ) : <span style={{ color: '#666' }}>{data.name}</span>
           }
-        </p> }
+        </p>
       </li>
       { !!data?.children?.length && data.expand && data.children.map(item => <search-node key={item.id} data={item}></search-node>) }
     </ul>
