@@ -1,4 +1,5 @@
 <script>
+import { deepCopy } from './utils.js'
 export default {
   name: 'search-node',
   props: {
@@ -40,7 +41,7 @@ export default {
         { root.showCheckbox && <input v-model={data.checked} onChange={e => {
           this.downwardUpdateChecked(data)
         }} type="checkbox" class="tree-checkbox point" /> }
-        <p class="tree-name point" onClick={e => root.$emit('click-item', data)}>
+        <p class="tree-name point" onClick={e => root.$emit('click-item', deepCopy(data))}>
           { root.$scopedSlots.default ? root.$scopedSlots.default(data) : (data.keys?.length ? data.name.split('').map(
               (curr, i) => <span style={{ color: data.keys.indexOf(i) > -1 ? 'red': '#666' }}>{curr}</span>
             ) : <span style={{ color: '#666' }}>{data.name}</span>)

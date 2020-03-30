@@ -457,13 +457,6 @@ module.exports = (!STRICT_METHOD || !USES_TO_LENGTH) ? function forEach(callback
 
 /***/ }),
 
-/***/ "1a2a":
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
 /***/ "1be4":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1256,6 +1249,17 @@ fixRegExpWellKnownSymbolLogic('replace', 2, function (REPLACE, nativeReplace, ma
 
 /***/ }),
 
+/***/ "5515":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_32fdd260_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("5c5b");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_32fdd260_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_32fdd260_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_32fdd260_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
 /***/ "5692":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1288,6 +1292,13 @@ module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
   return getOwnPropertySymbols ? keys.concat(getOwnPropertySymbols(it)) : keys;
 };
 
+
+/***/ }),
+
+/***/ "5c5b":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -2184,6 +2195,84 @@ exports.BROKEN_CARET = fails(function () {
 
 /***/ }),
 
+/***/ "a434":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var toAbsoluteIndex = __webpack_require__("23cb");
+var toInteger = __webpack_require__("a691");
+var toLength = __webpack_require__("50c4");
+var toObject = __webpack_require__("7b0b");
+var arraySpeciesCreate = __webpack_require__("65f0");
+var createProperty = __webpack_require__("8418");
+var arrayMethodHasSpeciesSupport = __webpack_require__("1dde");
+var arrayMethodUsesToLength = __webpack_require__("ae40");
+
+var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('splice');
+var USES_TO_LENGTH = arrayMethodUsesToLength('splice', { ACCESSORS: true, 0: 0, 1: 2 });
+
+var max = Math.max;
+var min = Math.min;
+var MAX_SAFE_INTEGER = 0x1FFFFFFFFFFFFF;
+var MAXIMUM_ALLOWED_LENGTH_EXCEEDED = 'Maximum allowed length exceeded';
+
+// `Array.prototype.splice` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.splice
+// with adding support of @@species
+$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGTH }, {
+  splice: function splice(start, deleteCount /* , ...items */) {
+    var O = toObject(this);
+    var len = toLength(O.length);
+    var actualStart = toAbsoluteIndex(start, len);
+    var argumentsLength = arguments.length;
+    var insertCount, actualDeleteCount, A, k, from, to;
+    if (argumentsLength === 0) {
+      insertCount = actualDeleteCount = 0;
+    } else if (argumentsLength === 1) {
+      insertCount = 0;
+      actualDeleteCount = len - actualStart;
+    } else {
+      insertCount = argumentsLength - 2;
+      actualDeleteCount = min(max(toInteger(deleteCount), 0), len - actualStart);
+    }
+    if (len + insertCount - actualDeleteCount > MAX_SAFE_INTEGER) {
+      throw TypeError(MAXIMUM_ALLOWED_LENGTH_EXCEEDED);
+    }
+    A = arraySpeciesCreate(O, actualDeleteCount);
+    for (k = 0; k < actualDeleteCount; k++) {
+      from = actualStart + k;
+      if (from in O) createProperty(A, k, O[from]);
+    }
+    A.length = actualDeleteCount;
+    if (insertCount < actualDeleteCount) {
+      for (k = actualStart; k < len - actualDeleteCount; k++) {
+        from = k + actualDeleteCount;
+        to = k + insertCount;
+        if (from in O) O[to] = O[from];
+        else delete O[to];
+      }
+      for (k = len; k > len - actualDeleteCount + insertCount; k--) delete O[k - 1];
+    } else if (insertCount > actualDeleteCount) {
+      for (k = len - actualDeleteCount; k > actualStart; k--) {
+        from = k + actualDeleteCount - 1;
+        to = k + insertCount - 1;
+        if (from in O) O[to] = O[from];
+        else delete O[to];
+      }
+    }
+    for (k = 0; k < insertCount; k++) {
+      O[k + actualStart] = arguments[k + 2];
+    }
+    O.length = len - actualDeleteCount + insertCount;
+    return A;
+  }
+});
+
+
+/***/ }),
+
 /***/ "a4d3":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2993,17 +3082,6 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "cd10":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_a8d5a464_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("1a2a");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_a8d5a464_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_a8d5a464_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
- /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_a8d5a464_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
 /***/ "ce4e":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3778,11 +3856,20 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.for-each.js
 var es_array_for_each = __webpack_require__("4160");
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.index-of.js
+var es_array_index_of = __webpack_require__("c975");
+
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.map.js
 var es_array_map = __webpack_require__("d81d");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.reduce.js
 var es_array_reduce = __webpack_require__("13d5");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.some.js
+var es_array_some = __webpack_require__("45fc");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.splice.js
+var es_array_splice = __webpack_require__("a434");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__("b0c0");
@@ -3887,9 +3974,6 @@ var es_array_concat = __webpack_require__("99af");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.every.js
 var es_array_every = __webpack_require__("a623");
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.index-of.js
-var es_array_index_of = __webpack_require__("c975");
-
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.split.js
 var es_string_split = __webpack_require__("1276");
 
@@ -3897,7 +3981,125 @@ var es_string_split = __webpack_require__("1276");
 var helper = __webpack_require__("2638");
 var helper_default = /*#__PURE__*/__webpack_require__.n(helper);
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace.js
+var es_string_replace = __webpack_require__("5319");
+
+// CONCATENATED MODULE: ./src/components/vue-search-tree/src/utils.js
+
+
+
+
+
+
+
+
+
+
+
+// 计算匹配优先值
+var computSortNum = function computSortNum(keys) {
+  keys = JSON.parse(JSON.stringify(keys));
+  var lev = 0,
+      curr = keys.shift();
+  return keys.length < 1 ? +!!(curr + 1) : keys.reduce(function (s, next, i) {
+    if (next - curr === 1) lev += 1;else (s += Math.pow(10, lev)) && (lev = 0);
+    if (i === keys.length - 1) s += Math.pow(10, lev);
+    curr = next;
+    return s;
+  }, 0);
+}; // 根据优先度排序
+
+var getSortData = function getSortData(arr) {
+  var usable = [],
+      disable = [];
+  arr.forEach(function (_) {
+    return _.sort === 0 ? disable.push(_) : usable.push(_);
+  });
+
+  for (var i = 0; i < usable.length - 1; i++) {
+    var maxIndex = i;
+
+    for (var j = i + 1; j < usable.length; j++) {
+      if (usable[maxIndex].sort < usable[j].sort) {
+        maxIndex = j;
+      }
+    }
+
+    var _ref = [usable[maxIndex], usable[i]];
+    usable[i] = _ref[0];
+    usable[maxIndex] = _ref[1];
+  }
+
+  return [].concat(usable, disable);
+}; // 反推字典表
+
+var getDictionary = function getDictionary(name, word) {
+  word = word.replace(/\s*/g, '');
+  var res = [];
+
+  var _deep = function _deep(word) {
+    var keys = [],
+        len = word.length;
+
+    for (var i = len; i > 0; i--) {
+      for (var j = 0; j < len + 1 - i; j++) {
+        keys.push(word.substr(j, i));
+      }
+    }
+
+    var start = 0,
+        end = 0,
+        index = 0,
+        step = 0;
+    if (!keys.some(function (_) {
+      index = name.indexOf(_);
+      if (index === -1) return false;
+      if (res.length && res.indexOf(index) > -1) return false;
+      start = word.indexOf(_);
+      end = start + _.length;
+      step = index + _.length;
+      return true;
+    })) return false;
+
+    while (step > index) {
+      res.push(index++);
+    }
+
+    if (start - 0) _deep(word.slice(0, start));
+    if (end - len) _deep(word.slice(end, len));
+  };
+
+  _deep(word);
+
+  return res;
+}; // 深拷贝 (这个不是我写的, 随便复制的, 后期自己写一个)
+
+var deepCopy = function deepCopy(data) {
+  var t = Object.prototype.toString.call(data);
+  var o;
+
+  if (t === '[object Array]') {
+    o = [];
+  } else if (t === '[object Object]') {
+    o = {};
+  } else {
+    return data;
+  }
+
+  if (t === '[object Array]') {
+    for (var i = 0; i < data.length; i++) {
+      o.push(deepCopy(data[i]));
+    }
+  } else if (t === '[object Object]') {
+    for (var _i in data) {
+      o[_i] = deepCopy(data[_i]);
+    }
+  }
+
+  return o;
+};
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/vue-search-tree/src/search-node.vue?vue&type=script&lang=js&
+
 
 
 
@@ -4021,7 +4223,7 @@ var helper_default = /*#__PURE__*/__webpack_require__.n(helper);
       "class": "tree-name point",
       "on": {
         "click": function click(e) {
-          return root.$emit('click-item', data);
+          return root.$emit('click-item', deepCopy(data));
         }
       }
     }, [root.$scopedSlots.default ? root.$scopedSlots.default(data) : ((_data$keys = data.keys) === null || _data$keys === void 0 ? void 0 : _data$keys.length) ? data.name.split('').map(function (curr, i) {
@@ -4058,8 +4260,8 @@ var helper_default = /*#__PURE__*/__webpack_require__.n(helper);
 });
 // CONCATENATED MODULE: ./src/components/vue-search-tree/src/search-node.vue?vue&type=script&lang=js&
  /* harmony default export */ var src_search_nodevue_type_script_lang_js_ = (search_nodevue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/vue-search-tree/src/search-node.vue?vue&type=style&index=0&id=a8d5a464&scoped=true&lang=css&
-var search_nodevue_type_style_index_0_id_a8d5a464_scoped_true_lang_css_ = __webpack_require__("cd10");
+// EXTERNAL MODULE: ./src/components/vue-search-tree/src/search-node.vue?vue&type=style&index=0&id=32fdd260&scoped=true&lang=css&
+var search_nodevue_type_style_index_0_id_32fdd260_scoped_true_lang_css_ = __webpack_require__("5515");
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
@@ -4171,106 +4373,16 @@ var component = normalizeComponent(
   staticRenderFns,
   false,
   null,
-  "a8d5a464",
+  "32fdd260",
   null
   
 )
 
 /* harmony default export */ var search_node = (component.exports);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.some.js
-var es_array_some = __webpack_require__("45fc");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace.js
-var es_string_replace = __webpack_require__("5319");
-
-// CONCATENATED MODULE: ./src/components/vue-search-tree/src/utils.js
-
-
-
-
-
-
-
-
-
-// 计算匹配优先值
-var computSortNum = function computSortNum(keys) {
-  keys = JSON.parse(JSON.stringify(keys));
-  var lev = 0,
-      curr = keys.shift();
-  return keys.length < 1 ? +!!(curr + 1) : keys.reduce(function (s, next, i) {
-    if (next - curr === 1) lev += 1;else (s += Math.pow(10, lev)) && (lev = 0);
-    if (i === keys.length - 1) s += Math.pow(10, lev);
-    curr = next;
-    return s;
-  }, 0);
-}; // 根据优先度排序
-
-var getSortData = function getSortData(arr) {
-  var usable = [],
-      disable = [];
-  arr.forEach(function (_) {
-    return _.sort === 0 ? disable.push(_) : usable.push(_);
-  });
-
-  for (var i = 0; i < usable.length - 1; i++) {
-    var maxIndex = i;
-
-    for (var j = i + 1; j < usable.length; j++) {
-      if (usable[maxIndex].sort < usable[j].sort) {
-        maxIndex = j;
-      }
-    }
-
-    var _ref = [usable[maxIndex], usable[i]];
-    usable[i] = _ref[0];
-    usable[maxIndex] = _ref[1];
-  }
-
-  return [].concat(usable, disable);
-}; // 反推字典表
-
-var getDictionary = function getDictionary(name, word) {
-  word = word.replace(/\s*/g, '');
-  var res = [];
-
-  var _deep = function _deep(word) {
-    var keys = [],
-        len = word.length;
-
-    for (var i = len; i > 0; i--) {
-      for (var j = 0; j < len + 1 - i; j++) {
-        keys.push(word.substr(j, i));
-      }
-    }
-
-    var start = 0,
-        end = 0,
-        index = 0,
-        step = 0;
-    if (!keys.some(function (_) {
-      index = name.indexOf(_);
-      if (index === -1) return false;
-      if (res.length && res.indexOf(index) > -1) return false;
-      start = word.indexOf(_);
-      end = start + _.length;
-      step = index + _.length;
-      return true;
-    })) return false;
-
-    while (step > index) {
-      res.push(index++);
-    }
-
-    if (start - 0) _deep(word.slice(0, start));
-    if (end - len) _deep(word.slice(end, len));
-  };
-
-  _deep(word);
-
-  return res;
-};
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/vue-search-tree/src/search-tree.vue?vue&type=script&lang=js&
+
+
+
 
 
 
@@ -4293,6 +4405,7 @@ var getDictionary = function getDictionary(name, word) {
       required: true
     },
     nodeKey: {
+      // 指定的id值
       type: String,
       default: 'id'
     },
@@ -4328,7 +4441,7 @@ var getDictionary = function getDictionary(name, word) {
     }
   },
   created: function created() {
-    var deepData = JSON.parse(JSON.stringify(this.data));
+    var deepData = deepCopy(this.data);
     this.deepData = this._getLdqTree(deepData);
   },
   render: function render() {
@@ -4348,7 +4461,7 @@ var getDictionary = function getDictionary(name, word) {
     _getLdqTree: function _getLdqTree(tree) {
       var _this = this;
 
-      tree = JSON.parse(JSON.stringify(tree));
+      tree = deepCopy(tree);
       tree.forEach(function (_) {
         var keys = getDictionary(_.name, _this.search);
 
@@ -4365,22 +4478,65 @@ var getDictionary = function getDictionary(name, word) {
       });
       return getSortData(tree);
     },
-    getCheckedKeys: function getCheckedKeys(data) {
+    getCheckedKeys: function getCheckedKeys() {
       var _this2 = this;
 
       // 获取所有选中项的id值
-      data = data || this.deepData;
-      var ids = [];
-      data.forEach(function (item) {
-        var _item$children;
+      var _deep = function _deep(data) {
+        var ids = [];
+        data.forEach(function (item) {
+          var _item$children;
 
-        if (item === null || item === void 0 ? void 0 : (_item$children = item.children) === null || _item$children === void 0 ? void 0 : _item$children.length) {
-          ids.push.apply(ids, _toConsumableArray(_this2.getCheckedKeys(item.children)));
-        } else {
-          item.checked && ids.push(item[_this2.nodeKey]);
-        }
-      });
-      return ids;
+          if (item === null || item === void 0 ? void 0 : (_item$children = item.children) === null || _item$children === void 0 ? void 0 : _item$children.length) {
+            ids.push.apply(ids, _toConsumableArray(_deep(item.children)));
+          } else {
+            item.checked && ids.push(item[_this2.nodeKey]);
+          }
+        });
+        return ids;
+      };
+
+      return _deep(this.deepData);
+    },
+    setCheckedKeys: function setCheckedKeys(keys, checked) {
+      var _this3 = this;
+
+      // 通过key设置节点是否选中
+      var _deep = function _deep(data) {
+        return data.some(function (item) {
+          var _item$children2;
+
+          if (item === null || item === void 0 ? void 0 : (_item$children2 = item.children) === null || _item$children2 === void 0 ? void 0 : _item$children2.length) return !!_deep(item.children);
+          var index = keys.indexOf(item[_this3.nodeKey]);
+          if (index === -1) return false;
+
+          _this3.$set(item, 'checked', checked);
+
+          keys.splice(index, 1);
+          if (!keys.length) return true;else return false;
+        });
+      };
+
+      return _deep(this.deepData);
+    },
+    updateCheckedKeys: function updateCheckedKeys(key, checked) {
+      var _this4 = this;
+
+      // 更新指定key的节点的checked
+      var _deep = function _deep(data) {
+        return data.some(function (item) {
+          var _item$children3;
+
+          if (item === null || item === void 0 ? void 0 : (_item$children3 = item.children) === null || _item$children3 === void 0 ? void 0 : _item$children3.length) return !!_deep(item.children);
+          if (item[_this4.nodeKey] != key) return false;
+
+          _this4.$set(item, 'checked', checked);
+
+          return true;
+        });
+      };
+
+      return _deep(this.deepData);
     }
   }
 });
@@ -4400,7 +4556,7 @@ var search_tree_component = normalizeComponent(
   search_tree_staticRenderFns,
   false,
   null,
-  "fd76284c",
+  "cbda5e44",
   null
   
 )

@@ -1,6 +1,6 @@
 <script>
 import searchNode from './search-node.vue'
-import { computSortNum, getSortData, getDictionary } from './utils.js'
+import { computSortNum, getSortData, getDictionary, deepCopy } from './utils.js'
 export default {
   name: 'search-tree',
   components: { searchNode },
@@ -9,7 +9,7 @@ export default {
       type: Array,
       required: true
     },
-    nodeKey: {
+    nodeKey: {          // 指定的id值
       type: String,
       default: 'id'
     },
@@ -41,7 +41,7 @@ export default {
     }
   },
   created () {
-    const deepData = JSON.parse(JSON.stringify(this.data))
+    const deepData = deepCopy(this.data)
     this.deepData = this._getLdqTree(deepData)
   },
   render () {
@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     _getLdqTree (tree) {
-      tree = JSON.parse(JSON.stringify(tree))
+      tree = deepCopy(tree)
       tree.forEach(_ => {
         const keys = getDictionary(_.name, this.search)
         this.$set(_, 'keys', keys)
@@ -63,17 +63,44 @@ export default {
       })
       return getSortData(tree)
     },
-    getCheckedKeys (data) { // 获取所有选中项的id值
-      data = data || this.deepData
-      const ids = []
-      data.forEach(item => {
-        if (item?.children?.length) {
-          ids.push(...this.getCheckedKeys(item.children))
-        } else {
-          item.checked && ids.push(item[this.nodeKey])
-        }
-      })
-      return ids
+    getCheckedKeys () { // 获取所有选中项的id值
+      const _deep = data => {
+        const ids = []
+        data.forEach(item => {
+          if (item?.children?.length) {
+            ids.push(..._deep(item.children))
+          } else {
+            item.checked && ids.push(item[this.nodeKey])
+          }
+        })
+        return ids
+      }
+      return _deep(this.deepData)
+    },
+    setCheckedKeys (keys, checked) { // 通过key设置节点是否选中
+      const _deep = data => {
+        return data.some(item => {
+          if (item?.children?.length) return !!_deep(item.children)
+          let index = keys.indexOf(item[this.nodeKey])
+          if (index === -1) return false
+          this.$set(item, 'checked', checked)
+          keys.splice(index, 1)
+          if (!keys.length) return true
+          else return false
+        })
+      }
+      return _deep(this.deepData)
+    },
+    updateCheckedKeys (key, checked) { // 更新指定key的节点的checked
+      const _deep = data => {
+        return data.some(item => {
+          if (item?.children?.length) return !!_deep(item.children)
+          if (item[this.nodeKey] != key) return false
+          this.$set(item, 'checked', checked)
+          return true
+        })
+      }
+      return _deep(this.deepData)
     }
   }
 }
