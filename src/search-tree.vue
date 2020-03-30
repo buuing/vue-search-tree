@@ -3,24 +3,28 @@ import searchNode from './search-node.vue'
 import { getLdqTree } from './utils.js'
 export default {
   name: 'search-tree',
+  components: { searchNode },
   props: {
-    data: {
+    data: {             // 源数据
       type: Array,
       required: true
     },
-    props: {
+    props: {            // 配置项
       type: Object
     },
-    checkbox: {
+    showCheckbox: {     // 是否显示checkbox
       type: Boolean,
       default: false
     },
-    search: {
+    search: {           // 模糊搜索关键词
       type: String,
       default: ''
+    },
+    defaultExpandAll: { // 默认展开全部节点
+      type: Boolean,
+      default: false
     }
   },
-  components: { searchNode },
   data () {
     return {
       deepData: '',
@@ -38,11 +42,7 @@ export default {
   },
   render () {
     return <div class="ldq-tree">
-      { this.deepData.map(item => <search-node
-        key={item.id}
-        data={item}
-        onClickItem={e => console.log(e)}
-      ></search-node>) }
+      { this.deepData.map(item => <search-node key={item.id} data={item}></search-node>) }
     </div>
   }
 }

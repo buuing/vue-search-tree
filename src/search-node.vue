@@ -17,6 +17,7 @@ export default {
     const { data } = this
     const parent = this.$parent
     this.root = parent.isTree ? parent : parent.root
+    console.log(this.root.props)
     this.$set(data, 'expand', false)
     !data.children && (data.children = [])
   },
@@ -36,7 +37,7 @@ export default {
           transform: `rotate(${data.expand ? '0' : '-90'}deg)`,
           visibility: data?.children?.length ? 'visible' : 'hidden'
         }} />
-        { root.checkbox && <input v-model={data.checked} onChange={e => {
+        { root.showCheckbox && <input v-model={data.checked} onChange={e => {
           this.downwardUpdateChecked(data)
         }} type="checkbox" class="tree-checkbox point" /> }
         <p class="tree-name point" onClick={e => root.$emit('click-item', data)}>
@@ -46,7 +47,7 @@ export default {
           }
         </p>
       </li>
-      { !!data?.children?.length && data.expand && data.children.map(item => <search-node key={item.id} data={item}></search-node>) }
+      { !!data?.children?.length && (data.expand || root.defaultExpandAll) && data.children.map(item => <search-node key={item.id} data={item}></search-node>) }
     </ul>
   },
   methods: {
