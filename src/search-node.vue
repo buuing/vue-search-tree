@@ -17,7 +17,7 @@ export default {
     }
   },
   created () {
-    this.root = this.$parent.isTree ? this.$parent : this.$parent.tree
+    this.root = this.$parent.isTree ? this.$parent : this.$parent.root
     this.$set(this.data, 'expand', false)
     this.$set(this.data, 'checked', false)
   },
