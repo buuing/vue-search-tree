@@ -33,15 +33,15 @@ Vue.use(SearchTree)
 | node-key              | 节点的唯一标识 | String | 'id'
 | search                | 模糊搜索的关键词 | String | ''
 | show-checkbox         | 是否显示checkbox | Boolean | false
-| empty-text            | 内容为空时展示的文本 | String | '-'
+<!-- | empty-text            | 内容为空时展示的文本 | String | '-' -->
 | default-expand-all    | 是否默认展开所有节点 | Boolean | false
-| expand-on-click-node  | 点击节点时是否展开或折叠 | Boolean | true
-| check-on-click-node   | 点击节点时是否选中节点 | Boolean | false
-| default-expanded-keys | 默认展开节点的keys | Array | []
-| default-checked-keys  | 默认选中节点的keys | Array | []
-| props                 | 配置选项，请看下表 | Object | 
+<!-- | expand-on-click-node  | 点击节点时是否展开或折叠 | Boolean | true -->
+<!-- | check-on-click-node   | 点击节点时是否选中节点 | Boolean | false -->
+<!-- | default-expanded-keys | 默认展开节点的keys | Array | [] -->
+<!-- | default-checked-keys  | 默认选中节点的keys | Array | [] -->
+<!-- | props                 | 配置选项，请看下表 | Object |  -->
 
-<br />
+<!-- <br />
 
 ## props (配置项)
 
@@ -49,9 +49,9 @@ Vue.use(SearchTree)
 |  :-:     | :-: | :-:
 | name     | 节点名称 | String
 | children | 节点的子集 | Array
-| disabled | 该节点是否禁用 | Boolean
+| disabled | 该节点是否禁用 | Boolean -->
 
-<br />
+<!-- <br />
 
 ## 事件 (Event)
 
@@ -59,7 +59,7 @@ Vue.use(SearchTree)
 |  :-:         | :-: | :-:
 | node-click   | 节点被点击时触发 | 参数1: 事件参数event, 参数2: 当前node节点
 | node-checked | 节点的选中状态改变时触发 | 参数1: 事件参数event, 参数2: 当前node节点
-| node-expand  | 节点展开或折叠时触发 | 参数1: 事件参数event, 参数2: 当前node节点
+| node-expand  | 节点展开或折叠时触发 | 参数1: 事件参数event, 参数2: 当前node节点 -->
 
 <br />
 
@@ -71,7 +71,7 @@ Vue.use(SearchTree)
 | resetChecked    | 取消所有节点的选中状态 | - | - | -
 | setCheckedKeys  | 通过keys批量设置节点的选中状态 | 参数1: 唯一标识keys | Array | -
 | getCheckedKeys  | 获取选中节点的keys | - | - | 唯一标识keys
-| remove          | 通过key删除一个节点 | 参数1: 唯一标识key | String / Number | 成功返回true, 失败返回false
-| append          | 通过key添加一个子节点 | 参数1: 唯一标识key, 参数2: node节点 | String / Number | 成功返回true, 失败返回false
-| insertBefore    | 通过key在前添加一个兄弟节点 | 参数1: 唯一标识key, 参数2: node节点 | String / Number | 成功返回true, 失败返回false
-| insertAfter     | 通过key在后添加一个兄弟节点 | 参数1: 唯一标识key, 参数2: node节点 | String / Number | 成功返回true, 失败返回false
+<!-- | remove          | 通过key删除一个节点 | 参数1: 唯一标识key | String / Number | 成功返回true, 失败返回false -->
+<!-- | append          | 通过key添加一个子节点 | 参数1: 唯一标识key, 参数2: node节点 | String / Number | 成功返回true, 失败返回false -->
+<!-- | insertBefore    | 通过key在前添加一个兄弟节点 | 参数1: 唯一标识key, 参数2: node节点 | String / Number | 成功返回true, 失败返回false -->
+<!-- | insertAfter     | 通过key在后添加一个兄弟节点 | 参数1: 唯一标识key, 参数2: node节点 | String / Number | 成功返回true, 失败返回false -->

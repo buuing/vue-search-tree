@@ -8,5 +8,6 @@
   },
   "keywords": [],
   "author": "ldq <17778888138@189.cn>",
-  "license": "ISC"
+  "license": "ISC",
+  "files": ["package.json", "dist", "index.js"]
 }
