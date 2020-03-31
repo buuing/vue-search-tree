@@ -33,8 +33,8 @@ Vue.use(SearchTree)
 | node-key              | 节点的唯一标识 | String | 'id'
 | search                | 模糊搜索的关键词 | String | ''
 | show-checkbox         | 是否显示checkbox | Boolean | false
-<!-- | empty-text            | 内容为空时展示的文本 | String | '-' -->
 | default-expand-all    | 是否默认展开所有节点 | Boolean | false
+<!-- | empty-text            | 内容为空时展示的文本 | String | '-' -->
 <!-- | expand-on-click-node  | 点击节点时是否展开或折叠 | Boolean | true -->
 <!-- | check-on-click-node   | 点击节点时是否选中节点 | Boolean | false -->
 <!-- | default-expanded-keys | 默认展开节点的keys | Array | [] -->
