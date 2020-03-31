@@ -4478,50 +4478,46 @@ var component = normalizeComponent(
       });
       return getSortData(tree);
     },
-    getCheckedKeys: function getCheckedKeys() {
+    getNode: function getNode(key) {
       var _this2 = this;
 
-      // 获取所有选中项的id值
+      var curr = null;
+
       var _deep = function _deep(data) {
-        var ids = [];
-        data.forEach(function (item) {
+        return data.some(function (item) {
           var _item$children;
 
-          if (item === null || item === void 0 ? void 0 : (_item$children = item.children) === null || _item$children === void 0 ? void 0 : _item$children.length) {
-            ids.push.apply(ids, _toConsumableArray(_deep(item.children)));
-          } else {
-            item.checked && ids.push(item[_this2.nodeKey]);
-          }
+          if ((item === null || item === void 0 ? void 0 : (_item$children = item.children) === null || _item$children === void 0 ? void 0 : _item$children.length) && _deep(item.children)) return true;
+          if (item[_this2.nodeKey] != key) return false;
+          curr = item;
+          return true;
         });
-        return ids;
       };
 
-      return _deep(this.deepData);
+      _deep(this.deepData);
+
+      return deepCopy(curr);
     },
-    setCheckedKeys: function setCheckedKeys(keys) {
+    resetChecked: function resetChecked() {
       var _this3 = this;
 
-      // 覆盖选中项的值
+      // 取消所有节点的选中状态
       var _deep = function _deep(data) {
         return data.forEach(function (item) {
           var _item$children2;
 
-          if (item === null || item === void 0 ? void 0 : (_item$children2 = item.children) === null || _item$children2 === void 0 ? void 0 : _item$children2.length) return !!_deep(item.children);
-          var index = keys.indexOf(item[_this3.nodeKey]);
-          if (index === -1) return _this3.$set(item, 'checked', false);
+          _this3.$set(item, 'checked', false);
 
-          _this3.$set(item, 'checked', true);
-
-          keys.splice(index, 1);
+          (item === null || item === void 0 ? void 0 : (_item$children2 = item.children) === null || _item$children2 === void 0 ? void 0 : _item$children2.length) && _deep(item.children);
         });
       };
 
       _deep(this.deepData);
     },
-    updateCheckedKeys: function updateCheckedKeys(key, checked) {
+    setCheckedKeys: function setCheckedKeys(keys, checked) {
       var _this4 = this;
 
-      // 更新指定key的节点的checked
+      // 设置指定keys节点的checked
       var _deep = function _deep(data) {
         return data.some(function (item) {
           var _item$children3;
@@ -4535,6 +4531,26 @@ var component = normalizeComponent(
           keys.splice(index, 1);
           if (!keys.length) return true;else return false;
         });
+      };
+
+      return _deep(this.deepData);
+    },
+    getCheckedKeys: function getCheckedKeys() {
+      var _this5 = this;
+
+      // 获取所有选中节点的keys
+      var _deep = function _deep(data) {
+        var ids = [];
+        data.forEach(function (item) {
+          var _item$children4;
+
+          if (item === null || item === void 0 ? void 0 : (_item$children4 = item.children) === null || _item$children4 === void 0 ? void 0 : _item$children4.length) {
+            ids.push.apply(ids, _toConsumableArray(_deep(item.children)));
+          } else {
+            item.checked && ids.push(item[_this5.nodeKey]);
+          }
+        });
+        return ids;
       };
 
       return _deep(this.deepData);
@@ -4557,7 +4573,7 @@ var search_tree_component = normalizeComponent(
   search_tree_staticRenderFns,
   false,
   null,
-  "40473095",
+  "4db4dbe8",
   null
   
 )

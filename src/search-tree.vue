@@ -63,7 +63,43 @@ export default {
       })
       return getSortData(tree)
     },
-    getCheckedKeys () { // 获取所有选中项的id值
+    getNode (key) {
+      let curr = null
+      const _deep = data => {
+        return data.some(item => {
+          if (item?.children?.length && _deep(item.children)) return true
+          if (item[this.nodeKey] != key) return false
+          curr = item
+          return true
+        })
+      }
+      _deep(this.deepData)
+      return deepCopy(curr)
+    },
+    resetChecked () { // 取消所有节点的选中状态
+      const _deep = data => {
+        return data.forEach(item => {
+          this.$set(item, 'checked', false)
+          item?.children?.length && _deep(item.children)
+        })
+      }
+      _deep(this.deepData)
+    },
+    setCheckedKeys (keys, checked) { // 设置指定keys节点的checked
+      const _deep = data => {
+        return data.some(item => {
+          if (item?.children?.length) return !!_deep(item.children)
+          let index = keys.indexOf(item[this.nodeKey])
+          if (index === -1) return false
+          this.$set(item, 'checked', checked)
+          keys.splice(index, 1)
+          if (!keys.length) return true
+          else return false
+        })
+      }
+      return _deep(this.deepData)
+    },
+    getCheckedKeys () { // 获取所有选中节点的keys
       const _deep = data => {
         const ids = []
         data.forEach(item => {
@@ -77,32 +113,6 @@ export default {
       }
       return _deep(this.deepData)
     },
-    setCheckedKeys (keys) { // 覆盖选中项的值
-      const _deep = data => {
-        return data.forEach(item => {
-          if (item?.children?.length) return !!_deep(item.children)
-          let index = keys.indexOf(item[this.nodeKey])
-          if (index === -1) return this.$set(item, 'checked', false)
-          this.$set(item, 'checked', true)
-          keys.splice(index, 1)
-        })
-      }
-      _deep(this.deepData)
-    },
-    updateCheckedKeys (key, checked) { // 更新指定key的节点的checked
-      const _deep = data => {
-        return data.some(item => {
-          if (item?.children?.length) return !!_deep(item.children)
-          let index = keys.indexOf(item[this.nodeKey])
-          if (index === -1) return false
-          this.$set(item, 'checked', checked)
-          keys.splice(index, 1)
-          if (!keys.length) return true
-          else return false
-        })
-      }
-      return _deep(this.deepData)
-    }
   }
 }
 </script>
