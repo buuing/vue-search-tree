@@ -34,12 +34,12 @@ Vue.use(SearchTree)
 | search                | 模糊搜索的关键词 | String | ''
 | show-checkbox         | 是否显示checkbox | Boolean | false
 | default-expand-all    | 是否默认展开所有节点 | Boolean | false
-<!-- | empty-text            | 内容为空时展示的文本 | String | '-' -->
-<!-- | expand-on-click-node  | 点击节点时是否展开或折叠 | Boolean | true -->
-<!-- | check-on-click-node   | 点击节点时是否选中节点 | Boolean | false -->
+| expand-on-click-node  | 点击节点时是否展开或折叠 | Boolean | true
+| check-on-click-node   | 点击节点时是否选中节点 | Boolean | false
 <!-- | default-expanded-keys | 默认展开节点的keys | Array | [] -->
 <!-- | default-checked-keys  | 默认选中节点的keys | Array | [] -->
 <!-- | props                 | 配置选项，请看下表 | Object |  -->
+<!-- | empty-text            | 内容为空时展示的文本 | String | '-' -->
 
 <!-- <br />
 
@@ -51,7 +51,7 @@ Vue.use(SearchTree)
 | children | 节点的子集 | Array
 | disabled | 该节点是否禁用 | Boolean -->
 
-<!-- <br />
+<br />
 
 ## 事件 (Event)
 
@@ -59,7 +59,7 @@ Vue.use(SearchTree)
 |  :-:         | :-: | :-:
 | node-click   | 节点被点击时触发 | 参数1: 事件参数event, 参数2: 当前node节点
 | node-checked | 节点的选中状态改变时触发 | 参数1: 事件参数event, 参数2: 当前node节点
-| node-expand  | 节点展开或折叠时触发 | 参数1: 事件参数event, 参数2: 当前node节点 -->
+| node-expand  | 节点展开或折叠时触发 | 参数1: 事件参数event, 参数2: 当前node节点
 
 <br />
 

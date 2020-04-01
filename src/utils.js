@@ -13,11 +13,11 @@ export const computSortNum = keys => {
 // 根据优先度排序
 export const getSortData = arr => {
   const usable = [], disable = []
-  arr.forEach(_ => _.sort === 0 ? disable.push(_) : usable.push(_))
+  arr.forEach(_ => _.$sort === 0 ? disable.push(_) : usable.push(_))
   for (let i = 0; i < usable.length - 1; i++) {
     let maxIndex = i
     for (let j = i + 1; j < usable.length; j++) {
-      if (usable[maxIndex].sort < usable[j].sort) {
+      if (usable[maxIndex].$sort < usable[j].$sort) {
         maxIndex = j
       }
     }

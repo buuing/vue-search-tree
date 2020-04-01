@@ -5,26 +5,34 @@ export default {
   name: 'search-tree',
   components: { searchNode },
   props: {
-    data: {             // 源数据
+    data: {              // 源数据
       type: Array,
       required: true
     },
-    nodeKey: {          // 指定的id值
+    nodeKey: {           // 指定的id值
       type: String,
       default: 'id'
     },
-    props: {            // 配置项
+    props: {             // 配置项
       type: Object
     },
-    showCheckbox: {     // 是否显示checkbox
+    showCheckbox: {      // 是否显示checkbox
       type: Boolean,
       default: false
     },
-    search: {           // 模糊搜索关键词
+    search: {            // 模糊搜索关键词
       type: String,
       default: ''
     },
-    defaultExpandAll: { // 默认展开全部节点
+    defaultExpandAll: {  // 默认展开全部节点
+      type: Boolean,
+      default: false
+    },
+    expandOnClickNode: { // 点击节点时是否展开或折叠
+      type: Boolean,
+      default: true
+    },
+    checkOnClickNode: {  // 点击节点时是否选中节点
       type: Boolean,
       default: false
     }
@@ -32,17 +40,23 @@ export default {
   data () {
     return {
       deepData: '',
+      sourceData: '',
       isTree: true
     }
   },
+  computed: {
+    _search () {
+      return this.search.trim()
+    }
+  },
   watch: {
-    search (val) {
+    _search (newVal, oldVal) {
       this.deepData = this._getLdqTree(this.deepData)
     }
   },
   created () {
-    const deepData = deepCopy(this.data)
-    this.deepData = this._getLdqTree(deepData)
+    this.sourceData = deepCopy(this.data)
+    this.deepData = this._getLdqTree(this.sourceData)
   },
   render () {
     return <div class="ldq-tree">
@@ -51,26 +65,27 @@ export default {
   },
   methods: {
     _getLdqTree (tree) {
+      if (!this._search.trim()) return this.sourceData
       tree = deepCopy(tree)
-      tree.forEach(_ => {
-        const keys = getDictionary(_.name, this.search)
-        this.$set(_, 'keys', keys)
-        this.$set(_, 'sort', computSortNum(keys))
-        if (_.children && _.children.length) {
-          _.children = this._getLdqTree(_.children)
-          _.sort += _.children.reduce((max, _) => max > _.sort ? max : _.sort, 0)
+      tree.forEach(item => {
+        const keys = getDictionary(item.name, this._search)
+        this.$set(item, '$keys', keys)
+        this.$set(item, '$sort', computSortNum(keys))
+        if (item.children && item.children.length) {
+          item.children = this._getLdqTree(item.children)
+          item.$sort += item.children.reduce((max, item) => max > item.$sort ? max : item.$sort, 0)
         }
       })
       return getSortData(tree)
     },
-    getNode (key) {
+    getNode (key) { // 根据key获取对应节点
       let curr = null
       const _deep = data => {
         return data.some(item => {
+          console.log(item.name)
           if (item?.children?.length && _deep(item.children)) return true
           if (item[this.nodeKey] != key) return false
-          curr = item
-          return true
+          return curr = item
         })
       }
       _deep(this.deepData)
@@ -84,8 +99,10 @@ export default {
         })
       }
       _deep(this.deepData)
+      return true
     },
     setCheckedKeys (keys, checked) { // 设置指定keys节点的checked
+      keys = deepCopy(keys)
       const _deep = data => {
         return data.some(item => {
           if (item?.children?.length) return !!_deep(item.children)
@@ -118,5 +135,7 @@ export default {
 </script>
 
 <style scoped>
-
+  .ldq-tree {
+    user-select: none;
+  }
 </style>

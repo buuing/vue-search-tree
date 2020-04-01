@@ -702,6 +702,13 @@ function _extends(){return _extends=Object.assign||function(a){for(var b,c=1;c<a
 
 /***/ }),
 
+/***/ "2c15":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "2d00":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -828,6 +835,13 @@ defineIterator(String, 'String', function (iterated) {
   return { value: point, done: false };
 });
 
+
+/***/ }),
+
+/***/ "3ee7":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -985,6 +999,26 @@ module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
   // Chrome 38 Symbol has incorrect toString conversion
   // eslint-disable-next-line no-undef
   return !String(Symbol());
+});
+
+
+/***/ }),
+
+/***/ "498a":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var $trim = __webpack_require__("58a8").trim;
+var forcedStringTrimMethod = __webpack_require__("c8d2");
+
+// `String.prototype.trim` method
+// https://tc39.github.io/ecma262/#sec-string.prototype.trim
+$({ target: 'String', proto: true, forced: forcedStringTrimMethod('trim') }, {
+  trim: function trim() {
+    return $trim(this);
+  }
 });
 
 
@@ -1249,17 +1283,6 @@ fixRegExpWellKnownSymbolLogic('replace', 2, function (REPLACE, nativeReplace, ma
 
 /***/ }),
 
-/***/ "5515":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_32fdd260_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("5c5b");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_32fdd260_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_32fdd260_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
- /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_32fdd260_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
 /***/ "5692":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1295,10 +1318,48 @@ module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
 
 /***/ }),
 
-/***/ "5c5b":
+/***/ "5899":
+/***/ (function(module, exports) {
+
+// a string of all valid unicode whitespaces
+// eslint-disable-next-line max-len
+module.exports = '\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
+
+
+/***/ }),
+
+/***/ "58a8":
 /***/ (function(module, exports, __webpack_require__) {
 
-// extracted by mini-css-extract-plugin
+var requireObjectCoercible = __webpack_require__("1d80");
+var whitespaces = __webpack_require__("5899");
+
+var whitespace = '[' + whitespaces + ']';
+var ltrim = RegExp('^' + whitespace + whitespace + '*');
+var rtrim = RegExp(whitespace + whitespace + '*$');
+
+// `String.prototype.{ trim, trimStart, trimEnd, trimLeft, trimRight }` methods implementation
+var createMethod = function (TYPE) {
+  return function ($this) {
+    var string = String(requireObjectCoercible($this));
+    if (TYPE & 1) string = string.replace(ltrim, '');
+    if (TYPE & 2) string = string.replace(rtrim, '');
+    return string;
+  };
+};
+
+module.exports = {
+  // `String.prototype.{ trimLeft, trimStart }` methods
+  // https://tc39.github.io/ecma262/#sec-string.prototype.trimstart
+  start: createMethod(1),
+  // `String.prototype.{ trimRight, trimEnd }` methods
+  // https://tc39.github.io/ecma262/#sec-string.prototype.trimend
+  end: createMethod(2),
+  // `String.prototype.trim` method
+  // https://tc39.github.io/ecma262/#sec-string.prototype.trim
+  trim: createMethod(3)
+};
+
 
 /***/ }),
 
@@ -1824,6 +1885,17 @@ fixRegExpWellKnownSymbolLogic('search', 1, function (SEARCH, nativeSearch, maybe
   ];
 });
 
+
+/***/ }),
+
+/***/ "858d":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_6c297893_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("3ee7");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_6c297893_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_6c297893_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_6c297893_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -3011,6 +3083,25 @@ module.exports = g;
 
 /***/ }),
 
+/***/ "c8d2":
+/***/ (function(module, exports, __webpack_require__) {
+
+var fails = __webpack_require__("d039");
+var whitespaces = __webpack_require__("5899");
+
+var non = '\u200B\u0085\u180E';
+
+// check that a method works with the correct list
+// of whitespaces and has a correct name
+module.exports = function (METHOD_NAME) {
+  return fails(function () {
+    return !!whitespaces[METHOD_NAME]() || non[METHOD_NAME]() != non || whitespaces[METHOD_NAME].name !== METHOD_NAME;
+  });
+};
+
+
+/***/ }),
+
 /***/ "c975":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3038,6 +3129,17 @@ $({ target: 'Array', proto: true, forced: NEGATIVE_ZERO || !STRICT_METHOD || !US
   }
 });
 
+
+/***/ }),
+
+/***/ "ca2c":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_a0602ab2_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("2c15");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_a0602ab2_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_a0602ab2_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_a0602ab2_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -3880,6 +3982,9 @@ var es_regexp_exec = __webpack_require__("ac1f");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.search.js
 var es_string_search = __webpack_require__("841c");
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.trim.js
+var es_string_trim = __webpack_require__("498a");
+
 // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.for-each.js
 var web_dom_collections_for_each = __webpack_require__("159b");
 
@@ -4013,14 +4118,14 @@ var getSortData = function getSortData(arr) {
   var usable = [],
       disable = [];
   arr.forEach(function (_) {
-    return _.sort === 0 ? disable.push(_) : usable.push(_);
+    return _.$sort === 0 ? disable.push(_) : usable.push(_);
   });
 
   for (var i = 0; i < usable.length - 1; i++) {
     var maxIndex = i;
 
     for (var j = i + 1; j < usable.length; j++) {
-      if (usable[maxIndex].sort < usable[j].sort) {
+      if (usable[maxIndex].$sort < usable[j].$sort) {
         maxIndex = j;
       }
     }
@@ -4111,9 +4216,6 @@ var deepCopy = function deepCopy(data) {
 
 
 
-
-
-
 /* harmony default export */ var search_nodevue_type_script_lang_js_ = ({
   name: 'search-node',
   props: {
@@ -4124,7 +4226,8 @@ var deepCopy = function deepCopy(data) {
   },
   data: function data() {
     return {
-      root: null
+      root: null,
+      isChecked: false
     };
   },
   created: function created() {
@@ -4142,12 +4245,15 @@ var deepCopy = function deepCopy(data) {
         }));
       },
       deep: true
+    },
+    'data.checked': function dataChecked(newVal) {
+      this.isChecked = newVal;
     }
   },
   render: function render() {
     var _data$children,
         _this = this,
-        _data$keys,
+        _data$$keys,
         _data$children2;
 
     var h = arguments[0];
@@ -4174,7 +4280,7 @@ var deepCopy = function deepCopy(data) {
       },
       "on": {
         "click": function click(e) {
-          return data.expand = !data.expand;
+          return _this.handlerExpand(e);
         }
       }
     }, [h("path", {
@@ -4186,7 +4292,7 @@ var deepCopy = function deepCopy(data) {
     })]), root.showCheckbox && h("input", helper_default()([{
       "on": {
         "change": [function ($event) {
-          var $$a = data.checked,
+          var $$a = _this.isChecked,
               $$el = $event.target,
               $$c = $$el.checked ? true : false;
 
@@ -4195,15 +4301,15 @@ var deepCopy = function deepCopy(data) {
                 $$i = _this._i($$a, $$v);
 
             if ($$el.checked) {
-              $$i < 0 && _this.$set(data, "checked", $$a.concat([$$v]));
+              $$i < 0 && (_this.isChecked = $$a.concat([$$v]));
             } else {
-              $$i > -1 && _this.$set(data, "checked", $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+              $$i > -1 && (_this.isChecked = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
             }
           } else {
-            _this.$set(data, "checked", $$c);
+            _this.isChecked = $$c;
           }
         }, function (e) {
-          _this.downwardUpdateChecked(data);
+          return _this.handlerChecked(e);
         }]
       },
       "attrs": {
@@ -4211,32 +4317,36 @@ var deepCopy = function deepCopy(data) {
       },
       "class": "tree-checkbox point",
       "domProps": {
-        "checked": Array.isArray(data.checked) ? this._i(data.checked, null) > -1 : data.checked
+        "checked": Array.isArray(_this.isChecked) ? this._i(_this.isChecked, null) > -1 : _this.isChecked
       }
     }, {
       directives: [{
         name: "model",
-        value: data.checked,
+        value: _this.isChecked,
         modifiers: {}
       }]
-    }])), h("p", {
-      "class": "tree-name point",
+    }])), h("div", {
+      "class": "tree-content point",
       "on": {
         "click": function click(e) {
-          return root.$emit('click-item', deepCopy(data));
+          root.expandOnClickNode && _this.handlerExpand(e);
+          root.checkOnClickNode && _this.handlerChecked(e);
+          root.$emit('node-click', e, deepCopy(data));
         }
       }
-    }, [root.$scopedSlots.default ? root.$scopedSlots.default(data) : ((_data$keys = data.keys) === null || _data$keys === void 0 ? void 0 : _data$keys.length) ? data.name.split('').map(function (curr, i) {
+    }, [root.$scopedSlots.default ? root.$scopedSlots.default(data) : h("p", {
+      "class": "tree-text"
+    }, [((_data$$keys = data.$keys) === null || _data$$keys === void 0 ? void 0 : _data$$keys.length) ? data.name.split('').map(function (curr, i) {
       return h("span", {
         "style": {
-          color: data.keys.indexOf(i) > -1 ? 'red' : '#666'
+          color: data.$keys.indexOf(i) > -1 ? 'red' : '#666'
         }
       }, [curr]);
     }) : h("span", {
       "style": {
         color: '#666'
       }
-    }, [data.name])])]), !!(data === null || data === void 0 ? void 0 : (_data$children2 = data.children) === null || _data$children2 === void 0 ? void 0 : _data$children2.length) && data.expand && data.children.map(function (item) {
+    }, [data.name])])])]), !!(data === null || data === void 0 ? void 0 : (_data$children2 = data.children) === null || _data$children2 === void 0 ? void 0 : _data$children2.length) && data.expand && data.children.map(function (item) {
       return h("search-node", {
         "key": item.id,
         "attrs": {
@@ -4255,13 +4365,26 @@ var deepCopy = function deepCopy(data) {
 
         _this2.downwardUpdateChecked(item);
       });
+    },
+    handlerChecked: function handlerChecked(e) {
+      var data = this.data,
+          root = this.root;
+      this.$set(data, 'checked', !data.checked);
+      root.$emit('node-checked', e, deepCopy(data));
+      this.downwardUpdateChecked(data);
+    },
+    handlerExpand: function handlerExpand(e) {
+      var data = this.data,
+          root = this.root;
+      this.$set(data, 'expand', !data.expand);
+      root.$emit('node-expand', e, deepCopy(data));
     }
   }
 });
 // CONCATENATED MODULE: ./src/components/vue-search-tree/src/search-node.vue?vue&type=script&lang=js&
  /* harmony default export */ var src_search_nodevue_type_script_lang_js_ = (search_nodevue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/vue-search-tree/src/search-node.vue?vue&type=style&index=0&id=32fdd260&scoped=true&lang=css&
-var search_nodevue_type_style_index_0_id_32fdd260_scoped_true_lang_css_ = __webpack_require__("5515");
+// EXTERNAL MODULE: ./src/components/vue-search-tree/src/search-node.vue?vue&type=style&index=0&id=6c297893&scoped=true&lang=css&
+var search_nodevue_type_style_index_0_id_6c297893_scoped_true_lang_css_ = __webpack_require__("858d");
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
@@ -4373,13 +4496,14 @@ var component = normalizeComponent(
   staticRenderFns,
   false,
   null,
-  "32fdd260",
+  "6c297893",
   null
   
 )
 
 /* harmony default export */ var search_node = (component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/vue-search-tree/src/search-tree.vue?vue&type=script&lang=js&
+
 
 
 
@@ -4427,22 +4551,38 @@ var component = normalizeComponent(
       // 默认展开全部节点
       type: Boolean,
       default: false
+    },
+    expandOnClickNode: {
+      // 点击节点时是否展开或折叠
+      type: Boolean,
+      default: true
+    },
+    checkOnClickNode: {
+      // 点击节点时是否选中节点
+      type: Boolean,
+      default: false
     }
   },
   data: function data() {
     return {
       deepData: '',
+      sourceData: '',
       isTree: true
     };
   },
+  computed: {
+    _search: function _search() {
+      return this.search.trim();
+    }
+  },
   watch: {
-    search: function search(val) {
+    _search: function _search(newVal, oldVal) {
       this.deepData = this._getLdqTree(this.deepData);
     }
   },
   created: function created() {
-    var deepData = deepCopy(this.data);
-    this.deepData = this._getLdqTree(deepData);
+    this.sourceData = deepCopy(this.data);
+    this.deepData = this._getLdqTree(this.sourceData);
   },
   render: function render() {
     var h = arguments[0];
@@ -4461,18 +4601,19 @@ var component = normalizeComponent(
     _getLdqTree: function _getLdqTree(tree) {
       var _this = this;
 
+      if (!this._search.trim()) return this.sourceData;
       tree = deepCopy(tree);
-      tree.forEach(function (_) {
-        var keys = getDictionary(_.name, _this.search);
+      tree.forEach(function (item) {
+        var keys = getDictionary(item.name, _this._search);
 
-        _this.$set(_, 'keys', keys);
+        _this.$set(item, '$keys', keys);
 
-        _this.$set(_, 'sort', computSortNum(keys));
+        _this.$set(item, '$sort', computSortNum(keys));
 
-        if (_.children && _.children.length) {
-          _.children = _this._getLdqTree(_.children);
-          _.sort += _.children.reduce(function (max, _) {
-            return max > _.sort ? max : _.sort;
+        if (item.children && item.children.length) {
+          item.children = _this._getLdqTree(item.children);
+          item.$sort += item.children.reduce(function (max, item) {
+            return max > item.$sort ? max : item.$sort;
           }, 0);
         }
       });
@@ -4481,16 +4622,17 @@ var component = normalizeComponent(
     getNode: function getNode(key) {
       var _this2 = this;
 
+      // 根据key获取对应节点
       var curr = null;
 
       var _deep = function _deep(data) {
         return data.some(function (item) {
           var _item$children;
 
+          console.log(item.name);
           if ((item === null || item === void 0 ? void 0 : (_item$children = item.children) === null || _item$children === void 0 ? void 0 : _item$children.length) && _deep(item.children)) return true;
           if (item[_this2.nodeKey] != key) return false;
-          curr = item;
-          return true;
+          return curr = item;
         });
       };
 
@@ -4513,11 +4655,15 @@ var component = normalizeComponent(
       };
 
       _deep(this.deepData);
+
+      return true;
     },
     setCheckedKeys: function setCheckedKeys(keys, checked) {
       var _this4 = this;
 
       // 设置指定keys节点的checked
+      keys = deepCopy(keys);
+
       var _deep = function _deep(data) {
         return data.some(function (item) {
           var _item$children3;
@@ -4559,8 +4705,12 @@ var component = normalizeComponent(
 });
 // CONCATENATED MODULE: ./src/components/vue-search-tree/src/search-tree.vue?vue&type=script&lang=js&
  /* harmony default export */ var src_search_treevue_type_script_lang_js_ = (search_treevue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/components/vue-search-tree/src/search-tree.vue?vue&type=style&index=0&id=a0602ab2&scoped=true&lang=css&
+var search_treevue_type_style_index_0_id_a0602ab2_scoped_true_lang_css_ = __webpack_require__("ca2c");
+
 // CONCATENATED MODULE: ./src/components/vue-search-tree/src/search-tree.vue
 var search_tree_render, search_tree_staticRenderFns
+
 
 
 
@@ -4573,7 +4723,7 @@ var search_tree_component = normalizeComponent(
   search_tree_staticRenderFns,
   false,
   null,
-  "4db4dbe8",
+  "a0602ab2",
   null
   
 )
