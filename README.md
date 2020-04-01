@@ -41,15 +41,15 @@ Vue.use(SearchTree)
 <!-- | props                 | 配置选项，请看下表 | Object |  -->
 <!-- | empty-text            | 内容为空时展示的文本 | String | '-' -->
 
-<!-- <br />
+<br />
 
 ## props (配置项)
 
 | 参数      | 说明 | 类型
 |  :-:     | :-: | :-:
 | name     | 节点名称 | String
-| children | 节点的子集 | Array
-| disabled | 该节点是否禁用 | Boolean -->
+| children | 节点的子集 | String
+<!-- | disabled | 该节点是否禁用 | String -->
 
 <br />
 
