@@ -13,7 +13,7 @@ export const computSortNum = keys => {
 // 根据优先度排序
 export const getSortData = arr => {
   const usable = [], disable = []
-  arr.forEach(_ => _.$sort === 0 ? disable.push(_) : usable.push(_))
+  arr.forEach(item => item.$sort === 0 ? disable.push(item) : usable.push(item))
   for (let i = 0; i < usable.length - 1; i++) {
     let maxIndex = i
     for (let j = i + 1; j < usable.length; j++) {
@@ -37,13 +37,13 @@ export const getDictionary = (name, word) => {
       }
     }
     let start = 0, end = 0, index = 0, step = 0
-    if (!keys.some(_ => {
-      index = name.indexOf(_)
+    if (!keys.some(item => {
+      index = name.indexOf(item)
       if (index === -1) return false
       if (res.length && res.indexOf(index) > -1) return false
-      start = word.indexOf(_)
-      end = start + _.length
-      step = index + _.length
+      start = word.indexOf(item)
+      end = start + item.length
+      step = index + item.length
       return true
     })) return false
     while (step > index) res.push(index++)
@@ -53,7 +53,7 @@ export const getDictionary = (name, word) => {
   _deep(word)
   return res
 }
-// 深拷贝 (这个不是我写的, 随便复制的, 后期自己写一个)
+// 深拷贝 (这个随便复制的)
 export const deepCopy = data => {
   const t = Object.prototype.toString.call(data)
   let o

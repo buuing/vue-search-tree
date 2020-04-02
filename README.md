@@ -32,14 +32,14 @@ Vue.use(SearchTree)
 | data                  | 源数据 | Array | 必填项
 | node-key              | 节点的唯一标识 | String | 'id'
 | search                | 模糊搜索的关键词 | String | ''
+| empty-text            | 内容为空时展示的文本 | String | '-'
 | show-checkbox         | 是否显示checkbox | Boolean | false
 | default-expand-all    | 是否默认展开所有节点 | Boolean | false
 | expand-on-click-node  | 点击节点时是否展开或折叠 | Boolean | true
 | check-on-click-node   | 点击节点时是否选中节点 | Boolean | false
-<!-- | default-expanded-keys | 默认展开节点的keys | Array | [] -->
-<!-- | default-checked-keys  | 默认选中节点的keys | Array | [] -->
-<!-- | props                 | 配置选项，请看下表 | Object |  -->
-<!-- | empty-text            | 内容为空时展示的文本 | String | '-' -->
+| default-expanded-keys | 默认展开节点的keys | Array | []
+| default-checked-keys  | 默认选中节点的keys | Array | []
+| props                 | 配置选项，请看下表 | Object | 
 
 <br />
 
@@ -70,7 +70,8 @@ Vue.use(SearchTree)
 | getNode         | 通过key获取对应节点 | 参数1: 唯一标识key | String / Number | 成功返回对应的节点, 失败返回null
 | resetChecked    | 取消所有节点的选中状态 | - | - | -
 | setCheckedKeys  | 通过keys批量设置节点的选中状态 | 参数1: 唯一标识keys | Array | -
-| getCheckedKeys  | 获取选中节点的keys | - | - | 唯一标识keys
+| getCheckedKeys  | 获取选中节点的keys | - | - | 所有选中节点的唯一标识keys
+| getCheckedNodes  | 获取选中的节点nodes | - | - | 所有选中的节点nodes
 <!-- | remove          | 通过key删除一个节点 | 参数1: 唯一标识key | String / Number | 成功返回true, 失败返回false -->
 <!-- | append          | 通过key添加一个子节点 | 参数1: 唯一标识key, 参数2: node节点 | String / Number | 成功返回true, 失败返回false -->
 <!-- | insertBefore    | 通过key在前添加一个兄弟节点 | 参数1: 唯一标识key, 参数2: node节点 | String / Number | 成功返回true, 失败返回false -->

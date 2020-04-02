@@ -11,7 +11,7 @@ export default {
   data () {
     return {
       root: null,
-      isChecked: false,
+      isChecked: this.data.checked,
       children: []
     }
   },
@@ -20,8 +20,6 @@ export default {
     const parent = this.$parent
     this.root = parent.isTree ? parent : parent.root
     const { children } = this.root.props
-    this.$set(data, 'expand', !!this.root.defaultExpandAll)
-    !data[children] && (data[children] = [])
     this.children = data[children]
   },
   watch: {
@@ -65,7 +63,7 @@ export default {
   methods: {
     downwardUpdateChecked (data) {
       const { name, children } = this.root.props
-      data[children].length && data[children].forEach(item => {
+      data[children].forEach(item => {
         this.$set(item, 'checked', data.checked)
         this.downwardUpdateChecked(item)
       })
