@@ -13,13 +13,6 @@ export default {
       type: String,
       default: 'id'
     },
-    props: {               // 配置项
-      type: Object,
-      default: {
-        name: 'name',
-        children: 'children'
-      }
-    },
     search: {              // 模糊搜索关键词
       type: String,
       default: ''
@@ -51,12 +44,19 @@ export default {
     defaultCheckedKeys: {  // 默认选中节点的keys
       type: Array,
       default: () => []
-    }
+    },
+    props: {               // 配置项
+      type: Object,
+      default: () => {
+        return {}
+      }
+    },
   },
   data () {
     return {
       deepData: '',
-      isTree: true
+      isTree: true,
+      defaultProps: {}
     }
   },
   computed: {
@@ -77,6 +77,11 @@ export default {
     }
   },
   created () {
+    this.defaultProps = {
+      name: this.props.name || 'name',
+      children: this.props.children || 'children',
+      disabled: this.props.disabled || 'disabled'
+    }
     this._initData()
   },
   render () {
@@ -86,7 +91,7 @@ export default {
   },
   methods: {
     _initData () {
-      const { name, children } = this.props
+      const { name, children, disabled } = this.defaultProps
       this._preorder(this.sourceData, item => {
         const key = item[this.nodeKey]
         item.checked = !!item.checked || this.defaultCheckedKeys.indexOf(key) > -1
@@ -95,11 +100,12 @@ export default {
         item.$sort = 0
         !item[name] && (item[name] = this.emptyText)
         !item[children] && (item[children] = [])
+        !Reflect.has(item, disabled) && (item[disabled] = false)
       })
       this.deepData = this._getLdqTree(deepCopy(this.sourceData))
     },
     _preorder (arr, callback) { // 前序迭代遍历
-      const { children } = this.props
+      const { children } = this.defaultProps
       let stack = [...arr]
       while (stack.length) {
         const curr = stack.shift()
@@ -109,7 +115,7 @@ export default {
       return null
     },
     _getLdqTree (tree) {
-      const { name, children } = this.props
+      const { name, children } = this.defaultProps
       tree.forEach(item => {
         const keys = getDictionary(item[name], this._search)
         item.$keys = keys

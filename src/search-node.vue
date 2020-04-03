@@ -19,13 +19,13 @@ export default {
     const { data } = this
     const parent = this.$parent
     this.root = parent.isTree ? parent : parent.root
-    const { children } = this.root.props
+    const { children } = this.root.defaultProps
     this.children = data[children]
   },
   watch: {
     'children': {
       handler (newVal) {
-        newVal.length && this.$set(this.data, 'checked', newVal.every(item => item.checked))
+        newVal.length && (this.data.checked = newVal.every(item => item.checked))
       },
       deep: true
     },
@@ -35,7 +35,7 @@ export default {
   },
   render () {
     const { data, root } = this
-    const { name, children } = root.props
+    const { name, children } = root.defaultProps
     return <ul class="tree-ul">
       <li class="tree-li">
         <svg t="1585220115926" class="tree-icon point" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2222" width="10" height="10" style={{
@@ -62,21 +62,21 @@ export default {
   },
   methods: {
     downwardUpdateChecked (data) {
-      const { name, children } = this.root.props
+      const { name, children } = this.root.defaultProps
       data[children].forEach(item => {
-        this.$set(item, 'checked', data.checked)
+        item.checked = data.checked
         this.downwardUpdateChecked(item)
       })
     },
     handlerChecked (e) {
       const { data, root } = this
-      this.$set(data, 'checked', !data.checked)
+      data.checked = !data.checked
       root.$emit('node-checked', e, deepCopy(data))
       this.downwardUpdateChecked(data)
     },
     handlerExpand (e) {
       const { data, root } = this
-      this.$set(data, 'expand', !data.expand)
+      data.expand = !data.expand
       root.$emit('node-expand', e, deepCopy(data))
     },
   }
