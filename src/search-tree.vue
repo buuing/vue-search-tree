@@ -94,6 +94,7 @@ export default {
       const _deep = (arr, parent) => {
         arr.forEach(item => {
           const key = item[this.nodeKey]
+          item.level = parent ? ~~parent.level + 1 : 1
           !item[children] && (item[children] = [])
           item[children].length && _deep(item[children], item)
           !item[name] && (item[name] = this.emptyText)
