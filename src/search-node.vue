@@ -19,6 +19,7 @@ export default {
     const { data } = this
     const parent = this.$parent
     this.root = parent.isTree ? parent : parent.root
+    this.$set(this.data, '$pid', parent.isTree ? null : parent.data[this.root.nodeKey])
     const { children } = this.root.defaultProps
     this.children = data[children]
   },

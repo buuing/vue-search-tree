@@ -71,9 +71,8 @@ export default {
     sourceData () {
       this._initData()
     },
-    _search (newVal) {
-      console.log(!!newVal)
-      this.deepData = newVal ? this._getLdqTree(this.deepData) : deepCopy(this.sourceData)
+    _search () {
+      this.deepData = this._getLdqTree(this.deepData)
     }
   },
   created () {
@@ -90,31 +89,27 @@ export default {
     </div>
   },
   methods: {
-    _initData () {
+    _initData () { // 初始化数据
       const { name, children, disabled } = this.defaultProps
-      this._preorder(this.sourceData, item => {
-        const key = item[this.nodeKey]
-        item.checked = !!item.checked || this.defaultCheckedKeys.indexOf(key) > -1
-        item.expand = !!item.expand || this.defaultExpandAll || this.defaultExpandedKeys.indexOf(key) > -1
-        item.$keys = []
-        item.$sort = 0
-        !item[name] && (item[name] = this.emptyText)
-        !item[children] && (item[children] = [])
-        !Reflect.has(item, disabled) && (item[disabled] = false)
-      })
+      const _deep = (arr, parent) => {
+        arr.forEach(item => {
+          const key = item[this.nodeKey]
+          !item[children] && (item[children] = [])
+          item[children].length && _deep(item[children], item)
+          !item[name] && (item[name] = this.emptyText)
+          !Reflect.has(item, disabled) && (item[disabled] = false)
+          item.checked = item.checked || this.defaultCheckedKeys.indexOf(key) > -1
+          item.expand = item.expand || this.defaultExpandAll
+            || this.defaultExpandedKeys.indexOf(key) > -1
+          item.expand && parent && (parent.expand = true)
+          item.$keys = []
+          item.$sort = 0
+        })
+      }
+      _deep(this.sourceData)
       this.deepData = this._getLdqTree(deepCopy(this.sourceData))
     },
-    _preorder (arr, callback) { // 前序迭代遍历
-      const { children } = this.defaultProps
-      let stack = [...arr]
-      while (stack.length) {
-        const curr = stack.shift()
-        if (callback(curr)) return curr
-        if (curr[children].length) stack.unshift(...curr[children])
-      }
-      return null
-    },
-    _getLdqTree (tree) {
+    _getLdqTree (tree) { // 获取关键词索引并排序
       const { name, children } = this.defaultProps
       tree.forEach(item => {
         const keys = getDictionary(item[name], this._search)
@@ -124,6 +119,20 @@ export default {
         item.$sort += item[children].reduce((max, item) => max > item.$sort ? max : item.$sort, 0)
       })
       return getSortData(tree)
+    },
+    _preorder (arr, callback) { // 前序迭代遍历
+      if (!arr.length) return null
+      const { children } = this.defaultProps
+      let stack = [...arr]
+      while (stack.length) {
+        const curr = stack.shift()
+        if (callback(curr)) return curr
+        if (curr[children].length) stack.unshift(...curr[children])
+      }
+      return null
+    },
+    ininData () { // 向外暴露一个初始化数据的方法
+      this.deepData = this._getLdqTree(deepCopy(this.sourceData))
     },
     getNode (key) { // 根据key获取对应节点
       return deepCopy(this._preorder(this.deepData, item => item[this.nodeKey] == key))
