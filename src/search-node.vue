@@ -62,18 +62,11 @@ export default {
     </ul>
   },
   methods: {
-    downwardUpdateChecked (data) {
-      const { name, children } = this.root.defaultProps
-      data[children].forEach(item => {
-        item.checked = data.checked
-        this.downwardUpdateChecked(item)
-      })
-    },
     handlerChecked (e) {
       const { data, root } = this
       data.checked = !data.checked
       root.$emit('node-checked', e, deepCopy(data))
-      this.downwardUpdateChecked(data)
+      this.root._downwardUpdateChecked(data)
     },
     handlerExpand (e) {
       const { data, root } = this
@@ -97,8 +90,11 @@ export default {
     align-items: center;
   }
   .tree-checkbox {
-    margin: 0 3px 0 4px;
+    margin: 0 0 0 4px;
     transform: translateY(1px);
+  }
+  .tree-content {
+    margin: 0 0 0 3px;
   }
   .tree-text {
     margin: 0;

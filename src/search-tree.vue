@@ -94,17 +94,16 @@ export default {
       const _deep = (arr, parent) => {
         arr.forEach(item => {
           const key = item[this.nodeKey]
-          item.level = parent ? ~~parent.level + 1 : 1
-          !item[children] && (item[children] = [])
-          item[children].length && _deep(item[children], item)
-          !item[name] && (item[name] = this.emptyText)
-          !Reflect.has(item, disabled) && (item[disabled] = false)
-          item.checked = item.checked || this.defaultCheckedKeys.indexOf(key) > -1
-          item.expand = item.expand || this.defaultExpandAll
-            || this.defaultExpandedKeys.indexOf(key) > -1
-          item.expand && parent && (parent.expand = true)
           item.$keys = []
           item.$sort = 0
+          item.level = parent ? ~~parent.level + 1 : 1
+          item.checked = (parent && parent.checked === true) || this.defaultCheckedKeys.indexOf(key) > -1
+          item.expand = this.defaultExpandAll || this.defaultExpandedKeys.indexOf(key) > -1
+          !Reflect.has(item, disabled) && (item[disabled] = false)
+          !item[name] && (item[name] = this.emptyText)
+          !item[children] && (item[children] = [])
+          item[children].length && _deep(item[children], item)
+          item.expand && parent && (parent.expand = true)
         })
       }
       _deep(this.sourceData)
@@ -132,6 +131,13 @@ export default {
       }
       return null
     },
+    _downwardUpdateChecked (data) {
+      const { name, children } = this.defaultProps
+      data[children].forEach(item => {
+        item.checked = data.checked
+        this._downwardUpdateChecked(item)
+      })
+    },
     ininData () { // 向外暴露一个初始化数据的方法
       this.deepData = this._getLdqTree(deepCopy(this.sourceData))
     },
@@ -146,7 +152,8 @@ export default {
       this._preorder(this.deepData, item => {
         let index = keys.indexOf(item[this.nodeKey])
         if (index === -1) return false
-        this.$set(item, 'checked', checked)
+        item.checked = checked
+        this._downwardUpdateChecked(item)
         keys.splice(index, 1)
         return !keys.length
       })
@@ -159,7 +166,7 @@ export default {
     getCheckedNodes () { // 获取所有选中节点的nodes
       const nodes = []
       this._preorder(this.deepData, item => item.checked && !nodes.push(item))
-      return nodes
+      return deepCopy(nodes)
     }
   }
 }
