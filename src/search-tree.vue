@@ -9,6 +9,10 @@ export default {
       type: Array,
       required: true
     },
+    deepCopy: {            // 源数据是否深拷贝 (设置false要求对引用类型有一定了解)
+      type: Boolean,
+      default: true
+    },
     nodeKey: {             // 指定的id值
       type: String,
       default: 'id'
@@ -136,7 +140,9 @@ export default {
       this.deepData = this._getLdqTree(deepCopy(this.sourceData))
     },
     getNode (key) { // 根据key获取对应节点
-      return deepCopy(this._preorder(this.deepData, item => item[this.nodeKey] == key))
+      return this.deepCopy
+        ? deepCopy(this._preorder(this.deepData, item => item[this.nodeKey] == key))
+        : this._preorder(this.data, item => item[this.nodeKey] == key)
     },
     resetChecked () { // 取消所有节点的选中状态
       return !this._preorder(this.deepData, item => !!this.$set(item, 'checked', false))
@@ -159,7 +165,17 @@ export default {
     getCheckedNodes () { // 获取所有选中节点的nodes
       const nodes = []
       this._preorder(this.deepData, item => item.checked && !nodes.push(item))
-      return nodes
+      return deepCopy(nodes)
+    },
+    remove (key) { // 删除指定的节点
+      const { children } = this.defaultProps
+      const nodeKey = this.nodeKey
+      const data = this.deepCopy ? this.deepData : this.data
+      const node = this._preorder(data, item => item[nodeKey] == key)
+      if (!node) return false
+      const arr = node.$pid ? this._preorder(data, item => item[nodeKey] == node.$pid)[children] : data
+      arr.splice(arr.findIndex(item => item === node), 1)
+      return true
     }
   }
 }
