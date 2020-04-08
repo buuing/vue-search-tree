@@ -94,7 +94,11 @@ export default {
     transform: translateY(1px);
   }
   .tree-content {
+    width: 100%;
     margin: 0 0 0 3px;
+  }
+  .tree-content p {
+    margin: 0;
   }
   .tree-text {
     margin: 0;
