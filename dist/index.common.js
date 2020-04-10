@@ -1534,6 +1534,13 @@ var TEMPLATE = String(String).split('String');
 
 /***/ }),
 
+/***/ "714e":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "7418":
 /***/ (function(module, exports) {
 
@@ -1557,6 +1564,17 @@ module.exports = function (NAME) {
   });
 };
 
+
+/***/ }),
+
+/***/ "7518":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_9397b1b2_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("714e");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_9397b1b2_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_9397b1b2_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_9397b1b2_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -2869,17 +2887,6 @@ module.exports = TO_STRING_TAG_SUPPORT ? {}.toString : function toString() {
 
 /***/ }),
 
-/***/ "b059":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_392957d9_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("cb4d");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_392957d9_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_392957d9_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
- /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_392957d9_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
 /***/ "b0c0":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3060,6 +3067,38 @@ module.exports = store;
 
 /***/ }),
 
+/***/ "c740":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var $findIndex = __webpack_require__("b727").findIndex;
+var addToUnscopables = __webpack_require__("44d2");
+var arrayMethodUsesToLength = __webpack_require__("ae40");
+
+var FIND_INDEX = 'findIndex';
+var SKIPS_HOLES = true;
+
+var USES_TO_LENGTH = arrayMethodUsesToLength(FIND_INDEX);
+
+// Shouldn't skip holes
+if (FIND_INDEX in []) Array(1)[FIND_INDEX](function () { SKIPS_HOLES = false; });
+
+// `Array.prototype.findIndex` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.findindex
+$({ target: 'Array', proto: true, forced: SKIPS_HOLES || !USES_TO_LENGTH }, {
+  findIndex: function findIndex(callbackfn /* , that = undefined */) {
+    return $findIndex(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+addToUnscopables(FIND_INDEX);
+
+
+/***/ }),
+
 /***/ "c760":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3173,13 +3212,6 @@ module.exports = function (object, names) {
   return result;
 };
 
-
-/***/ }),
-
-/***/ "cb4d":
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -3971,6 +4003,9 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.find-index.js
+var es_array_find_index = __webpack_require__("c740");
+
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.for-each.js
 var es_array_for_each = __webpack_require__("4160");
 
@@ -4541,6 +4576,7 @@ var component = normalizeComponent(
 
 
 
+
 /* harmony default export */ var search_treevue_type_script_lang_js_ = ({
   name: 'search-tree',
   components: {
@@ -4657,27 +4693,37 @@ var component = normalizeComponent(
     })]);
   },
   methods: {
+    _initNode: function _initNode(node, parent) {
+      var _this$defaultProps = this.defaultProps,
+          name = _this$defaultProps.name,
+          children = _this$defaultProps.children;
+      var key = node[this.nodeKey]; // this.$set(node, this.nodeKey, 1)
+
+      this.$set(node, name, node[name] || this.emptyText);
+      this.$set(node, children, node[children] || []);
+      this.$set(node, 'level', parent ? ~~parent.level + 1 : 1);
+      this.$set(node, 'checked', Reflect.has(node, 'checked') ? node.checked : this.defaultCheckedKeys.indexOf(key) > -1);
+      this.$set(node, 'expand', Reflect.has(node, 'expand') ? node.expand : this.defaultExpandAll || this.defaultExpandedKeys.indexOf(key) > -1);
+      this.$set(node, '$keys', []);
+      this.$set(node, '$sort', 0);
+    },
     _initData: function _initData() {
       var _this2 = this;
 
       // 初始化数据
-      var _this$defaultProps = this.defaultProps,
-          name = _this$defaultProps.name,
-          children = _this$defaultProps.children,
-          disabled = _this$defaultProps.disabled;
+      var _this$defaultProps2 = this.defaultProps,
+          name = _this$defaultProps2.name,
+          children = _this$defaultProps2.children,
+          disabled = _this$defaultProps2.disabled;
 
       var _deep = function _deep(arr, parent) {
         arr.forEach(function (item) {
-          var key = item[_this2.nodeKey];
-          !item[children] && (item[children] = []);
-          item[children].length && _deep(item[children], item);
-          !item[name] && (item[name] = _this2.emptyText);
-          !Reflect.has(item, disabled) && (item[disabled] = false);
-          item.checked = item.checked || _this2.defaultCheckedKeys.indexOf(key) > -1;
-          item.expand = item.expand || _this2.defaultExpandAll || _this2.defaultExpandedKeys.indexOf(key) > -1;
+          var _item$children;
+
+          _this2._initNode(item, parent);
+
+          ((_item$children = item[children]) === null || _item$children === void 0 ? void 0 : _item$children.length) && _deep(item[children], item);
           item.expand && parent && (parent.expand = true);
-          item.$keys = [];
-          item.$sort = 0;
         });
       };
 
@@ -4689,9 +4735,9 @@ var component = normalizeComponent(
       var _this3 = this;
 
       // 获取关键词索引并排序
-      var _this$defaultProps2 = this.defaultProps,
-          name = _this$defaultProps2.name,
-          children = _this$defaultProps2.children;
+      var _this$defaultProps3 = this.defaultProps,
+          name = _this$defaultProps3.name,
+          children = _this$defaultProps3.children;
       tree.forEach(function (item) {
         var keys = getDictionary(item[name], _this3._search);
         item.$keys = keys;
@@ -4711,9 +4757,11 @@ var component = normalizeComponent(
       var stack = _toConsumableArray(arr);
 
       while (stack.length) {
+        var _curr$children;
+
         var curr = stack.shift();
         if (callback(curr)) return curr;
-        if (curr[children].length) stack.unshift.apply(stack, _toConsumableArray(curr[children]));
+        if ((_curr$children = curr[children]) === null || _curr$children === void 0 ? void 0 : _curr$children.length) stack.unshift.apply(stack, _toConsumableArray(curr[children]));
       }
 
       return null;
@@ -4723,12 +4771,16 @@ var component = normalizeComponent(
       this.deepData = this._getLdqTree(deepCopy(this.sourceData));
     },
     getNode: function getNode(key) {
+      // 根据key获取对应深拷贝节点
+      return deepCopy(this._getNode(key));
+    },
+    _getNode: function _getNode(key) {
       var _this4 = this;
 
-      // 根据key获取对应节点
-      return deepCopy(this._preorder(this.deepData, function (item) {
+      // 根据key获取对应引用节点
+      return this._preorder(this.deepData, function (item) {
         return item[_this4.nodeKey] == key;
-      }));
+      });
     },
     resetChecked: function resetChecked() {
       var _this5 = this;
@@ -4774,14 +4826,84 @@ var component = normalizeComponent(
         return item.checked && !nodes.push(item);
       });
 
-      return nodes;
+      return deepCopy(nodes);
+    },
+    remove: function remove(key) {
+      // 删除指定的节点
+      var curr = this._getNode(key);
+
+      if (!curr) return !!console.warn('该节点不存在');
+      var arr = curr.$pid ? this._getNode(curr.$pid)[this.defaultProps.children] : this.deepData;
+      arr.splice(arr.findIndex(function (item) {
+        return item === curr;
+      }), 1);
+      return true;
+    },
+    append: function append(key, node) {
+      // 添加新的子节点
+      var nodeKey = node[this.nodeKey];
+      if (!nodeKey) return !!console.warn('新节点没有node-key');
+
+      if (key === null) {
+        this._initNode(node, null);
+
+        this.deepData.push(node);
+        return true;
+      }
+
+      if (this._getNode(nodeKey)) return !!console.warn('请勿重复添加新节点, node-key已存在');
+
+      var curr = this._getNode(key);
+
+      if (!curr) return !!console.warn('该节点不存在');
+
+      this._initNode(node, curr);
+
+      curr[this.defaultProps.children].push(node);
+      return true;
+    },
+    insertBefore: function insertBefore(key, node) {
+      // 向前添加兄弟节点
+      var nodeKey = node[this.nodeKey];
+      if (!nodeKey) return !!console.warn('新节点没有node-key');
+      if (this._getNode(nodeKey)) return !!console.warn('请勿重复添加新节点, node-key已存在');
+
+      var curr = this._getNode(key);
+
+      if (!curr) return !!console.warn('该节点不存在');
+
+      this._initNode(node, curr.$pid);
+
+      var arr = curr.$pid ? this._getNode(curr.$pid)[this.defaultProps.children] : this.deepData;
+      arr.splice(arr.findIndex(function (item) {
+        return item === curr;
+      }), 0, node);
+      return true;
+    },
+    insertAfter: function insertAfter(key, node) {
+      // 向后添加兄弟节点
+      var nodeKey = node[this.nodeKey];
+      if (!nodeKey) return !!console.warn('新节点没有node-key');
+      if (this._getNode(nodeKey)) return !!console.warn('请勿重复添加新节点, node-key已存在');
+
+      var curr = this._getNode(key);
+
+      if (!curr) return !!console.warn('该节点不存在');
+
+      this._initNode(node, curr.$pid);
+
+      var arr = curr.$pid ? this._getNode(curr.$pid)[this.defaultProps.children] : this.deepData;
+      arr.splice(arr.findIndex(function (item) {
+        return item === curr;
+      }) + 1, 0, node);
+      return true;
     }
   }
 });
 // CONCATENATED MODULE: ./src/components/vue-search-tree/src/search-tree.vue?vue&type=script&lang=js&
  /* harmony default export */ var src_search_treevue_type_script_lang_js_ = (search_treevue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/vue-search-tree/src/search-tree.vue?vue&type=style&index=0&id=392957d9&scoped=true&lang=css&
-var search_treevue_type_style_index_0_id_392957d9_scoped_true_lang_css_ = __webpack_require__("b059");
+// EXTERNAL MODULE: ./src/components/vue-search-tree/src/search-tree.vue?vue&type=style&index=0&id=9397b1b2&scoped=true&lang=css&
+var search_treevue_type_style_index_0_id_9397b1b2_scoped_true_lang_css_ = __webpack_require__("7518");
 
 // CONCATENATED MODULE: ./src/components/vue-search-tree/src/search-tree.vue
 var search_tree_render, search_tree_staticRenderFns
@@ -4798,7 +4920,7 @@ var search_tree_component = normalizeComponent(
   search_tree_staticRenderFns,
   false,
   null,
-  "392957d9",
+  "9397b1b2",
   null
   
 )
@@ -4948,4 +5070,3 @@ module.exports = NATIVE_SYMBOL
 /***/ })
 
 /******/ });
-//# sourceMappingURL=index.common.js.map

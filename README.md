@@ -72,13 +72,6 @@ Vue.use(SearchTree)
 | setCheckedKeys  | 通过keys批量设置节点的选中状态 | 参数1: 唯一标识keys, 参数2: 状态 | 参数1: Array, 参数2: Boolean | -
 | getCheckedKeys  | 获取选中节点的keys | - | - | 所有选中节点的唯一标识keys
 | getCheckedNodes  | 获取选中的节点nodes | - | - | 所有选中的节点nodes
-
-<br />
-
-> 注意: 当设置deepCopy=false时, 下面的方法将会操作源数据
-
-| 方法名           | 说明 | 参数 | 参数类型 | 返回值
-|  :-:            | :-: | :-: | :-: | :-:
 | remove          | 通过key删除一个节点 | 参数1: 唯一标识key或当前节点 | String / Number | 成功返回true, 失败返回false
 | append          | 通过key添加一个子节点 | 参数1: 唯一标识key或当前节点, 参数2: node节点 | String / Number | 成功返回true, 失败返回false
 | insertBefore    | 通过key在前添加一个兄弟节点 | 参数1: 唯一标识key或当前节点, 参数2: node节点 | String / Number | 成功返回true, 失败返回false

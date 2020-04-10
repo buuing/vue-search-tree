@@ -1,12 +1,13 @@
 {
   "name": "vue-search-tree",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "package": "vue-cli-service build --target lib --name vue-search-tree ./src/components/vue-search-tree/src/index.js"
+    "build": "vue-cli-service build --dest ./src/components/vue-search-tree/docs ./src/main.js",
+    "package": "vue-cli-service build --target lib --name index --dest ./src/components/vue-search-tree/dist/ ./src/components/vue-search-tree/src/index.js"
   },
-  "keywords": [],
+  "keywords": ["vue树型控件", "vue树型插件", "vue树型列表"],
   "author": "ldq <17778888138@189.cn>",
   "license": "ISC",
   "files": ["package.json", "dist", "index.js"]
