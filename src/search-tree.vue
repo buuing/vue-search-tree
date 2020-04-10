@@ -89,20 +89,24 @@ export default {
     </div>
   },
   methods: {
+    _initNode (node, parent) {
+      const { name, children } = this.defaultProps
+      const key = node[this.nodeKey]
+      // this.$set(node, this.nodeKey, 1)
+      this.$set(node, name, node[name] || this.emptyText)
+      this.$set(node, children, node[children] || [])
+      this.$set(node, 'level', parent ? ~~parent.level + 1 : 1)
+      this.$set(node, 'checked', Reflect.has(node, 'checked') ? node.checked : this.defaultCheckedKeys.indexOf(key) > -1)
+      this.$set(node, 'expand', Reflect.has(node, 'expand') ? node.expand : this.defaultExpandAll || this.defaultExpandedKeys.indexOf(key) > -1)
+      this.$set(node, '$keys', [])
+      this.$set(node, '$sort', 0)
+    },
     _initData () { // 初始化数据
       const { name, children, disabled } = this.defaultProps
       const _deep = (arr, parent) => {
         arr.forEach(item => {
-          const key = item[this.nodeKey]
-          item.$keys = []
-          item.$sort = 0
-          item.level = parent ? ~~parent.level + 1 : 1
-          item.checked = (parent && parent.checked === true) || this.defaultCheckedKeys.indexOf(key) > -1
-          item.expand = this.defaultExpandAll || this.defaultExpandedKeys.indexOf(key) > -1
-          !Reflect.has(item, disabled) && (item[disabled] = false)
-          !item[name] && (item[name] = this.emptyText)
-          !item[children] && (item[children] = [])
-          item[children].length && _deep(item[children], item)
+          this._initNode(item, parent)
+          item[children]?.length && _deep(item[children], item)
           item.expand && parent && (parent.expand = true)
         })
       }
@@ -127,7 +131,7 @@ export default {
       while (stack.length) {
         const curr = stack.shift()
         if (callback(curr)) return curr
-        if (curr[children].length) stack.unshift(...curr[children])
+        if (curr[children]?.length) stack.unshift(...curr[children])
       }
       return null
     },
@@ -141,8 +145,11 @@ export default {
     ininData () { // 向外暴露一个初始化数据的方法
       this.deepData = this._getLdqTree(deepCopy(this.sourceData))
     },
-    getNode (key) { // 根据key获取对应节点
-      return deepCopy(this._preorder(this.deepData, item => item[this.nodeKey] == key))
+    getNode (key) { // 根据key获取对应深拷贝节点
+      return deepCopy(this._getNode(key))
+    },
+    _getNode (key) { // 根据key获取对应引用节点
+      return this._preorder(this.deepData, item => item[this.nodeKey] == key)
     },
     resetChecked () { // 取消所有节点的选中状态
       return !this._preorder(this.deepData, item => !!this.$set(item, 'checked', false))
@@ -167,6 +174,50 @@ export default {
       const nodes = []
       this._preorder(this.deepData, item => item.checked && !nodes.push(item))
       return deepCopy(nodes)
+    },
+    remove (key) { // 删除指定的节点
+      const curr = this._getNode(key)
+      if (!curr) return !!console.warn('该节点不存在')
+      const arr = curr.$pid ? this._getNode(curr.$pid)[this.defaultProps.children] : this.deepData
+      arr.splice(arr.findIndex(item => item === curr), 1)
+      return true
+    },
+    append (key, node) { // 添加新的子节点
+      const nodeKey = node[this.nodeKey]
+      if (!nodeKey) return !!console.warn('新节点没有node-key')
+      if (key === null) {
+        this._initNode(node, null)
+        this.deepData.push(node)
+        return true
+      }
+      if (this._getNode(nodeKey)) return !!console.warn('请勿重复添加新节点, node-key已存在')
+      const curr = this._getNode(key)
+      if (!curr) return !!console.warn('该节点不存在')
+      this._initNode(node, curr)
+      curr[this.defaultProps.children].push(node)
+      return true
+    },
+    insertBefore (key, node) { // 向前添加兄弟节点
+      const nodeKey = node[this.nodeKey]
+      if (!nodeKey) return !!console.warn('新节点没有node-key')
+      if (this._getNode(nodeKey)) return !!console.warn('请勿重复添加新节点, node-key已存在')
+      const curr = this._getNode(key)
+      if (!curr) return !!console.warn('该节点不存在')
+      this._initNode(node, curr.$pid)
+      const arr = curr.$pid ? this._getNode(curr.$pid)[this.defaultProps.children] : this.deepData
+      arr.splice(arr.findIndex(item => item === curr), 0, node)
+      return true
+    },
+    insertAfter (key, node) { // 向后添加兄弟节点
+      const nodeKey = node[this.nodeKey]
+      if (!nodeKey) return !!console.warn('新节点没有node-key')
+      if (this._getNode(nodeKey)) return !!console.warn('请勿重复添加新节点, node-key已存在')
+      const curr = this._getNode(key)
+      if (!curr) return !!console.warn('该节点不存在')
+      this._initNode(node, curr.$pid)
+      const arr = curr.$pid ? this._getNode(curr.$pid)[this.defaultProps.children] : this.deepData
+      arr.splice(arr.findIndex(item => item === curr) + 1, 0, node)
+      return true
     }
   }
 }

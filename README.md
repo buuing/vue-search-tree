@@ -69,10 +69,11 @@ Vue.use(SearchTree)
 |  :-:            | :-: | :-: | :-: | :-:
 | getNode         | 通过key获取对应节点 | 参数1: 唯一标识key | String / Number | 成功返回对应的节点, 失败返回null
 | resetChecked    | 取消所有节点的选中状态 | - | - | -
-| setCheckedKeys  | 通过keys批量设置节点的选中状态 | 参数1: 唯一标识keys | Array | -
+| setCheckedKeys  | 通过keys批量设置节点的选中状态 | 参数1: 唯一标识keys, 参数2: 状态 | 参数1: Array, 参数2: Boolean | -
 | getCheckedKeys  | 获取选中节点的keys | - | - | 所有选中节点的唯一标识keys
 | getCheckedNodes  | 获取选中的节点nodes | - | - | 所有选中的节点nodes
-<!-- | remove          | 通过key删除一个节点 | 参数1: 唯一标识key | String / Number | 成功返回true, 失败返回false -->
-<!-- | append          | 通过key添加一个子节点 | 参数1: 唯一标识key, 参数2: node节点 | String / Number | 成功返回true, 失败返回false -->
-<!-- | insertBefore    | 通过key在前添加一个兄弟节点 | 参数1: 唯一标识key, 参数2: node节点 | String / Number | 成功返回true, 失败返回false -->
-<!-- | insertAfter     | 通过key在后添加一个兄弟节点 | 参数1: 唯一标识key, 参数2: node节点 | String / Number | 成功返回true, 失败返回false -->
+| remove          | 通过key删除一个节点 | 参数1: 唯一标识key或当前节点 | String / Number | 成功返回true, 失败返回false
+| append          | 通过key添加一个子节点 | 参数1: 唯一标识key或当前节点, 参数2: node节点 | String / Number | 成功返回true, 失败返回false
+| insertBefore    | 通过key在前添加一个兄弟节点 | 参数1: 唯一标识key或当前节点, 参数2: node节点 | String / Number | 成功返回true, 失败返回false
+| insertAfter     | 通过key在后添加一个兄弟节点 | 参数1: 唯一标识key或当前节点, 参数2: node节点 | String / Number | 成功返回true, 失败返回false
+
