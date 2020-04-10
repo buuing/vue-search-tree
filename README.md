@@ -32,7 +32,7 @@ Vue.use(SearchTree)
 | data                  | 源数据 | Array | 必填项
 | node-key              | 节点的唯一标识 | String | 'id'
 | search                | 模糊搜索的关键词 | String | ''
-| empty-text            | 内容为空时展示的文本 | String | '-'
+| empty-text            | 内容为空时展示的文本 | String | ''
 | show-checkbox         | 是否显示checkbox | Boolean | false
 | default-expand-all    | 是否默认展开所有节点 | Boolean | false
 | expand-on-click-node  | 点击节点时是否展开或折叠 | Boolean | true
