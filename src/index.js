@@ -1,6 +1,11 @@
 import SearchTree from './search-tree'
-export default {
-  install (Vue, options) {
-    Vue.component('SearchTree', SearchTree)
-  }
+
+const install = (Vue, options) => {
+  Vue.component('SearchTree', SearchTree)
 }
+
+if (typeof window !== 'undefined' && window.Vue) {
+  install(window.Vue)
+}
+
+export default { install }

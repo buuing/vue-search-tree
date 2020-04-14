@@ -1,10 +1,49 @@
-<meta charset="utf-8">
-<title>index demo</title>
-<script src="./index.umd.js"></script>
-
-<link rel="stylesheet" href="./index.css">
-
-
-<script>
-console.log(index)
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+  <div id="app">
+    <search-tree :data="list"></search-tree>
+  </div>
+  <script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>
+  <script src="./index.umd.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data () {
+        return {
+          list: [
+        {
+          "id": 1007,
+          "name": "山东省",
+          "children": [{
+            "id": 1103,
+            "name": "济南市",
+            "children": [{
+              "id": 2544,
+              "name": "济南市无影山西路店"
+            }, {
+              "id": 2545,
+              "name": "济南市堤口路店"
+            }]
+          }, {
+            "id": 1105,
+            "name": "沂市",
+            "children": [{
+              "id": 2561,
+              "name": "沂市东岳庙店"
+            }]
+          }]
+        }
+      ],
+        }
+      }
+    })
+  </script>
+</body>
+</html>
