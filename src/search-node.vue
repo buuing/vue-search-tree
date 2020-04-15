@@ -27,11 +27,12 @@ export default {
   },
   watch: {
     'children': {
-      handler (newVal) {
+      handler (newVal, old) {
+        const parentNode = !this.$parent.isTree && this.$parent
         const len = newVal.length
         const number = newVal.reduce((num, item) => num += +item.checked, 0)
         this.indeterminate = !!number && number !== len
-        this.data.checked = !!len && number === len
+        this.data.checked = (!old.length && this.data.checked) || (!!len && number === len)
       },
       deep: true
     }

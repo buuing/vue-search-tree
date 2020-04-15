@@ -96,7 +96,7 @@ export default {
       this.$set(node, children, node[children] || [])
       this.$set(node, disabled, node[disabled] || false)
       this.$set(node, 'level', parent ? ~~parent.level + 1 : 1)
-      this.$set(node, 'checked', Reflect.has(node, 'checked') ? node.checked : this.defaultCheckedKeys.indexOf(key) > -1)
+      this.$set(node, 'checked', Reflect.has(node, 'checked') ? node.checked : (parent && parent.checked) || this.defaultCheckedKeys.indexOf(key) > -1)
       this.$set(node, 'expand', Reflect.has(node, 'expand') ? node.expand : this.defaultExpandAll || this.defaultExpandedKeys.indexOf(key) > -1)
       this.$set(node, '$keys', [])
       this.$set(node, '$sort', 0)
