@@ -49,7 +49,7 @@ Vue.use(SearchTree)
 |  :-:     | :-: | :-:
 | name     | 节点名称 | String
 | children | 节点的子集 | String
-<!-- | disabled | 该节点是否禁用 | String -->
+| disabled | 该节点是否禁用 | String
 
 <br />
 

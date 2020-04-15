@@ -1,7 +1,9 @@
 <script>
 import { deepCopy } from './utils.js'
+import zCheckbox from './z-checkbox.vue'
 export default {
   name: 'search-node',
+  components: { zCheckbox },
   props: {
     data: {
       type: Object,
@@ -11,8 +13,8 @@ export default {
   data () {
     return {
       root: null,
-      isChecked: this.data.checked,
-      children: []
+      children: [],
+      indeterminate: false
     }
   },
   created () {
@@ -26,17 +28,17 @@ export default {
   watch: {
     'children': {
       handler (newVal) {
-        newVal.length && (this.data.checked = newVal.every(item => item.checked))
+        const len = newVal.length
+        const number = newVal.reduce((num, item) => num += +item.checked, 0)
+        this.indeterminate = !!number && number !== len
+        this.data.checked = !!len && number === len
       },
       deep: true
-    },
-    'data.checked' (newVal) {
-      this.isChecked = newVal
     }
   },
   render () {
     const { data, root } = this
-    const { name, children } = root.defaultProps
+    const { name, children, disabled } = root.defaultProps
     return <ul class="tree-ul">
       <li class="tree-li">
         <svg t="1585220115926" class="tree-icon point" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2222" width="10" height="10" style={{
@@ -45,7 +47,7 @@ export default {
         }} onClick={e => this.handlerExpand(e)}>
           <path d="M151.476947 199.553918l718.53082 0c39.763632 0 71.922053 31.909757 71.922053 71.675436 0 18.485003-7.095605 35.205826-18.486026 47.872311L568.114019 793.227056c-23.810289 31.400151-68.641333 37.993313-100.29731 14.183024-5.570879-4.052293-10.384511-8.873088-14.183024-14.190187L94.235245 314.041416c-23.547299-31.407314-17.217127-76.479859 14.436804-100.041484 12.922311-9.881045 27.864628-14.43885 42.804898-14.43885l0 0L151.476947 199.553918zM151.476947 199.553918" p-id="2223" fill="#c0c4cc"></path>
         </svg>
-        { root.showCheckbox && <input v-model={this.isChecked} onChange={e => this.handlerChecked(e)} type="checkbox" class="tree-checkbox point" /> }
+        { root.showCheckbox && <zCheckbox value={data.checked} disabled={data[disabled]} indeterminate={this.indeterminate} onChange={e => this.handlerChecked(e)} class="tree-checkbox point"></zCheckbox> }
         <div class="tree-content point" onClick={e => {
           root.expandOnClickNode && this.handlerExpand(e)
           root.checkOnClickNode && this.handlerChecked(e)
@@ -64,9 +66,11 @@ export default {
   methods: {
     handlerChecked (e) {
       const { data, root } = this
-      data.checked = !data.checked
+      const { disabled } = root.defaultProps
+      if (data[disabled]) return false
+      data.checked = !(data.checked || this.indeterminate)
       root.$emit('node-checked', e, deepCopy(data))
-      this.root._downwardUpdateChecked(data)
+      this.root._downwardUpdateChecked(data, data.checked)
     },
     handlerExpand (e) {
       const { data, root } = this

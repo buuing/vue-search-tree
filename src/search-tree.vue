@@ -90,11 +90,11 @@ export default {
   },
   methods: {
     _initNode (node, parent) {
-      const { name, children } = this.defaultProps
+      const { name, children, disabled } = this.defaultProps
       const key = node[this.nodeKey]
-      // this.$set(node, this.nodeKey, 1)
       this.$set(node, name, node[name] || this.emptyText)
       this.$set(node, children, node[children] || [])
+      this.$set(node, disabled, node[disabled] || false)
       this.$set(node, 'level', parent ? ~~parent.level + 1 : 1)
       this.$set(node, 'checked', Reflect.has(node, 'checked') ? node.checked : this.defaultCheckedKeys.indexOf(key) > -1)
       this.$set(node, 'expand', Reflect.has(node, 'expand') ? node.expand : this.defaultExpandAll || this.defaultExpandedKeys.indexOf(key) > -1)
@@ -135,11 +135,11 @@ export default {
       }
       return null
     },
-    _downwardUpdateChecked (data) {
-      const { name, children } = this.defaultProps
+    _downwardUpdateChecked (data, checked) {
+      const { children, disabled } = this.defaultProps
       data[children].forEach(item => {
-        item.checked = data.checked
-        this._downwardUpdateChecked(item)
+        !item[disabled] && (item.checked = checked)
+        this._downwardUpdateChecked(item, checked)
       })
     },
     ininData () { // 向外暴露一个初始化数据的方法
@@ -160,7 +160,7 @@ export default {
         let index = keys.indexOf(item[this.nodeKey])
         if (index === -1) return false
         item.checked = checked
-        this._downwardUpdateChecked(item)
+        this._downwardUpdateChecked(item, checked)
         keys.splice(index, 1)
         return !keys.length
       })
