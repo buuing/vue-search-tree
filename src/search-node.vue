@@ -22,11 +22,9 @@ export default {
     const parent = this.$parent
     this.root = parent.isTree ? parent : parent.root
     this.$set(this.data, '$pid', parent.isTree ? null : parent.data[this.root.nodeKey])
-    const { children } = this.root.defaultProps
-    this.children = data[children]
   },
   watch: {
-    'children': {
+    'data.$children': {
       handler (newVal, old) {
         const parentNode = !this.$parent.isTree && this.$parent
         const len = newVal.length

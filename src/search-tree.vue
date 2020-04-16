@@ -71,8 +71,11 @@ export default {
     sourceData () {
       this._initData()
     },
-    _search () {
-      this.deepData = this._getLdqTree(this.deepData)
+    _search (val) {
+      if (val) return this.deepData = this._getLdqTree(this.deepData)
+      const keys = this.getCheckedKeys()
+      this.initData()
+      this.setCheckedKeys(keys, true)
     }
   },
   created () {
@@ -102,7 +105,7 @@ export default {
       this.$set(node, '$sort', 0)
     },
     _initData () { // 初始化数据
-      const { name, children, disabled } = this.defaultProps
+      const { children } = this.defaultProps
       const _deep = (arr, parent) => {
         arr.forEach(item => {
           this._initNode(item, parent)
@@ -111,7 +114,7 @@ export default {
         })
       }
       _deep(this.sourceData)
-      this.deepData = this._getLdqTree(deepCopy(this.sourceData))
+      this.initData()
     },
     _getLdqTree (tree) { // 获取关键词索引并排序
       const { name, children } = this.defaultProps
@@ -142,8 +145,11 @@ export default {
         this._downwardUpdateChecked(item, checked)
       })
     },
-    ininData () { // 向外暴露一个初始化数据的方法
-      this.deepData = this._getLdqTree(deepCopy(this.sourceData))
+    initData () { // 向外暴露一个初始化数据的方法
+      const { children } = this.defaultProps
+      const data = deepCopy(this.sourceData)
+      this._preorder(data, item => !(item.$children = item[children]))
+      this.deepData = this._getLdqTree(data)
     },
     getNode (key) { // 根据key获取对应深拷贝节点
       return deepCopy(this._getNode(key))
@@ -152,7 +158,8 @@ export default {
       return this._preorder(this.deepData, item => item[this.nodeKey] == key)
     },
     resetChecked () { // 取消所有节点的选中状态
-      return !this._preorder(this.deepData, item => !!this.$set(item, 'checked', false))
+      const { disabled } = this.defaultProps
+      return !this._preorder(this.deepData, item => item.checked = false)
     },
     setCheckedKeys (keys, checked) { // 设置指定keys节点的checked
       keys = deepCopy(keys)
