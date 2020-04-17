@@ -67,8 +67,9 @@ export default {
       const { data, root } = this
       const { disabled } = root.defaultProps
       if (data[disabled]) return false
+      data.checked = this.indeterminate || !data.checked
+      this.root._downwardUpdateChecked(data, data.checked)
       root.$emit('node-checked', e, deepCopy(data))
-      this.root._downwardUpdateChecked(data, !data.checked)
     },
     handlerExpand (e) {
       const { data, root } = this
