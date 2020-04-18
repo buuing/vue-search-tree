@@ -138,12 +138,20 @@ export default {
       }
       return null
     },
-    _downwardUpdateChecked (data, checked) {
+    _downwardUpdateChecked (data, checked) { // 向下处理树节点的checked
       const { children, disabled } = this.defaultProps
-      data[children].forEach(item => {
-        !item[disabled] && (item.checked = checked)
-        this._downwardUpdateChecked(item, checked)
-      })
+      // 过滤所有disabled=false的末尾节点, 如果有没选中的就重写checked
+      data[children].length && checked && (
+        checked = !!this._preorder(data[children], item => !item[children].length && !item[disabled] && !item.checked)
+      )
+      const _deep = (data, checked) => {
+        // 如果是末尾节点, 只需要判断disabled
+        if (!data[children].length) return !data[disabled] && (data.checked = checked)
+        // 否则还要判断children是否都是disable
+        !data[disabled] && !data[children].every(item => item[disabled]) && (data.checked = checked)
+        data[children].forEach(item => _deep(item, checked))
+      }
+      _deep(data, checked)
     },
     initData () { // 向外暴露一个初始化数据的方法
       const { children } = this.defaultProps
@@ -166,7 +174,6 @@ export default {
       this._preorder(this.deepData, item => {
         let index = keys.indexOf(item[this.nodeKey])
         if (index === -1) return false
-        item.checked = checked
         this._downwardUpdateChecked(item, checked)
         keys.splice(index, 1)
         return !keys.length

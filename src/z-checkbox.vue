@@ -22,11 +22,12 @@ export default {
         <rect x="0" y="0" width="12" height="12" stroke="#2080f0" fill="#2080f0" stroke-width="2"/>
         <rect x="1.5" y="5" width="9" height="2" stroke="#2080f0" fill="#fff" stroke-width="0"/>
       </svg>
-      return this.isChecked ? <svg width="12" height="12">
+      if (this.isChecked) return <svg width="12" height="12">
         <rect x="0" y="0" width="12" height="12" stroke="#2080f0" fill="#2080f0" stroke-width="2"/>
         <line x1="1.5" x2="5.5" y1="5.5" y2="10.5" stroke="#fff" fill="transparent" stroke-width="1.5"/>
         <line x1="10.5" x2="5" y1="2" y2="10" stroke="#fff" fill="transparent" stroke-width="1.5"/>
-      </svg> : <svg width="12" height="12">
+      </svg>
+      return <svg width="12" height="12">
         <rect x="0" y="0" width="12" height="12" stroke="#2080f0" fill="transparent" stroke-width="2"/>
       </svg>
     }

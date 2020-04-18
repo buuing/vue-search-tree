@@ -14,7 +14,14 @@ export default {
     return {
       root: null,
       children: [],
-      indeterminate: false
+    }
+  },
+  computed: {
+    indeterminate () {
+      const children = this.data[this.root.defaultProps.children]
+      const number = children.reduce((num, item) => num += +item.checked, 0)
+      // 子节点存在并且没有全部选中, 并且children里有一个被选中的
+      return (!number || number !== children.length) && !!this.root._preorder(children, item => item.checked)
     }
   },
   created () {
@@ -26,14 +33,14 @@ export default {
   watch: {
     'data.$children': {
       handler (newVal, old) {
-        const parentNode = !this.$parent.isTree && this.$parent
         const len = newVal.length
         const number = newVal.reduce((num, item) => num += +item.checked, 0)
-        this.indeterminate = !!number && number !== len
+        // 子节点存在并且全都选中
         this.data.checked = (!old.length && this.data.checked) || (!!len && number === len)
       },
-      deep: true
-    }
+      deep: true,
+      immediate: false
+    },
   },
   render () {
     const { data, root } = this
@@ -59,23 +66,24 @@ export default {
           </p> }
         </div>
       </li>
-      { !!data[children].length && data.expand && data[children].map(item => <search-node key={item[root.nodeKey]} data={item}></search-node>) }
+      <div v-show={!!data[children].length && data.expand}>
+        { data[children].map(item => <search-node key={item[root.nodeKey]} data={item}></search-node>) }
+      </div>
     </ul>
   },
   methods: {
     handlerChecked (e) {
       const { data, root } = this
-      const { disabled } = root.defaultProps
+      const { children, disabled } = root.defaultProps
       if (data[disabled]) return false
-      data.checked = this.indeterminate || !data.checked
-      this.root._downwardUpdateChecked(data, data.checked)
+      this.root._downwardUpdateChecked(data, !data.checked)
       root.$emit('node-checked', e, deepCopy(data))
     },
     handlerExpand (e) {
       const { data, root } = this
       data.expand = !data.expand
       root.$emit('node-expand', e, deepCopy(data))
-    },
+    }
   }
 }
 </script>
