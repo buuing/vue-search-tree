@@ -75,8 +75,13 @@ export default {
     handlerChecked (e) {
       const { data, root } = this
       const { children, disabled } = root.defaultProps
+      let checked = !data.checked
       if (data[disabled]) return false
-      this.root._downwardUpdateChecked(data, !data.checked)
+      // 过滤所有disabled=false的末尾节点, 如果有没选中的就重写checked
+      data[children].length && checked && (
+        checked = !!this.root._preorder(data[children], item => !item[children].length && !item[disabled] && !item.checked)
+      )
+      this.root._downwardUpdateChecked(data, checked)
       root.$emit('node-checked', e, deepCopy(data))
     },
     handlerExpand (e) {
