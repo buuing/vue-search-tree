@@ -14,16 +14,8 @@ export const computSortNum = keys => {
 export const getSortData = arr => {
   const usable = [], disable = []
   arr.forEach(item => item.$sort === 0 ? disable.push(item) : usable.push(item))
-  for (let i = 0; i < usable.length - 1; i++) {
-    let maxIndex = i
-    for (let j = i + 1; j < usable.length; j++) {
-      if (usable[maxIndex].$sort < usable[j].$sort) {
-        maxIndex = j
-      }
-    }
-    [usable[i], usable[maxIndex]] = [usable[maxIndex], usable[i]]
-  }
-  return [...usable, ...disable]
+  usable.sort((a, b) => b.$sort - a.$sort)
+  return usable.concat(disable)
 }
 // 反推字典表
 export const getDictionary = (name, word) => {

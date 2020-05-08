@@ -27,7 +27,7 @@ export default {
     },
     defaultExpandAll: {    // 默认展开全部节点
       type: Boolean,
-      default: false
+      default: true
     },
     expandOnClickNode: {   // 点击节点时是否展开或折叠
       type: Boolean,
@@ -92,12 +92,51 @@ export default {
     </div>
   },
   methods: {
-    _initNode (node, parent) {
+    /**
+     * 前序迭代所有节点
+     * @param { Array } nodes 将要遍历的节点
+     * @param { Function } callback 回调函数如果返回true就终止遍历并返回该节点, 否则继续遍历后面的节点, 最后返回null
+     */
+    _preorder (nodes, callback) {
+      if (!nodes.length) return null
+      const { children } = this.defaultProps
+      let stack = [...nodes]
+      while (stack.length) {
+        const curr = stack.shift()
+        if (callback(curr)) return curr
+        if (curr[children].length) stack.unshift(...curr[children])
+      }
+      return null
+    },
+    /**
+     * 层序迭代叶子节点
+     * @param { Array } nodes 将要遍历的节点
+     * @param { Function } callback 回调函数如果返回true就终止遍历并返回该节点, 否则继续遍历后面的节点, 最后返回null
+     */
+    _levelOrder (nodes, callback) {
+      if (!nodes.length) return null
+      const { children } = this.defaultProps
+      let queue = [...nodes], res = []
+      while (queue.length) {
+        let len = queue.length
+        while (len--) {
+          const curr = queue.shift()
+          if (curr[children].length) { // 拦截叶子节点
+            queue.push(...curr[children])
+          } else {
+            if (callback(curr)) return curr
+          }
+        }
+      }
+      return null
+    },
+    _initNode (node, parent) { // 初始化节点
       const { name, children, disabled } = this.defaultProps
       const key = node[this.nodeKey]
       this.$set(node, name, node[name] || this.emptyText)
       this.$set(node, children, node[children] || [])
       this.$set(node, disabled, node[disabled] || false)
+      this.$set(node, 'visible', true)
       this.$set(node, 'level', parent ? ~~parent.level + 1 : 1)
       this.$set(node, 'checked', Reflect.has(node, 'checked') ? node.checked : (parent && parent.checked) || this.defaultCheckedKeys.indexOf(key) > -1)
       this.$set(node, 'expand', Reflect.has(node, 'expand') ? node.expand : this.defaultExpandAll || this.defaultExpandedKeys.indexOf(key) > -1)
@@ -123,28 +162,20 @@ export default {
         item.$keys = keys
         item.$sort = computSortNum(keys)
         if (item[children].length) item[children] = this._getLdqTree(item[children])
-        item.$sort += item[children].reduce((max, item) => max > item.$sort ? max : item.$sort, 0)
+        let childrenSort = item[children].reduce((max, item) => max > item.$sort ? max : item.$sort, 0)
+        item.$sort += childrenSort
+        // 由于不匹配关键词的数据可能很多, 这里折叠未命中的节点
+        this._search && (item.expand = !!childrenSort)
       })
       return getSortData(tree)
     },
-    _preorder (arr, callback) { // 前序迭代遍历
-      if (!arr.length) return null
-      const { children } = this.defaultProps
-      let stack = [...arr]
-      while (stack.length) {
-        const curr = stack.shift()
-        if (callback(curr)) return curr
-        if (curr[children]?.length) stack.unshift(...curr[children])
-      }
-      return null
-    },
     _downwardUpdateChecked (data, checked) { // 向下处理树节点的checked
       const { children, disabled } = this.defaultProps
-      // 如果是末尾节点, 只需要判断disabled
+      // 如果当前节点是叶子节点, 只需要判断disabled
       if (!data[children].length) return !data[disabled] && (data.checked = checked)
-      // 过滤所有末尾节点, 如果全部为disabled就return
-      if (!this._preorder(data[children], item => !item[children].length && !item[disabled])) return false
-      // 否则还要判断children是否都是disable
+      // 然后过滤所有叶子节点, 如果全部都是disabled就return
+      if (!this._levelOrder(data[children], item => !item[disabled])) return false
+      // 最后判断当前节点是否为disable
       !data[disabled] && (data.checked = checked)
       data[children].forEach(item => this._downwardUpdateChecked(item, checked))
     },
@@ -154,7 +185,7 @@ export default {
       this._preorder(data, item => !(item.$children = item[children]))
       this.deepData = this._getLdqTree(data)
     },
-    getNode (key) { // 根据key获取对应深拷贝节点
+    getNodeByKey (key) { // 根据key获取对应深拷贝节点
       return deepCopy(this._getNode(key))
     },
     _getNode (key) { // 根据key获取对应引用节点
@@ -162,9 +193,9 @@ export default {
     },
     resetChecked () { // 取消所有节点的选中状态
       const { disabled } = this.defaultProps
-      return !this._preorder(this.deepData, item => item.checked = false)
+      return !this._levelOrder(this.deepData, item => item.checked = false)
     },
-    setCheckedKeys (keys, checked) { // 设置指定keys节点的checked
+    setCheckedByKeys (keys, checked) { // 设置指定keys节点的checked
       keys = deepCopy(keys)
       this._preorder(this.deepData, item => {
         let index = keys.indexOf(item[this.nodeKey])

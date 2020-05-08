@@ -67,9 +67,9 @@ Vue.use(SearchTree)
 
 | 方法名           | 说明 | 参数 | 参数类型 | 返回值
 |  :-:            | :-: | :-: | :-: | :-:
-| getNode         | 通过key获取对应节点 | 参数1: 唯一标识key | String / Number | 成功返回对应的节点, 失败返回null
+| getNodeByKey    | 通过key获取对应节点 | 参数1: 唯一标识key | String / Number | 成功返回对应的节点, 失败返回null
 | resetChecked    | 取消所有节点的选中状态 | - | - | -
-| setCheckedKeys  | 通过keys批量设置节点的选中状态 | 参数1: 唯一标识keys, 参数2: 状态 | 参数1: Array, 参数2: Boolean | -
+| setCheckedByKeys| 通过keys批量设置节点的选中状态 | 参数1: 唯一标识keys, 参数2: 状态 | 参数1: Array, 参数2: Boolean | -
 | getCheckedKeys  | 获取选中节点的keys | - | - | 所有选中节点的唯一标识keys
 | getCheckedNodes  | 获取选中的节点nodes | - | - | 所有选中的节点nodes
 | remove          | 通过key删除一个节点 | 参数1: 唯一标识key或当前节点 | String / Number | 成功返回true, 失败返回false
