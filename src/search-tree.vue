@@ -75,7 +75,7 @@ export default {
       if (val) return this.deepData = this._getLdqTree(this.deepData)
       const keys = this.getCheckedKeys()
       this.initData()
-      this.setCheckedKeys(keys, true)
+      this.setCheckedByKeys(keys, true)
     }
   },
   created () {
@@ -164,6 +164,7 @@ export default {
         if (item[children].length) item[children] = this._getLdqTree(item[children])
         let childrenSort = item[children].reduce((max, item) => max > item.$sort ? max : item.$sort, 0)
         item.$sort += childrenSort
+        item.visible = !!item.$sort === !!this._search
         // 由于不匹配关键词的数据可能很多, 这里折叠未命中的节点
         this._search && (item.expand = !!childrenSort)
       })
