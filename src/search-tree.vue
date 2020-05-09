@@ -206,9 +206,9 @@ export default {
         return !keys.length
       })
     },
-    getCheckedKeys () { // 获取所有选中节点的keys
+    getCheckedKeys (nodeKey = this.nodeKey) { // 获取所有选中节点的keys
       const keys = []
-      this._preorder(this.deepData, item => item.checked && !keys.push(item[this.nodeKey]))
+      this._preorder(this.deepData, item => item.checked && !keys.push(item[nodeKey]))
       return keys
     },
     getCheckedNodes () { // 获取所有选中节点的nodes
