@@ -33,7 +33,7 @@ Vue.use(SearchTree)
 | node-key              | 节点的唯一标识 | String | 'id'
 | search                | 模糊搜索的关键词 | String | ''
 | hide-misses           | 是否隐藏模糊搜索不匹配的节点 | Boolean | true
-| expandMisses          | 是否展开模糊搜索不匹配的节点 | Boolean | false
+| expand-misses         | 是否展开模糊搜索不匹配的节点 | Boolean | false
 | search-debounce       | 模糊搜索防抖 (毫秒) | Number | 300
 | empty-text            | 内容为空时展示的文本 | String | ''
 | show-checkbox         | 是否显示checkbox | Boolean | false
