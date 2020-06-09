@@ -17,6 +17,14 @@ export default {
       type: String,
       default: ''
     },
+    hideMisses: {          // 是否隐藏模糊搜索不匹配的节点
+      type: Boolean,
+      default: true
+    },
+    expandMisses: {        // 是否展开模糊搜索不匹配的节点
+      type: Boolean,
+      default: false
+    },
     searchDebounce: {      // 输入关键词防抖
       type: Number,
       default: 300
@@ -83,7 +91,7 @@ export default {
         const keys = this.getCheckedKeys()
         this.initData()
         this.setCheckedByKeys(keys, true)
-      }, this.debounce)
+      }, this.searchDebounce)
     }
   },
   created () {
@@ -174,7 +182,7 @@ export default {
         item.$sort += childrenSort
         item.visible = !!item.$sort === !!this._search
         // 由于不匹配关键词的数据可能很多, 这里折叠未命中的节点
-        this._search && (item.expand = !!childrenSort)
+        this._search && !this.expandMisses && (item.expand = !!childrenSort)
       })
       return getSortData(tree)
     },
