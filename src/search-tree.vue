@@ -17,6 +17,10 @@ export default {
       type: String,
       default: ''
     },
+    searchDebounce: {      // 输入关键词防抖
+      type: Number,
+      default: 300
+    },
     emptyText: {           // 内容为空时展示的文本
       type: String,
       default: ''
@@ -56,7 +60,8 @@ export default {
     return {
       deepData: '',
       isTree: true,
-      defaultProps: {}
+      defaultProps: {},
+      timer: null,
     }
   },
   computed: {
@@ -72,10 +77,13 @@ export default {
       this._initData()
     },
     _search (val) {
-      if (val) return this.deepData = this._getLdqTree(this.deepData)
-      const keys = this.getCheckedKeys()
-      this.initData()
-      this.setCheckedByKeys(keys, true)
+      clearTimeout(this.timer)
+      this.timer = setTimeout(_ => {
+        if (val) return this.deepData = this._getLdqTree(this.deepData)
+        const keys = this.getCheckedKeys()
+        this.initData()
+        this.setCheckedByKeys(keys, true)
+      }, this.debounce)
     }
   },
   created () {
