@@ -27,7 +27,7 @@ export default {
     },
     searchDebounce: {      // 输入关键词防抖
       type: Number,
-      default: 300
+      default: 500
     },
     emptyText: {           // 内容为空时展示的文本
       type: String,
@@ -63,6 +63,12 @@ export default {
         return {}
       }
     },
+    filterNode: {          // 过滤节点的方法
+      type: Function,
+      default: function () {
+        return true
+      }
+    }
   },
   data () {
     return {
@@ -180,7 +186,7 @@ export default {
         if (item[children].length) item[children] = this._getLdqTree(item[children])
         let childrenSort = item[children].reduce((max, item) => max > item.$sort ? max : item.$sort, 0)
         item.$sort += childrenSort
-        item.visible = !!item.$sort === !!this._search
+        item.visible = !item.$sort === !this._search
         // 由于不匹配关键词的数据可能很多, 这里折叠未命中的节点
         this._search && !this.expandMisses && (item.expand = !!childrenSort)
       })
@@ -275,6 +281,11 @@ export default {
       const arr = curr.$pid ? this._getNode(curr.$pid)[this.defaultProps.children] : this.deepData
       arr.splice(arr.findIndex(item => item === curr) + 1, 0, node)
       return true
+    },
+    getTotalOfNodes () {
+      let n = 0
+      this._preorder(this.sourceData, node => n++ && false)
+      return n
     }
   }
 }

@@ -45,7 +45,7 @@ export default {
   render () {
     const { data, root } = this
     const { name, children, disabled } = root.defaultProps
-    let hideMisses = !root.hideMisses || data.visible
+    let hideMisses = root.filterNode(deepCopy(data)) && (!root.hideMisses || data.visible)
     return hideMisses ? <ul class="tree-ul">
       <li class="tree-li">
         <svg t="1585220115926" class="tree-icon point" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2222" width="10" height="10" style={{
