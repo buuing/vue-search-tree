@@ -94,7 +94,7 @@ export default {
       clearTimeout(this.timer)
       this.timer = setTimeout(_ => {
         if (val) return this.deepData = this._getLdqTree(this.deepData)
-        const keys = this.getCheckedKeys()
+        const keys = this.showCheckbox ? this.getCheckedKeys() : []
         this.initData()
         this.setCheckedByKeys(keys, true)
       }, this.searchDebounce)
@@ -294,5 +294,6 @@ export default {
 <style scoped>
   .ldq-tree {
     user-select: none;
+    transform: translate(0);
   }
 </style>

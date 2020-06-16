@@ -34,7 +34,7 @@ Vue.use(SearchTree)
 | search                | 模糊搜索的关键词 | String | ''
 | hide-misses           | 是否隐藏模糊搜索不匹配的节点 | Boolean | true
 | expand-misses         | 是否展开模糊搜索不匹配的节点 | Boolean | false
-| search-debounce       | 模糊搜索防抖 (毫秒) | Number | 300
+| search-debounce       | 模糊搜索防抖 (毫秒) | Number | 500
 | empty-text            | 内容为空时展示的文本 | String | ''
 | show-checkbox         | 是否显示checkbox | Boolean | false
 | default-expand-all    | 是否默认展开所有节点 | Boolean | true
@@ -42,6 +42,7 @@ Vue.use(SearchTree)
 | check-on-click-node   | 点击节点时是否选中节点 | Boolean | false
 | default-expanded-keys | 默认展开节点的keys | Array | []
 | default-checked-keys  | 默认选中节点的keys | Array | []
+| filter-node           | 过滤显示的节点 (父节点全选时会选中隐藏的节点) | Function | -
 | props                 | 配置选项，请看下表 | Object | 
 
 <br />
@@ -74,9 +75,9 @@ Vue.use(SearchTree)
 | resetChecked    | 取消所有节点的选中状态 | - | - | -
 | setCheckedByKeys| 通过keys批量设置节点的选中状态 | 参数1: 唯一标识keys, 参数2: 状态 | 参数1: Array, 参数2: Boolean | -
 | getCheckedKeys  | 获取选中节点的keys | 参数1: 指定表示(默认为nodeKey) | String | 所有选中节点的唯一标识keys
-| getCheckedNodes  | 获取选中的节点nodes | - | - | 所有选中的节点nodes
+| getCheckedNodes | 获取选中的节点nodes | - | - | 所有选中的节点nodes
 | remove          | 通过key删除一个节点 | 参数1: 唯一标识key或当前节点 | String / Number | 成功返回true, 失败返回false
 | append          | 通过key添加一个子节点 | 参数1: 唯一标识key或当前节点, 参数2: node节点 | String / Number | 成功返回true, 失败返回false
 | insertBefore    | 通过key在前添加一个兄弟节点 | 参数1: 唯一标识key或当前节点, 参数2: node节点 | String / Number | 成功返回true, 失败返回false
 | insertAfter     | 通过key在后添加一个兄弟节点 | 参数1: 唯一标识key或当前节点, 参数2: node节点 | String / Number | 成功返回true, 失败返回false
-
+| getTotalOfNodes | 获取全部节点的数量 | - | - | 返回全部节点的数量
