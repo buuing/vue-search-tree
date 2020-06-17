@@ -29,10 +29,10 @@ export default {
     const parent = this.$parent
     this.root = parent.isTree ? parent : parent.root
     this.$set(this.data, '$pid', parent.isTree ? null : parent.data[this.root.nodeKey])
-  },
-  watch: {
-    'data.$children': {
-      handler (newVal, old) {
+    this.$watch(function () {
+      return `data.${this.root.defaultProps.children}`
+    }, {
+      handler(newVal, old) {
         const len = newVal.length
         const number = newVal.reduce((num, item) => num += +item.checked, 0)
         // 子节点存在并且全都选中
@@ -40,7 +40,7 @@ export default {
       },
       deep: true,
       immediate: false
-    },
+    })
   },
   render () {
     const { data, root } = this

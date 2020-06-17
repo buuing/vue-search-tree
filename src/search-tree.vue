@@ -57,6 +57,10 @@ export default {
       type: Array,
       default: () => []
     },
+    clearRecovery: {       // 清空搜索关键词时, 是否复原排序顺序
+      type: Boolean,
+      default: false
+    },
     props: {               // 配置项
       type: Object,
       default: () => {
@@ -83,6 +87,9 @@ export default {
       return this.search.trim()
     },
     sourceData () {
+      if (Object.prototype.toString.call(this.data) !== '[object Array]') {
+        return console.error('data属性必须为数组')
+      }
       return deepCopy(this.data)
     }
   },
@@ -93,9 +100,13 @@ export default {
     _search (val) {
       clearTimeout(this.timer)
       this.timer = setTimeout(_ => {
-        if (val) return this.deepData = this._getLdqTree(this.deepData)
+        if (val || !this.clearRecovery) return this.deepData = this._getLdqTree(this.deepData)
+        /**
+         * 如果清空搜索关键词时, 开启了复原初始结构 clearRecovery = true 时
+         * 经测试 4k+ 的单一树节点卡顿在15秒左右, 建议分散处理可以降到2秒左右
+         */
         const keys = this.showCheckbox ? this.getCheckedKeys() : []
-        this.initData()
+        this.deepData = deepCopy(this.sourceData)
         this.setCheckedByKeys(keys, true)
       }, this.searchDebounce)
     }
@@ -175,20 +186,30 @@ export default {
         })
       }
       _deep(this.sourceData)
-      this.initData()
+      const data = deepCopy(this.sourceData)
+      this.deepData = this._getLdqTree(data)
     },
-    _getLdqTree (tree) { // 获取关键词索引并排序
+    _getLdqTree (tree) { // 获取关键词索引并排序, 输入关键词为空时不要走这个方法
       const { name, children } = this.defaultProps
       tree.forEach(item => {
-        const keys = getDictionary(item[name], this._search)
-        item.$keys = keys
-        item.$sort = computSortNum(keys)
-        if (item[children].length) item[children] = this._getLdqTree(item[children])
-        let childrenSort = item[children].reduce((max, item) => max > item.$sort ? max : item.$sort, 0)
-        item.$sort += childrenSort
-        item.visible = !item.$sort === !this._search
-        // 由于不匹配关键词的数据可能很多, 这里折叠未命中的节点
-        this._search && !this.expandMisses && (item.expand = !!childrenSort)
+        if (this._search) {
+          const keys = getDictionary(item[name], this._search)
+          item.$keys = keys
+          item.$sort = computSortNum(keys)
+          if (item[children].length) item[children] = this._getLdqTree(item[children])
+          let childrenSort = item[children].reduce((max, item) => max > item.$sort ? max : item.$sort, 0)
+          item.$sort += childrenSort
+          // 是否隐藏未命中节点
+          item.visible = !!item.$sort
+          // 由于不匹配关键词的数据可能很多, 这里折叠未命中的节点
+          !this.expandMisses && (item.expand = !!childrenSort)
+        } else {
+          item.$keys = []
+          item.$sort = 0
+          item.visible = true
+          item.expand = this.defaultExpandAll || this.defaultExpandedKeys.indexOf(item[this.nodeKey]) > -1
+          if (item[children].length) item[children] = this._getLdqTree(item[children])
+        }
       })
       return getSortData(tree)
     },
@@ -202,12 +223,6 @@ export default {
       !data[disabled] && (data.checked = checked)
       data[children].forEach(item => this._downwardUpdateChecked(item, checked))
     },
-    initData () { // 向外暴露一个初始化数据的方法
-      const { children } = this.defaultProps
-      const data = deepCopy(this.sourceData)
-      this._preorder(data, item => !(item.$children = item[children]))
-      this.deepData = this._getLdqTree(data)
-    },
     getNodeByKey (key) { // 根据key获取对应深拷贝节点
       return deepCopy(this._getNode(key))
     },
@@ -219,6 +234,7 @@ export default {
       return !this._levelOrder(this.deepData, item => item.checked = false)
     },
     setCheckedByKeys (keys, checked) { // 设置指定keys节点的checked
+      if (!keys.length) return null
       keys = deepCopy(keys)
       this._preorder(this.deepData, item => {
         let index = keys.indexOf(item[this.nodeKey])
