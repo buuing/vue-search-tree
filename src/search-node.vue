@@ -65,9 +65,9 @@ export default {
           </p> }
         </div>
       </li>
-      <div v-show={!!data[children].length && data.expand}>
+      { !!data[children].length && data.expand ? <div>
         { data[children].map(item => <search-node key={item[root.nodeKey]} data={item}></search-node>) }
-      </div>
+      </div> : null }
     </ul> : null
   },
   methods: {
@@ -103,10 +103,10 @@ export default {
     list-style: none;
     display: flex;
     align-items: center;
+    transform: translate(0);
   }
   .tree-checkbox {
     margin: 0 0 0 4px;
-    transform: translateY(1px);
   }
   .tree-content {
     width: 100%;

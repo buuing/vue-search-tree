@@ -39,7 +39,7 @@ export default {
     },
     defaultExpandAll: {    // 默认展开全部节点
       type: Boolean,
-      default: true
+      default: false
     },
     expandOnClickNode: {   // 点击节点时是否展开或折叠
       type: Boolean,
@@ -230,8 +230,7 @@ export default {
       return this._preorder(this.deepData, item => item[this.nodeKey] == key)
     },
     resetChecked () { // 取消所有节点的选中状态
-      const { disabled } = this.defaultProps
-      return !this._levelOrder(this.deepData, item => item.checked = false)
+      return !this._preorder(this.deepData, item => item.checked = false)
     },
     setCheckedByKeys (keys, checked) { // 设置指定keys节点的checked
       if (!keys.length) return null
@@ -310,6 +309,5 @@ export default {
 <style scoped>
   .ldq-tree {
     user-select: none;
-    transform: translate(0);
   }
 </style>

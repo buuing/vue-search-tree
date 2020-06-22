@@ -37,7 +37,7 @@ Vue.use(SearchTree)
 | search-debounce       | 模糊搜索防抖 (毫秒) | Number | 500
 | empty-text            | 内容为空时展示的文本 | String | ''
 | show-checkbox         | 是否显示checkbox | Boolean | false
-| default-expand-all    | 是否默认展开所有节点 | Boolean | true
+| default-expand-all    | 是否默认展开所有节点 | Boolean | false
 | expand-on-click-node  | 点击节点时是否展开或折叠 | Boolean | true
 | check-on-click-node   | 点击节点时是否选中节点 | Boolean | false
 | default-expanded-keys | 默认展开节点的keys | Array | []
