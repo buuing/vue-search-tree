@@ -52,7 +52,13 @@ export default {
         }} onClick={e => this.handlerExpand(e)}>
           <path d="M151.476947 199.553918l718.53082 0c39.763632 0 71.922053 31.909757 71.922053 71.675436 0 18.485003-7.095605 35.205826-18.486026 47.872311L568.114019 793.227056c-23.810289 31.400151-68.641333 37.993313-100.29731 14.183024-5.570879-4.052293-10.384511-8.873088-14.183024-14.190187L94.235245 314.041416c-23.547299-31.407314-17.217127-76.479859 14.436804-100.041484 12.922311-9.881045 27.864628-14.43885 42.804898-14.43885l0 0L151.476947 199.553918zM151.476947 199.553918" p-id="2223" fill="#c0c4cc"></path>
         </svg>
-        { root.showCheckbox && <zCheckbox value={data.checked} disabled={data[disabled]} indeterminate={this.indeterminate} onChange={e => this.handlerChecked(e)} class="tree-checkbox point"></zCheckbox> }
+        { root.showCheckbox && <zCheckbox
+          class="point"
+          value={data.checked}
+          disabled={data[disabled]}
+          indeterminate={this.indeterminate}
+          onClick={e => this.handlerChecked(e)}
+        ></zCheckbox> }
         <div class="tree-content point" onClick={e => {
           root.expandOnClickNode && this.handlerExpand(e)
           root.checkOnClickNode && this.handlerChecked(e)
@@ -104,9 +110,6 @@ export default {
     display: flex;
     align-items: center;
     transform: translate(0);
-  }
-  .tree-checkbox {
-    margin: 0 0 0 4px;
   }
   .tree-content {
     width: 100%;
