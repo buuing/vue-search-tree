@@ -80,4 +80,7 @@ Vue.use(SearchTree)
 | append          | 通过key添加一个子节点 | 参数1: 唯一标识key或当前节点, 参数2: node节点 | String / Number | 成功返回true, 失败返回false
 | insertBefore    | 通过key在前添加一个兄弟节点 | 参数1: 唯一标识key或当前节点, 参数2: node节点 | String / Number | 成功返回true, 失败返回false
 | insertAfter     | 通过key在后添加一个兄弟节点 | 参数1: 唯一标识key或当前节点, 参数2: node节点 | String / Number | 成功返回true, 失败返回false
-| getTotalOfNodes | 获取全部节点的数量 | - | - | 返回全部节点的数量
+| getTotalOfNodes | 获取所有满足条件的节点数量 | - | Function | 所有满足条件的节点数量
+
+- **`getTotalOfNodes` 使用示例:**
+  - 获取所有名称包含'北京'的节点: `getTotalOfNodes(node => node.name.indexOf('北京') > -1)`

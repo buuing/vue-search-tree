@@ -297,9 +297,9 @@ export default {
       arr.splice(arr.findIndex(item => item === curr) + 1, 0, node)
       return true
     },
-    getTotalOfNodes () {
+    getTotalOfNodes (callback = node => true) {
       let n = 0
-      this._preorder(this.sourceData, node => n++ && false)
+      this._preorder(this.sourceData, node => callback(deepCopy(node)) && n++ && false)
       return n
     }
   }
