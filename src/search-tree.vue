@@ -171,25 +171,35 @@ export default {
       this.$set(node, disabled, node[disabled] || false)
       this.$set(node, 'visible', true)
       this.$set(node, 'level', parent ? ~~parent.level + 1 : 1)
-      this.$set(node, 'checked', Reflect.has(node, 'checked') ? node.checked : (parent && parent.checked) || this.defaultCheckedKeys.indexOf(key) > -1)
-      this.$set(node, 'expand', Reflect.has(node, 'expand') ? node.expand : this.defaultExpandAll || this.defaultExpandedKeys.indexOf(key) > -1)
+      this.$set(node, 'checked', Reflect.has(node, 'checked') ? node.checked : (parent && parent.checked) || this.defaultCheckedKeys.includes(key))
+      this.$set(node, 'indeterminate', false)
+      this.$set(node, 'expand', Reflect.has(node, 'expand') ? node.expand : this.defaultExpandAll || this.defaultExpandedKeys.includes(key))
       this.$set(node, '$keys', [])
       this.$set(node, '$sort', 0)
     },
     _initData () { // 初始化数据
       const { children } = this.defaultProps
       const _deep = (arr, parent) => {
+        let checkedNum = 0, anyOne = false
         arr.forEach(item => {
           this._initNode(item, parent)
-          item[children]?.length && _deep(item[children], item)
+          checkedNum += +item.checked
+          item[children].length && _deep(item[children], item)
           item.expand && parent && (parent.expand = true)
+          if (item.indeterminate) anyOne = true
         })
+        if (parent) {
+          // 子节点是否全选 || 子节点的叶子节点全部选中
+          parent.checked = checkedNum === arr.length || !this._levelOrder(arr, item => !item.checked)
+          // 子节点有一个是半选 || 被选中的节点不为零并且被选中的节点不等于子节点长度 || 该节点不是全选并且子节点中任意一个被选中
+          parent.indeterminate = anyOne || (!!checkedNum && checkedNum != arr.length) || (!parent.checked && !!this._preorder(arr, item => item.checked))
+        }
       }
       _deep(this.sourceData)
       const data = deepCopy(this.sourceData)
       this.deepData = this._getLdqTree(data)
     },
-    _getLdqTree (tree) { // 获取关键词索引并排序, 输入关键词为空时不要走这个方法
+    _getLdqTree (tree) { // 获取关键词索引并排序
       const { name, children } = this.defaultProps
       tree.forEach(item => {
         if (this._search) {
@@ -215,12 +225,30 @@ export default {
     },
     _downwardUpdateChecked (data, checked) { // 向下处理树节点的checked
       const { children, disabled } = this.defaultProps
-      // 如果当前节点是叶子节点, 只需要判断disabled
+      // 如果当前节点是叶子节点, 只需要判断disabled即可
       if (!data[children].length) return !data[disabled] && (data.checked = checked)
-      // 然后过滤所有叶子节点, 如果全部都是disabled就return
-      if (!this._levelOrder(data[children], item => !item[disabled])) return false
-      // 最后判断当前节点是否为disable
-      !data[disabled] && (data.checked = checked)
+      // 提前声明变量来合并多次层序遍历
+      let allNodeIsDisabled = true,
+        oneNodeIsDisabledAndChecked = false,
+        oneNodeIsDisabledAndUncheck = false
+      // 遍历所有叶子节点
+      this._levelOrder(data[children], item => {
+        if (!item[disabled]) allNodeIsDisabled = false
+        if (item[disabled] && item.checked) oneNodeIsDisabledAndChecked = true
+        if (item[disabled] && !item.checked) oneNodeIsDisabledAndUncheck = true
+      })
+      // 如果所有叶子节点都是disabled就提前打断逻辑
+      if (allNodeIsDisabled) return false
+      /**
+       * 如果有一个叶子节点是disabled并且checked=false, 那么该节点只有半选和全不选两种状态
+       * 如果有一个叶子节点是disabled并且checked=true, 那么该节点只有半选和全选两种状态
+       */
+      data.indeterminate = checked ? oneNodeIsDisabledAndUncheck : oneNodeIsDisabledAndChecked
+      // 默认情况和oneNodeIsDisabledAndChecked时
+      data.checked = checked
+      // 由于两种状态可能叠加存在, 所以oneNodeIsDisabledAndUncheck的判断放在后面
+      if (oneNodeIsDisabledAndUncheck) data.checked = false
+      // 可以向下继续遍历
       data[children].forEach(item => this._downwardUpdateChecked(item, checked))
     },
     getNodeByKey (key) { // 根据key获取对应深拷贝节点
@@ -230,7 +258,7 @@ export default {
       return this._preorder(this.deepData, item => item[this.nodeKey] == key)
     },
     resetChecked () { // 取消所有节点的选中状态
-      return !this._preorder(this.deepData, item => item.checked = false)
+      return !this._preorder(this.deepData, item => (item.checked = false, item.indeterminate = false))
     },
     setCheckedByKeys (keys, checked) { // 设置指定keys节点的checked
       if (!keys.length) return null

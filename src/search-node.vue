@@ -16,29 +16,10 @@ export default {
       children: [],
     }
   },
-  computed: {
-    indeterminate () {
-      const children = this.data[this.root.defaultProps.children]
-      const number = children.reduce((num, item) => num += +item.checked, 0)
-      // 子节点存在并且没有全部选中, 并且children里有一个被选中的
-      return (!number || number !== children.length) && !!this.root._preorder(children, item => item.checked)
-    }
-  },
   created () {
-    const { data } = this
-    const parent = this.$parent
-    this.root = parent.isTree ? parent : parent.root
-    this.$set(this.data, '$pid', parent.isTree ? null : parent.data[this.root.nodeKey])
-    this.$watch(`data.${this.root.defaultProps.children}`, {
-      handler (newVal, old) {
-        const len = newVal.length
-        const number = newVal.reduce((num, item) => num += +item.checked, 0)
-        // 子节点存在并且全都选中
-        this.data.checked = (!old.length && this.data.checked) || (!!len && number === len)
-      },
-      deep: true,
-      immediate: false
-    })
+    const { data, $parent } = this
+    this.root = $parent.isTree ? $parent : $parent.root
+    this.$set(data, '$pid', $parent.isTree ? null : $parent.data[this.root.nodeKey])
   },
   render () {
     const { data, root } = this
@@ -57,7 +38,7 @@ export default {
             class="point"
             value={data.checked}
             disabled={data[disabled]}
-            indeterminate={this.indeterminate}
+            indeterminate={data.indeterminate}
             onClick={e => this.handlerChecked(e)}
           ></zCheckbox>
         }
@@ -72,19 +53,40 @@ export default {
                 data.$keys?.length ? data[name].split('').map(
                   (curr, i) => <span style={{ color: data.$keys.indexOf(i) > -1 ? 'red': '#666' }}>{curr}</span>
                 ) : <span style={{ color: '#666' }}>{data[name]}</span>
-              }
+              } {data.checked + ''} {data.indeterminate + ''}
             </p>
           }
         </div>
       </li>
       {
         !!data[children].length && data.expand && <div>
-          { data[children].map(item => <search-node key={item[root.nodeKey]} data={item}></search-node>) }
+          {
+            data[children].map(item => <search-node
+              key={item[root.nodeKey]}
+              data={item}
+              onCheck-change={this._upwardUpdateChecked}
+            ></search-node>)
+          }
         </div>
       }
     </ul> : null
   },
   methods: {
+    _upwardUpdateChecked (checked) {
+      const { data, root } = this
+      const { children } = root.defaultProps
+      // 获取所有选中节点的数量
+      const checkedNum = data[children].reduce((num, item) => num += +item.checked, 0)
+      // 所有节点都被选中时checked=true, 反之false
+      data.checked = checkedNum === data[children].length
+      // 
+      if (checkedNum === data[children].length) {
+        data.indeterminate = false
+      } else {
+        data.indeterminate = !!checkedNum || !!root._preorder(data[children], item => item.checked)
+      }
+      this.$emit('check-change', data.checked)
+    },
     handlerChecked (e) {
       const { data, root } = this
       const { children, disabled } = root.defaultProps
@@ -92,9 +94,10 @@ export default {
       if (data[disabled]) return false
       // 过滤所有disabled=false的叶子节点, 如果有没选中的就重写checked
       data[children].length && checked && (
-        checked = !!this.root._preorder(data[children], item => !item[children].length && !item[disabled] && !item.checked)
+        checked = !!root._levelOrder(data[children], item => !item[disabled] && !item.checked)
       )
-      this.root._downwardUpdateChecked(data, checked)
+      root._downwardUpdateChecked(data, checked)
+      this.$emit('check-change', checked)
       root.$emit('node-checked', e, deepCopy(data))
     },
     handlerExpand (e) {
