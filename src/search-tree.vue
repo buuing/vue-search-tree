@@ -163,6 +163,22 @@ export default {
       }
       return null
     },
+    /**
+     * 搜寻n叉树节点路径
+     * @param { Object } targetNode 目标节点
+     * @param { Array } data 将要搜寻的树结构, 默认为根节点
+     * @return { Array } 返回从根节点到目标节点之间的所有节点
+     */
+    _getRootPath (node, data = this.deepData) {
+      const { children } = this.defaultProps
+      for (let i = 0; i < data.length; i++) {
+        const item = data[i]
+        if (item === node) return [item]
+        const nodePath = this._getRootPath(node, item[children])
+        if (nodePath.length) return [item, ...nodePath]
+      }
+      return []
+    },
     _initNode (node, parent) { // 初始化节点
       const { name, children, disabled } = this.defaultProps
       const key = node[this.nodeKey]
@@ -223,7 +239,7 @@ export default {
       })
       return getSortData(tree)
     },
-    _downwardUpdateChecked (data, checked) { // 向下处理树节点的checked
+    _updateChecked (data, checked) { // 更新当前节点的状态
       const { children, disabled } = this.defaultProps
       // 如果当前节点是叶子节点, 只需要判断disabled即可
       if (!data[children].length) return !data[disabled] && (data.checked = checked)
@@ -248,7 +264,10 @@ export default {
       data.checked = checked
       // 由于两种状态可能叠加存在, 所以oneNodeIsDisabledAndUncheck的判断放在后面
       if (oneNodeIsDisabledAndUncheck) data.checked = false
-      // 可以向下继续遍历
+    },
+    _downwardUpdateChecked (data, checked) { // 向下处理树节点的checked
+      const { children } = this.defaultProps
+      this._updateChecked(data, checked)
       data[children].forEach(item => this._downwardUpdateChecked(item, checked))
     },
     getNodeByKey (key) { // 根据key获取对应深拷贝节点
@@ -258,18 +277,29 @@ export default {
       return this._preorder(this.deepData, item => item[this.nodeKey] == key)
     },
     resetChecked () { // 取消所有节点的选中状态
-      return !this._preorder(this.deepData, item => (item.checked = false, item.indeterminate = false))
+      this.deepData.forEach(item => this._downwardUpdateChecked(item, false))
     },
     setCheckedByKeys (keys, checked) { // 设置指定keys节点的checked
       if (!keys.length) return null
       keys = deepCopy(keys)
+      const nodes = []
+      // 向下处理节点的选中状态, 并记录nodes
       this._preorder(this.deepData, item => {
         let index = keys.indexOf(item[this.nodeKey])
         if (index === -1) return false
         this._downwardUpdateChecked(item, checked)
+        nodes.push(item)
         keys.splice(index, 1)
         return !keys.length
       })
+      // 对公共祖先节点进行合并和去重操作
+      let ancestorNodes = []
+      nodes.forEach(item => {
+        let nodePath = this._getRootPath(item)
+        nodePath.pop()
+        ancestorNodes = [...new Set([...ancestorNodes, ...nodePath])]
+      })
+      ancestorNodes.forEach(item => this._updateChecked(item, checked))
     },
     getCheckedKeys (nodeKey = this.nodeKey) { // 获取所有选中节点的keys
       const keys = []
