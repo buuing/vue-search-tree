@@ -9,6 +9,8 @@
 
 > https://100px.net/vue-search-tree/
 
+![computed-tree](./img/computed-tree.gif)
+
 <br />
 
 ## 使用
