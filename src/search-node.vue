@@ -35,7 +35,6 @@ export default {
         </svg>
         {
           root.showCheckbox && <zCheckbox
-            class="point"
             value={data.checked}
             disabled={data[disabled]}
             indeterminate={data.indeterminate}
@@ -53,7 +52,7 @@ export default {
                 data.$keys?.length ? data[name].split('').map(
                   (curr, i) => <span style={{ color: data.$keys.indexOf(i) > -1 ? 'red': '#666' }}>{curr}</span>
                 ) : <span style={{ color: '#666' }}>{data[name]}</span>
-              } {data.checked + ''} {data.indeterminate + ''}
+              }
             </p>
           }
         </div>

@@ -18,7 +18,7 @@ export default {
         <rect x="0" y="0" width="12" height="12" stroke="#2080f0" fill="transparent" stroke-width="2"/>
       </svg>
     }
-    return <div style={{
+    return <div class="tree-checkbox" style={{
       filter: `grayscale(${props.disabled ? 100 : 0}%)`,
       opacity: props.disabled ? 0.7 : 1
     }} onClick={e => ctx.listeners.click(e)}>{renderIcon(props)}</div>
@@ -32,7 +32,8 @@ div {
   width: 12px;
   height: 12px;
   cursor: pointer;
-  margin: 0 0 0 3px;
+  margin: 0 0 0 4px;
+  cursor: pointer;
 }
 svg {
   vertical-align: super;

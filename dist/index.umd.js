@@ -171,17 +171,6 @@ module.exports.f = function getOwnPropertyNames(it) {
 
 /***/ }),
 
-/***/ "05ef":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_265a87b4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("c35f");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_265a87b4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_265a87b4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
- /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_265a87b4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
 /***/ "06cf":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -206,6 +195,17 @@ exports.f = DESCRIPTORS ? nativeGetOwnPropertyDescriptor : function getOwnProper
   if (has(O, P)) return createPropertyDescriptor(!propertyIsEnumerableModule.f.call(O, P), O[P]);
 };
 
+
+/***/ }),
+
+/***/ "0b72":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_z_checkbox_vue_vue_type_style_index_0_id_e841df3a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("3462");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_z_checkbox_vue_vue_type_style_index_0_id_e841df3a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_z_checkbox_vue_vue_type_style_index_0_id_e841df3a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_z_checkbox_vue_vue_type_style_index_0_id_e841df3a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -477,6 +477,18 @@ module.exports = (!STRICT_METHOD || !USES_TO_LENGTH) ? function forEach(callback
 
 /***/ }),
 
+/***/ "19aa":
+/***/ (function(module, exports) {
+
+module.exports = function (it, Constructor, name) {
+  if (!(it instanceof Constructor)) {
+    throw TypeError('Incorrect ' + (name ? name + ' ' : '') + 'invocation');
+  } return it;
+};
+
+
+/***/ }),
+
 /***/ "1be4":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -583,6 +595,56 @@ module.exports = function (METHOD_NAME) {
 
 /***/ }),
 
+/***/ "2266":
+/***/ (function(module, exports, __webpack_require__) {
+
+var anObject = __webpack_require__("825a");
+var isArrayIteratorMethod = __webpack_require__("e95a");
+var toLength = __webpack_require__("50c4");
+var bind = __webpack_require__("0366");
+var getIteratorMethod = __webpack_require__("35a1");
+var callWithSafeIterationClosing = __webpack_require__("9bdd");
+
+var Result = function (stopped, result) {
+  this.stopped = stopped;
+  this.result = result;
+};
+
+var iterate = module.exports = function (iterable, fn, that, AS_ENTRIES, IS_ITERATOR) {
+  var boundFunction = bind(fn, that, AS_ENTRIES ? 2 : 1);
+  var iterator, iterFn, index, length, result, next, step;
+
+  if (IS_ITERATOR) {
+    iterator = iterable;
+  } else {
+    iterFn = getIteratorMethod(iterable);
+    if (typeof iterFn != 'function') throw TypeError('Target is not iterable');
+    // optimisation for array iterators
+    if (isArrayIteratorMethod(iterFn)) {
+      for (index = 0, length = toLength(iterable.length); length > index; index++) {
+        result = AS_ENTRIES
+          ? boundFunction(anObject(step = iterable[index])[0], step[1])
+          : boundFunction(iterable[index]);
+        if (result && result instanceof Result) return result;
+      } return new Result(false);
+    }
+    iterator = iterFn.call(iterable);
+  }
+
+  next = iterator.next;
+  while (!(step = next.call(iterator)).done) {
+    result = callWithSafeIterationClosing(iterator, boundFunction, step.value, AS_ENTRIES);
+    if (typeof result == 'object' && result && result instanceof Result) return result;
+  } return new Result(false);
+};
+
+iterate.stop = function (result) {
+  return new Result(true, result);
+};
+
+
+/***/ }),
+
 /***/ "23cb":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -680,6 +742,28 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 
 /***/ }),
 
+/***/ "2532":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var notARegExp = __webpack_require__("5a34");
+var requireObjectCoercible = __webpack_require__("1d80");
+var correctIsRegExpLogic = __webpack_require__("ab13");
+
+// `String.prototype.includes` method
+// https://tc39.github.io/ecma262/#sec-string.prototype.includes
+$({ target: 'String', proto: true, forced: !correctIsRegExpLogic('includes') }, {
+  includes: function includes(searchString /* , position = 0 */) {
+    return !!~String(requireObjectCoercible(this))
+      .indexOf(notARegExp(searchString), arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+
+/***/ }),
+
 /***/ "25f0":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -709,6 +793,33 @@ if (NOT_GENERIC || INCORRECT_NAME) {
     return '/' + p + '/' + f;
   }, { unsafe: true });
 }
+
+
+/***/ }),
+
+/***/ "2626":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var getBuiltIn = __webpack_require__("d066");
+var definePropertyModule = __webpack_require__("9bf2");
+var wellKnownSymbol = __webpack_require__("b622");
+var DESCRIPTORS = __webpack_require__("83ab");
+
+var SPECIES = wellKnownSymbol('species');
+
+module.exports = function (CONSTRUCTOR_NAME) {
+  var Constructor = getBuiltIn(CONSTRUCTOR_NAME);
+  var defineProperty = definePropertyModule.f;
+
+  if (DESCRIPTORS && Constructor && !Constructor[SPECIES]) {
+    defineProperty(Constructor, SPECIES, {
+      configurable: true,
+      get: function () { return this; }
+    });
+  }
+};
 
 
 /***/ }),
@@ -747,6 +858,24 @@ var getBuiltIn = __webpack_require__("d066");
 
 module.exports = getBuiltIn('navigator', 'userAgent') || '';
 
+
+/***/ }),
+
+/***/ "3462":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "3564":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_77a7f8d8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("4054");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_77a7f8d8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_77a7f8d8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_77a7f8d8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -847,6 +976,13 @@ defineIterator(String, 'String', function (iterated) {
 
 module.exports = {};
 
+
+/***/ }),
+
+/***/ "4054":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -1056,32 +1192,6 @@ module.exports = {
   // https://tc39.github.io/ecma262/#sec-array.prototype.indexof
   indexOf: createMethod(false)
 };
-
-
-/***/ }),
-
-/***/ "4de4":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var $ = __webpack_require__("23e7");
-var $filter = __webpack_require__("b727").filter;
-var arrayMethodHasSpeciesSupport = __webpack_require__("1dde");
-var arrayMethodUsesToLength = __webpack_require__("ae40");
-
-var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('filter');
-// Edge 14- issue
-var USES_TO_LENGTH = arrayMethodUsesToLength('filter');
-
-// `Array.prototype.filter` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.filter
-// with adding support of @@species
-$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGTH }, {
-  filter: function filter(callbackfn /* , thisArg */) {
-    return $filter(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
-  }
-});
 
 
 /***/ }),
@@ -1386,6 +1496,20 @@ module.exports = {
 
 /***/ }),
 
+/***/ "5a34":
+/***/ (function(module, exports, __webpack_require__) {
+
+var isRegExp = __webpack_require__("44e7");
+
+module.exports = function (it) {
+  if (isRegExp(it)) {
+    throw TypeError("The method doesn't accept regular expressions");
+  } return it;
+};
+
+
+/***/ }),
+
 /***/ "5c6c":
 /***/ (function(module, exports) {
 
@@ -1401,10 +1525,20 @@ module.exports = function (bitmap, value) {
 
 /***/ }),
 
-/***/ "5fec":
+/***/ "6062":
 /***/ (function(module, exports, __webpack_require__) {
 
-// extracted by mini-css-extract-plugin
+"use strict";
+
+var collection = __webpack_require__("6d61");
+var collectionStrong = __webpack_require__("6566");
+
+// `Set` constructor
+// https://tc39.github.io/ecma262/#sec-set-objects
+module.exports = collection('Set', function (init) {
+  return function Set() { return init(this, arguments.length ? arguments[0] : undefined); };
+}, collectionStrong);
+
 
 /***/ }),
 
@@ -1437,6 +1571,200 @@ module.exports = {
   // `String.prototype.at` method
   // https://github.com/mathiasbynens/String.prototype.at
   charAt: createMethod(true)
+};
+
+
+/***/ }),
+
+/***/ "6566":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var defineProperty = __webpack_require__("9bf2").f;
+var create = __webpack_require__("7c73");
+var redefineAll = __webpack_require__("e2cc");
+var bind = __webpack_require__("0366");
+var anInstance = __webpack_require__("19aa");
+var iterate = __webpack_require__("2266");
+var defineIterator = __webpack_require__("7dd0");
+var setSpecies = __webpack_require__("2626");
+var DESCRIPTORS = __webpack_require__("83ab");
+var fastKey = __webpack_require__("f183").fastKey;
+var InternalStateModule = __webpack_require__("69f3");
+
+var setInternalState = InternalStateModule.set;
+var internalStateGetterFor = InternalStateModule.getterFor;
+
+module.exports = {
+  getConstructor: function (wrapper, CONSTRUCTOR_NAME, IS_MAP, ADDER) {
+    var C = wrapper(function (that, iterable) {
+      anInstance(that, C, CONSTRUCTOR_NAME);
+      setInternalState(that, {
+        type: CONSTRUCTOR_NAME,
+        index: create(null),
+        first: undefined,
+        last: undefined,
+        size: 0
+      });
+      if (!DESCRIPTORS) that.size = 0;
+      if (iterable != undefined) iterate(iterable, that[ADDER], that, IS_MAP);
+    });
+
+    var getInternalState = internalStateGetterFor(CONSTRUCTOR_NAME);
+
+    var define = function (that, key, value) {
+      var state = getInternalState(that);
+      var entry = getEntry(that, key);
+      var previous, index;
+      // change existing entry
+      if (entry) {
+        entry.value = value;
+      // create new entry
+      } else {
+        state.last = entry = {
+          index: index = fastKey(key, true),
+          key: key,
+          value: value,
+          previous: previous = state.last,
+          next: undefined,
+          removed: false
+        };
+        if (!state.first) state.first = entry;
+        if (previous) previous.next = entry;
+        if (DESCRIPTORS) state.size++;
+        else that.size++;
+        // add to index
+        if (index !== 'F') state.index[index] = entry;
+      } return that;
+    };
+
+    var getEntry = function (that, key) {
+      var state = getInternalState(that);
+      // fast case
+      var index = fastKey(key);
+      var entry;
+      if (index !== 'F') return state.index[index];
+      // frozen object case
+      for (entry = state.first; entry; entry = entry.next) {
+        if (entry.key == key) return entry;
+      }
+    };
+
+    redefineAll(C.prototype, {
+      // 23.1.3.1 Map.prototype.clear()
+      // 23.2.3.2 Set.prototype.clear()
+      clear: function clear() {
+        var that = this;
+        var state = getInternalState(that);
+        var data = state.index;
+        var entry = state.first;
+        while (entry) {
+          entry.removed = true;
+          if (entry.previous) entry.previous = entry.previous.next = undefined;
+          delete data[entry.index];
+          entry = entry.next;
+        }
+        state.first = state.last = undefined;
+        if (DESCRIPTORS) state.size = 0;
+        else that.size = 0;
+      },
+      // 23.1.3.3 Map.prototype.delete(key)
+      // 23.2.3.4 Set.prototype.delete(value)
+      'delete': function (key) {
+        var that = this;
+        var state = getInternalState(that);
+        var entry = getEntry(that, key);
+        if (entry) {
+          var next = entry.next;
+          var prev = entry.previous;
+          delete state.index[entry.index];
+          entry.removed = true;
+          if (prev) prev.next = next;
+          if (next) next.previous = prev;
+          if (state.first == entry) state.first = next;
+          if (state.last == entry) state.last = prev;
+          if (DESCRIPTORS) state.size--;
+          else that.size--;
+        } return !!entry;
+      },
+      // 23.2.3.6 Set.prototype.forEach(callbackfn, thisArg = undefined)
+      // 23.1.3.5 Map.prototype.forEach(callbackfn, thisArg = undefined)
+      forEach: function forEach(callbackfn /* , that = undefined */) {
+        var state = getInternalState(this);
+        var boundFunction = bind(callbackfn, arguments.length > 1 ? arguments[1] : undefined, 3);
+        var entry;
+        while (entry = entry ? entry.next : state.first) {
+          boundFunction(entry.value, entry.key, this);
+          // revert to the last existing entry
+          while (entry && entry.removed) entry = entry.previous;
+        }
+      },
+      // 23.1.3.7 Map.prototype.has(key)
+      // 23.2.3.7 Set.prototype.has(value)
+      has: function has(key) {
+        return !!getEntry(this, key);
+      }
+    });
+
+    redefineAll(C.prototype, IS_MAP ? {
+      // 23.1.3.6 Map.prototype.get(key)
+      get: function get(key) {
+        var entry = getEntry(this, key);
+        return entry && entry.value;
+      },
+      // 23.1.3.9 Map.prototype.set(key, value)
+      set: function set(key, value) {
+        return define(this, key === 0 ? 0 : key, value);
+      }
+    } : {
+      // 23.2.3.1 Set.prototype.add(value)
+      add: function add(value) {
+        return define(this, value = value === 0 ? 0 : value, value);
+      }
+    });
+    if (DESCRIPTORS) defineProperty(C.prototype, 'size', {
+      get: function () {
+        return getInternalState(this).size;
+      }
+    });
+    return C;
+  },
+  setStrong: function (C, CONSTRUCTOR_NAME, IS_MAP) {
+    var ITERATOR_NAME = CONSTRUCTOR_NAME + ' Iterator';
+    var getInternalCollectionState = internalStateGetterFor(CONSTRUCTOR_NAME);
+    var getInternalIteratorState = internalStateGetterFor(ITERATOR_NAME);
+    // add .keys, .values, .entries, [@@iterator]
+    // 23.1.3.4, 23.1.3.8, 23.1.3.11, 23.1.3.12, 23.2.3.5, 23.2.3.8, 23.2.3.10, 23.2.3.11
+    defineIterator(C, CONSTRUCTOR_NAME, function (iterated, kind) {
+      setInternalState(this, {
+        type: ITERATOR_NAME,
+        target: iterated,
+        state: getInternalCollectionState(iterated),
+        kind: kind,
+        last: undefined
+      });
+    }, function () {
+      var state = getInternalIteratorState(this);
+      var kind = state.kind;
+      var entry = state.last;
+      // revert to the last existing entry
+      while (entry && entry.removed) entry = entry.previous;
+      // get next entry
+      if (!state.target || !(state.last = entry = entry ? entry.next : state.state.first)) {
+        // or finish the iteration
+        state.target = undefined;
+        return { value: undefined, done: true };
+      }
+      // return step by kind
+      if (kind == 'keys') return { value: entry.key, done: false };
+      if (kind == 'values') return { value: entry.value, done: false };
+      return { value: [entry.key, entry.value], done: false };
+    }, IS_MAP ? 'entries' : 'values', !IS_MAP, true);
+
+    // add [@@species], 23.1.2.2, 23.2.2.2
+    setSpecies(CONSTRUCTOR_NAME);
+  }
 };
 
 
@@ -1532,6 +1860,113 @@ module.exports = {
   has: has,
   enforce: enforce,
   getterFor: getterFor
+};
+
+
+/***/ }),
+
+/***/ "6d61":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var global = __webpack_require__("da84");
+var isForced = __webpack_require__("94ca");
+var redefine = __webpack_require__("6eeb");
+var InternalMetadataModule = __webpack_require__("f183");
+var iterate = __webpack_require__("2266");
+var anInstance = __webpack_require__("19aa");
+var isObject = __webpack_require__("861d");
+var fails = __webpack_require__("d039");
+var checkCorrectnessOfIteration = __webpack_require__("1c7e");
+var setToStringTag = __webpack_require__("d44e");
+var inheritIfRequired = __webpack_require__("7156");
+
+module.exports = function (CONSTRUCTOR_NAME, wrapper, common) {
+  var IS_MAP = CONSTRUCTOR_NAME.indexOf('Map') !== -1;
+  var IS_WEAK = CONSTRUCTOR_NAME.indexOf('Weak') !== -1;
+  var ADDER = IS_MAP ? 'set' : 'add';
+  var NativeConstructor = global[CONSTRUCTOR_NAME];
+  var NativePrototype = NativeConstructor && NativeConstructor.prototype;
+  var Constructor = NativeConstructor;
+  var exported = {};
+
+  var fixMethod = function (KEY) {
+    var nativeMethod = NativePrototype[KEY];
+    redefine(NativePrototype, KEY,
+      KEY == 'add' ? function add(value) {
+        nativeMethod.call(this, value === 0 ? 0 : value);
+        return this;
+      } : KEY == 'delete' ? function (key) {
+        return IS_WEAK && !isObject(key) ? false : nativeMethod.call(this, key === 0 ? 0 : key);
+      } : KEY == 'get' ? function get(key) {
+        return IS_WEAK && !isObject(key) ? undefined : nativeMethod.call(this, key === 0 ? 0 : key);
+      } : KEY == 'has' ? function has(key) {
+        return IS_WEAK && !isObject(key) ? false : nativeMethod.call(this, key === 0 ? 0 : key);
+      } : function set(key, value) {
+        nativeMethod.call(this, key === 0 ? 0 : key, value);
+        return this;
+      }
+    );
+  };
+
+  // eslint-disable-next-line max-len
+  if (isForced(CONSTRUCTOR_NAME, typeof NativeConstructor != 'function' || !(IS_WEAK || NativePrototype.forEach && !fails(function () {
+    new NativeConstructor().entries().next();
+  })))) {
+    // create collection constructor
+    Constructor = common.getConstructor(wrapper, CONSTRUCTOR_NAME, IS_MAP, ADDER);
+    InternalMetadataModule.REQUIRED = true;
+  } else if (isForced(CONSTRUCTOR_NAME, true)) {
+    var instance = new Constructor();
+    // early implementations not supports chaining
+    var HASNT_CHAINING = instance[ADDER](IS_WEAK ? {} : -0, 1) != instance;
+    // V8 ~ Chromium 40- weak-collections throws on primitives, but should return false
+    var THROWS_ON_PRIMITIVES = fails(function () { instance.has(1); });
+    // most early implementations doesn't supports iterables, most modern - not close it correctly
+    // eslint-disable-next-line no-new
+    var ACCEPT_ITERABLES = checkCorrectnessOfIteration(function (iterable) { new NativeConstructor(iterable); });
+    // for early implementations -0 and +0 not the same
+    var BUGGY_ZERO = !IS_WEAK && fails(function () {
+      // V8 ~ Chromium 42- fails only with 5+ elements
+      var $instance = new NativeConstructor();
+      var index = 5;
+      while (index--) $instance[ADDER](index, index);
+      return !$instance.has(-0);
+    });
+
+    if (!ACCEPT_ITERABLES) {
+      Constructor = wrapper(function (dummy, iterable) {
+        anInstance(dummy, Constructor, CONSTRUCTOR_NAME);
+        var that = inheritIfRequired(new NativeConstructor(), dummy, Constructor);
+        if (iterable != undefined) iterate(iterable, that[ADDER], that, IS_MAP);
+        return that;
+      });
+      Constructor.prototype = NativePrototype;
+      NativePrototype.constructor = Constructor;
+    }
+
+    if (THROWS_ON_PRIMITIVES || BUGGY_ZERO) {
+      fixMethod('delete');
+      fixMethod('has');
+      IS_MAP && fixMethod('get');
+    }
+
+    if (BUGGY_ZERO || HASNT_CHAINING) fixMethod(ADDER);
+
+    // weak collections should not contains .clear method
+    if (IS_WEAK && NativePrototype.clear) delete NativePrototype.clear;
+  }
+
+  exported[CONSTRUCTOR_NAME] = Constructor;
+  $({ global: true, forced: Constructor != NativeConstructor }, exported);
+
+  setToStringTag(Constructor, CONSTRUCTOR_NAME);
+
+  if (!IS_WEAK) common.setStrong(Constructor, CONSTRUCTOR_NAME, IS_MAP);
+
+  return Constructor;
 };
 
 
@@ -1942,6 +2377,13 @@ fixRegExpWellKnownSymbolLogic('search', 1, function (SEARCH, nativeSearch, maybe
 
 /***/ }),
 
+/***/ "8558":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "861d":
 /***/ (function(module, exports) {
 
@@ -2046,17 +2488,6 @@ if (typeof store.inspectSource != 'function') {
 
 module.exports = store.inspectSource;
 
-
-/***/ }),
-
-/***/ "898d":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_z_checkbox_vue_vue_type_style_index_0_id_1c8b681a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("e18f");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_z_checkbox_vue_vue_type_style_index_0_id_1c8b681a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_z_checkbox_vue_vue_type_style_index_0_id_1c8b681a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
- /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_z_checkbox_vue_vue_type_style_index_0_id_1c8b681a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -2396,17 +2827,6 @@ exports.BROKEN_CARET = fails(function () {
   return re.exec('str') != null;
 });
 
-
-/***/ }),
-
-/***/ "a3e3":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_11171471_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("5fec");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_11171471_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_11171471_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
- /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_11171471_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -2946,6 +3366,28 @@ if (isForced(NUMBER, !NativeNumber(' 0o1') || !NativeNumber('0b1') || NativeNumb
 
 /***/ }),
 
+/***/ "ab13":
+/***/ (function(module, exports, __webpack_require__) {
+
+var wellKnownSymbol = __webpack_require__("b622");
+
+var MATCH = wellKnownSymbol('match');
+
+module.exports = function (METHOD_NAME) {
+  var regexp = /./;
+  try {
+    '/./'[METHOD_NAME](regexp);
+  } catch (e) {
+    try {
+      regexp[MATCH] = false;
+      return '/./'[METHOD_NAME](regexp);
+    } catch (f) { /* empty */ }
+  } return false;
+};
+
+
+/***/ }),
+
 /***/ "ac1f":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3206,6 +3648,18 @@ module.exports = {
 
 /***/ }),
 
+/***/ "bb2f":
+/***/ (function(module, exports, __webpack_require__) {
+
+var fails = __webpack_require__("d039");
+
+module.exports = !fails(function () {
+  return Object.isExtensible(Object.preventExtensions({}));
+});
+
+
+/***/ }),
+
 /***/ "c04e":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3224,13 +3678,6 @@ module.exports = function (input, PREFERRED_STRING) {
   throw TypeError("Can't convert object to primitive value");
 };
 
-
-/***/ }),
-
-/***/ "c35f":
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -3412,6 +3859,32 @@ module.exports = function (object, names) {
   }
   return result;
 };
+
+
+/***/ }),
+
+/***/ "caad":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var $includes = __webpack_require__("4d64").includes;
+var addToUnscopables = __webpack_require__("44d2");
+var arrayMethodUsesToLength = __webpack_require__("ae40");
+
+var USES_TO_LENGTH = arrayMethodUsesToLength('indexOf', { ACCESSORS: true, 1: 0 });
+
+// `Array.prototype.includes` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.includes
+$({ target: 'Array', proto: true, forced: !USES_TO_LENGTH }, {
+  includes: function includes(el /* , fromIndex = 0 */) {
+    return $includes(this, el, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+addToUnscopables('includes');
 
 
 /***/ }),
@@ -3966,10 +4439,14 @@ module.exports = !fails(function () {
 
 /***/ }),
 
-/***/ "e18f":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "e1b8":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// extracted by mini-css-extract-plugin
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_3e6be027_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("8558");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_3e6be027_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_3e6be027_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_3e6be027_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -4034,6 +4511,19 @@ addToUnscopables('entries');
 
 /***/ }),
 
+/***/ "e2cc":
+/***/ (function(module, exports, __webpack_require__) {
+
+var redefine = __webpack_require__("6eeb");
+
+module.exports = function (target, src, options) {
+  for (var key in src) redefine(target, key, src[key], options);
+  return target;
+};
+
+
+/***/ }),
+
 /***/ "e538":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4092,6 +4582,74 @@ var ArrayPrototype = Array.prototype;
 module.exports = function (it) {
   return it !== undefined && (Iterators.Array === it || ArrayPrototype[ITERATOR] === it);
 };
+
+
+/***/ }),
+
+/***/ "f183":
+/***/ (function(module, exports, __webpack_require__) {
+
+var hiddenKeys = __webpack_require__("d012");
+var isObject = __webpack_require__("861d");
+var has = __webpack_require__("5135");
+var defineProperty = __webpack_require__("9bf2").f;
+var uid = __webpack_require__("90e3");
+var FREEZING = __webpack_require__("bb2f");
+
+var METADATA = uid('meta');
+var id = 0;
+
+var isExtensible = Object.isExtensible || function () {
+  return true;
+};
+
+var setMetadata = function (it) {
+  defineProperty(it, METADATA, { value: {
+    objectID: 'O' + ++id, // object ID
+    weakData: {}          // weak collections IDs
+  } });
+};
+
+var fastKey = function (it, create) {
+  // return a primitive with prefix
+  if (!isObject(it)) return typeof it == 'symbol' ? it : (typeof it == 'string' ? 'S' : 'P') + it;
+  if (!has(it, METADATA)) {
+    // can't set metadata to uncaught frozen object
+    if (!isExtensible(it)) return 'F';
+    // not necessary to add metadata
+    if (!create) return 'E';
+    // add missing metadata
+    setMetadata(it);
+  // return object ID
+  } return it[METADATA].objectID;
+};
+
+var getWeakData = function (it, create) {
+  if (!has(it, METADATA)) {
+    // can't set metadata to uncaught frozen object
+    if (!isExtensible(it)) return true;
+    // not necessary to add metadata
+    if (!create) return false;
+    // add missing metadata
+    setMetadata(it);
+  // return the store of weak collections IDs
+  } return it[METADATA].weakData;
+};
+
+// add metadata on freeze-family methods calling
+var onFreeze = function (it) {
+  if (FREEZING && meta.REQUIRED && isExtensible(it) && !has(it, METADATA)) setMetadata(it);
+  return it;
+};
+
+var meta = module.exports = {
+  REQUIRED: false,
+  fastKey: fastKey,
+  getWeakData: getWeakData,
+  onFreeze: onFreeze
+};
+
+hiddenKeys[METADATA] = true;
 
 
 /***/ }),
@@ -4175,11 +4733,17 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
+var es_array_concat = __webpack_require__("99af");
+
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.find-index.js
 var es_array_find_index = __webpack_require__("c740");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.for-each.js
 var es_array_for_each = __webpack_require__("4160");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.includes.js
+var es_array_includes = __webpack_require__("caad");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.index-of.js
 var es_array_index_of = __webpack_require__("c975");
@@ -4211,6 +4775,15 @@ var es_regexp_exec = __webpack_require__("ac1f");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.to-string.js
 var es_regexp_to_string = __webpack_require__("25f0");
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.set.js
+var es_set = __webpack_require__("6062");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.includes.js
+var es_string_includes = __webpack_require__("2532");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.iterator.js
+var es_string_iterator = __webpack_require__("3ca3");
+
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.search.js
 var es_string_search = __webpack_require__("841c");
 
@@ -4219,6 +4792,9 @@ var es_string_trim = __webpack_require__("498a");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.for-each.js
 var web_dom_collections_for_each = __webpack_require__("159b");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.iterator.js
+var web_dom_collections_iterator = __webpack_require__("ddb0");
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js
 function _arrayLikeToArray(arr, len) {
@@ -4249,12 +4825,6 @@ var es_array_from = __webpack_require__("a630");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.iterator.js
 var es_array_iterator = __webpack_require__("e260");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.iterator.js
-var es_string_iterator = __webpack_require__("3ca3");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.iterator.js
-var web_dom_collections_iterator = __webpack_require__("ddb0");
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/iterableToArray.js
 
@@ -4299,14 +4869,8 @@ function _nonIterableSpread() {
 function _toConsumableArray(arr) {
   return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
 }
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.filter.js
-var es_array_filter = __webpack_require__("4de4");
-
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.split.js
 var es_string_split = __webpack_require__("1276");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
-var es_array_concat = __webpack_require__("99af");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.some.js
 var es_array_some = __webpack_require__("45fc");
@@ -4419,25 +4983,12 @@ var deepCopy = function deepCopy(data) {
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/vue-search-tree/src/z-checkbox.vue?vue&type=script&lang=js&
 /* harmony default export */ var z_checkboxvue_type_script_lang_js_ = ({
   name: 'zCheckbox',
-  props: {
-    value: Boolean,
-    indeterminate: Boolean,
-    disabled: Boolean
-  },
-  data: function data() {
-    return {
-      isChecked: this.value
-    };
-  },
-  watch: {
-    value: function value(val) {
-      this.isChecked = val;
-    }
-  },
-  methods: {
-    renderIcon: function renderIcon() {
-      var h = this.$createElement;
-      if (this.indeterminate) return h("svg", {
+  functional: true,
+  render: function render(h, ctx) {
+    var props = ctx.props;
+
+    var renderIcon = function renderIcon(props) {
+      if (props.indeterminate) return h("svg", {
         "attrs": {
           "width": "12",
           "height": "12"
@@ -4463,7 +5014,7 @@ var deepCopy = function deepCopy(data) {
           "stroke-width": "0"
         }
       })]);
-      if (this.isChecked) return h("svg", {
+      if (props.value) return h("svg", {
         "attrs": {
           "width": "12",
           "height": "12"
@@ -4515,35 +5066,26 @@ var deepCopy = function deepCopy(data) {
           "stroke-width": "2"
         }
       })]);
-    }
-  },
-  render: function render() {
-    var _this = this;
+    };
 
-    var h = arguments[0];
-    var _this$$parent = this.$parent,
-        data = _this$$parent.data,
-        root = _this$$parent.root;
-    var nodeKey = root.nodeKey;
     return h("div", {
+      "class": "tree-checkbox",
       "style": {
-        filter: "grayscale(".concat(this.disabled ? 100 : 0, "%)"),
-        opacity: this.disabled ? 0.7 : 1
+        filter: "grayscale(".concat(props.disabled ? 100 : 0, "%)"),
+        opacity: props.disabled ? 0.7 : 1
       },
       "on": {
         "click": function click(e) {
-          _this.$emit('input', _this.isChecked);
-
-          _this.$emit('change', e);
+          return ctx.listeners.click(e);
         }
       }
-    }, [this.renderIcon()]);
+    }, [renderIcon(props)]);
   }
 });
 // CONCATENATED MODULE: ./src/components/vue-search-tree/src/z-checkbox.vue?vue&type=script&lang=js&
  /* harmony default export */ var src_z_checkboxvue_type_script_lang_js_ = (z_checkboxvue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/vue-search-tree/src/z-checkbox.vue?vue&type=style&index=0&id=1c8b681a&scoped=true&lang=css&
-var z_checkboxvue_type_style_index_0_id_1c8b681a_scoped_true_lang_css_ = __webpack_require__("898d");
+// EXTERNAL MODULE: ./src/components/vue-search-tree/src/z-checkbox.vue?vue&type=style&index=0&id=e841df3a&scoped=true&lang=css&
+var z_checkboxvue_type_style_index_0_id_e841df3a_scoped_true_lang_css_ = __webpack_require__("0b72");
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
@@ -4655,14 +5197,13 @@ var component = normalizeComponent(
   staticRenderFns,
   false,
   null,
-  "1c8b681a",
+  "e841df3a",
   null
   
 )
 
 /* harmony default export */ var z_checkbox = (component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/vue-search-tree/src/search-node.vue?vue&type=script&lang=js&
-
 
 
 
@@ -4688,35 +5229,11 @@ var component = normalizeComponent(
       children: []
     };
   },
-  computed: {
-    indeterminate: function indeterminate() {
-      var children = this.data[this.root.defaultProps.children];
-      var number = children.reduce(function (num, item) {
-        return num += +item.checked;
-      }, 0); // 子节点存在并且没有全部选中, 并且children里有一个被选中的
-
-      return (!number || number !== children.length) && !!this.root._preorder(children, function (item) {
-        return item.checked;
-      });
-    }
-  },
   created: function created() {
-    var data = this.data;
-    var parent = this.$parent;
-    this.root = parent.isTree ? parent : parent.root;
-    this.$set(this.data, '$pid', parent.isTree ? null : parent.data[this.root.nodeKey]);
-    this.$watch("data.".concat(this.root.defaultProps.children), {
-      handler: function handler(newVal, old) {
-        var len = newVal.length;
-        var number = newVal.reduce(function (num, item) {
-          return num += +item.checked;
-        }, 0); // 子节点存在并且全都选中
-
-        this.data.checked = !old.length && this.data.checked || !!len && number === len;
-      },
-      deep: true,
-      immediate: false
-    });
+    var data = this.data,
+        $parent = this.$parent;
+    this.root = $parent.isTree ? $parent : $parent.root;
+    this.$set(data, '$pid', $parent.isTree ? null : $parent.data[this.root.nodeKey]);
   },
   render: function render() {
     var _this = this,
@@ -4747,9 +5264,7 @@ var component = normalizeComponent(
       "class": "tree-icon point",
       "style": {
         transform: "rotate(".concat(data.expand ? '0' : '-90', "deg)"),
-        visibility: data[children].filter(function (item) {
-          return hideMisses;
-        }).length ? 'visible' : 'hidden'
+        visibility: data[children].length ? 'visible' : 'hidden'
       },
       "on": {
         "click": function click(e) {
@@ -4766,14 +5281,13 @@ var component = normalizeComponent(
       "attrs": {
         "value": data.checked,
         "disabled": data[disabled],
-        "indeterminate": this.indeterminate
+        "indeterminate": data.indeterminate
       },
       "on": {
-        "change": function change(e) {
+        "click": function click(e) {
           return _this.handlerChecked(e);
         }
-      },
-      "class": "tree-checkbox point"
+      }
     }), h("div", {
       "class": "tree-content point",
       "on": {
@@ -4795,16 +5309,40 @@ var component = normalizeComponent(
       "style": {
         color: '#666'
       }
-    }, [data[name]])])])]), !!data[children].length && data.expand ? h("div", [data[children].map(function (item) {
+    }, [data[name]])])])]), !!data[children].length && data.expand && h("div", [data[children].map(function (item) {
       return h("search-node", {
         "key": item[root.nodeKey],
         "attrs": {
           "data": item
+        },
+        "on": {
+          "check-change": _this._upwardUpdateChecked
         }
       });
-    })]) : null]) : null;
+    })])]) : null;
   },
   methods: {
+    _upwardUpdateChecked: function _upwardUpdateChecked(checked) {
+      var data = this.data,
+          root = this.root;
+      var children = root.defaultProps.children; // 获取所有选中节点的数量
+
+      var checkedNum = data[children].reduce(function (num, item) {
+        return num += +item.checked;
+      }, 0); // 所有节点都被选中时checked=true, 反之false
+
+      data.checked = checkedNum === data[children].length; // 
+
+      if (checkedNum === data[children].length) {
+        data.indeterminate = false;
+      } else {
+        data.indeterminate = !!checkedNum || !!root._preorder(data[children], function (item) {
+          return item.checked;
+        });
+      }
+
+      this.$emit('check-change', data.checked);
+    },
     handlerChecked: function handlerChecked(e) {
       var data = this.data,
           root = this.root;
@@ -4812,14 +5350,15 @@ var component = normalizeComponent(
           children = _root$defaultProps2.children,
           disabled = _root$defaultProps2.disabled;
       var checked = !data.checked;
-      if (data[disabled]) return false; // 过滤所有disabled=false的末尾节点, 如果有没选中的就重写checked
+      if (data[disabled]) return false; // 过滤所有disabled=false的叶子节点, 如果有没选中的就重写checked
 
-      data[children].length && checked && (checked = !!this.root._preorder(data[children], function (item) {
-        return !item[children].length && !item[disabled] && !item.checked;
+      data[children].length && checked && (checked = !!root._levelOrder(data[children], function (item) {
+        return !item[disabled] && !item.checked;
       }));
 
-      this.root._downwardUpdateChecked(data, checked);
+      root._downwardUpdateChecked(data, checked);
 
+      this.$emit('check-change', checked);
       root.$emit('node-checked', e, deepCopy(data));
     },
     handlerExpand: function handlerExpand(e) {
@@ -4832,8 +5371,8 @@ var component = normalizeComponent(
 });
 // CONCATENATED MODULE: ./src/components/vue-search-tree/src/search-node.vue?vue&type=script&lang=js&
  /* harmony default export */ var src_search_nodevue_type_script_lang_js_ = (search_nodevue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/vue-search-tree/src/search-node.vue?vue&type=style&index=0&id=265a87b4&scoped=true&lang=css&
-var search_nodevue_type_style_index_0_id_265a87b4_scoped_true_lang_css_ = __webpack_require__("05ef");
+// EXTERNAL MODULE: ./src/components/vue-search-tree/src/search-node.vue?vue&type=style&index=0&id=3e6be027&scoped=true&lang=css&
+var search_nodevue_type_style_index_0_id_3e6be027_scoped_true_lang_css_ = __webpack_require__("e1b8");
 
 // CONCATENATED MODULE: ./src/components/vue-search-tree/src/search-node.vue
 var search_node_render, search_node_staticRenderFns
@@ -4850,13 +5389,19 @@ var search_node_component = normalizeComponent(
   search_node_staticRenderFns,
   false,
   null,
-  "265a87b4",
+  "3e6be027",
   null
   
 )
 
 /* harmony default export */ var search_node = (search_node_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/vue-search-tree/src/search-tree.vue?vue&type=script&lang=js&
+
+
+
+
+
+
 
 
 
@@ -5086,6 +5631,28 @@ var search_node_component = normalizeComponent(
 
       return null;
     },
+
+    /**
+     * 搜寻n叉树节点路径
+     * @param { Object } targetNode 目标节点
+     * @param { Array } data 将要搜寻的树结构, 默认为根节点
+     * @return { Array } 返回从根节点到目标节点之间的所有节点
+     */
+    _getRootPath: function _getRootPath(node) {
+      var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.deepData;
+      var children = this.defaultProps.children;
+
+      for (var i = 0; i < data.length; i++) {
+        var item = data[i];
+        if (item === node) return [item];
+
+        var nodePath = this._getRootPath(node, item[children]);
+
+        if (nodePath.length) return [item].concat(_toConsumableArray(nodePath));
+      }
+
+      return [];
+    },
     _initNode: function _initNode(node, parent) {
       // 初始化节点
       var _this$defaultProps = this.defaultProps,
@@ -5098,8 +5665,9 @@ var search_node_component = normalizeComponent(
       this.$set(node, disabled, node[disabled] || false);
       this.$set(node, 'visible', true);
       this.$set(node, 'level', parent ? ~~parent.level + 1 : 1);
-      this.$set(node, 'checked', Reflect.has(node, 'checked') ? node.checked : parent && parent.checked || this.defaultCheckedKeys.indexOf(key) > -1);
-      this.$set(node, 'expand', Reflect.has(node, 'expand') ? node.expand : this.defaultExpandAll || this.defaultExpandedKeys.indexOf(key) > -1);
+      this.$set(node, 'checked', Reflect.has(node, 'checked') ? node.checked : parent && parent.checked || this.defaultCheckedKeys.includes(key));
+      this.$set(node, 'indeterminate', false);
+      this.$set(node, 'expand', Reflect.has(node, 'expand') ? node.expand : this.defaultExpandAll || this.defaultExpandedKeys.includes(key));
       this.$set(node, '$keys', []);
       this.$set(node, '$sort', 0);
     },
@@ -5110,14 +5678,27 @@ var search_node_component = normalizeComponent(
       var children = this.defaultProps.children;
 
       var _deep = function _deep(arr, parent) {
+        var checkedNum = 0,
+            anyOne = false;
         arr.forEach(function (item) {
-          var _item$children;
-
           _this3._initNode(item, parent);
 
-          ((_item$children = item[children]) === null || _item$children === void 0 ? void 0 : _item$children.length) && _deep(item[children], item);
+          checkedNum += +item.checked;
+          item[children].length && _deep(item[children], item);
           item.expand && parent && (parent.expand = true);
+          if (item.indeterminate) anyOne = true;
         });
+
+        if (parent) {
+          // 子节点是否全选 || 子节点的叶子节点全部选中
+          parent.checked = checkedNum === arr.length || !_this3._levelOrder(arr, function (item) {
+            return !item.checked;
+          }); // 子节点有一个是半选 || 被选中的节点不为零并且被选中的节点不等于子节点长度 || 该节点不是全选并且子节点中任意一个被选中
+
+          parent.indeterminate = anyOne || !!checkedNum && checkedNum != arr.length || !parent.checked && !!_this3._preorder(arr, function (item) {
+            return item.checked;
+          });
+        }
       };
 
       _deep(this.sourceData);
@@ -5128,7 +5709,7 @@ var search_node_component = normalizeComponent(
     _getLdqTree: function _getLdqTree(tree) {
       var _this4 = this;
 
-      // 获取关键词索引并排序, 输入关键词为空时不要走这个方法
+      // 获取关键词索引并排序
       var _this$defaultProps2 = this.defaultProps,
           name = _this$defaultProps2.name,
           children = _this$defaultProps2.children;
@@ -5156,21 +5737,45 @@ var search_node_component = normalizeComponent(
       });
       return getSortData(tree);
     },
+    _updateChecked: function _updateChecked(data, checked) {
+      // 更新当前节点的状态
+      var _this$defaultProps3 = this.defaultProps,
+          children = _this$defaultProps3.children,
+          disabled = _this$defaultProps3.disabled; // 如果当前节点是叶子节点, 只需要判断disabled即可
+
+      if (!data[children].length) return !data[disabled] && (data.checked = checked); // 提前声明变量来合并多次层序遍历
+
+      var allNodeIsDisabled = true,
+          oneNodeIsDisabledAndChecked = false,
+          oneNodeIsDisabledAndUncheck = false; // 遍历所有叶子节点
+
+      this._levelOrder(data[children], function (item) {
+        if (!item[disabled]) allNodeIsDisabled = false;
+        if (item[disabled] && item.checked) oneNodeIsDisabledAndChecked = true;
+        if (item[disabled] && !item.checked) oneNodeIsDisabledAndUncheck = true;
+      }); // 如果所有叶子节点都是disabled就提前打断逻辑
+
+
+      if (allNodeIsDisabled) return false;
+      /**
+       * 如果有一个叶子节点是disabled并且checked=false, 那么该节点只有半选和全不选两种状态
+       * 如果有一个叶子节点是disabled并且checked=true, 那么该节点只有半选和全选两种状态
+       */
+
+      data.indeterminate = checked ? oneNodeIsDisabledAndUncheck : oneNodeIsDisabledAndChecked; // 默认情况和oneNodeIsDisabledAndChecked时
+
+      data.checked = checked; // 由于两种状态可能叠加存在, 所以oneNodeIsDisabledAndUncheck的判断放在后面
+
+      if (oneNodeIsDisabledAndUncheck) data.checked = false;
+    },
     _downwardUpdateChecked: function _downwardUpdateChecked(data, checked) {
       var _this5 = this;
 
       // 向下处理树节点的checked
-      var _this$defaultProps3 = this.defaultProps,
-          children = _this$defaultProps3.children,
-          disabled = _this$defaultProps3.disabled; // 如果当前节点是叶子节点, 只需要判断disabled
+      var children = this.defaultProps.children;
 
-      if (!data[children].length) return !data[disabled] && (data.checked = checked); // 然后过滤所有叶子节点, 如果全部都是disabled就return
+      this._updateChecked(data, checked);
 
-      if (!this._levelOrder(data[children], function (item) {
-        return !item[disabled];
-      })) return false; // 最后判断当前节点是否为disable
-
-      !data[disabled] && (data.checked = checked);
       data[children].forEach(function (item) {
         return _this5._downwardUpdateChecked(item, checked);
       });
@@ -5188,26 +5793,42 @@ var search_node_component = normalizeComponent(
       });
     },
     resetChecked: function resetChecked() {
+      var _this7 = this;
+
       // 取消所有节点的选中状态
-      return !this._preorder(this.deepData, function (item) {
-        return item.checked = false;
+      this.deepData.forEach(function (item) {
+        return _this7._downwardUpdateChecked(item, false);
       });
     },
     setCheckedByKeys: function setCheckedByKeys(keys, checked) {
-      var _this7 = this;
+      var _this8 = this;
 
       // 设置指定keys节点的checked
       if (!keys.length) return null;
       keys = deepCopy(keys);
+      var nodes = []; // 向下处理节点的选中状态, 并记录nodes
 
       this._preorder(this.deepData, function (item) {
-        var index = keys.indexOf(item[_this7.nodeKey]);
+        var index = keys.indexOf(item[_this8.nodeKey]);
         if (index === -1) return false;
 
-        _this7._downwardUpdateChecked(item, checked);
+        _this8._downwardUpdateChecked(item, checked);
 
+        nodes.push(item);
         keys.splice(index, 1);
         return !keys.length;
+      }); // 对公共祖先节点进行合并和去重操作
+
+
+      var ancestorNodes = [];
+      nodes.forEach(function (item) {
+        var nodePath = _this8._getRootPath(item);
+
+        nodePath.pop();
+        ancestorNodes = _toConsumableArray(new Set([].concat(_toConsumableArray(ancestorNodes), _toConsumableArray(nodePath))));
+      });
+      ancestorNodes.forEach(function (item) {
+        return _this8._updateChecked(item, checked);
       });
     },
     getCheckedKeys: function getCheckedKeys() {
@@ -5302,10 +5923,13 @@ var search_node_component = normalizeComponent(
       return true;
     },
     getTotalOfNodes: function getTotalOfNodes() {
+      var callback = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function (node) {
+        return true;
+      };
       var n = 0;
 
       this._preorder(this.sourceData, function (node) {
-        return n++ && false;
+        return callback(deepCopy(node)) && n++ && false;
       });
 
       return n;
@@ -5314,8 +5938,8 @@ var search_node_component = normalizeComponent(
 });
 // CONCATENATED MODULE: ./src/components/vue-search-tree/src/search-tree.vue?vue&type=script&lang=js&
  /* harmony default export */ var src_search_treevue_type_script_lang_js_ = (search_treevue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/vue-search-tree/src/search-tree.vue?vue&type=style&index=0&id=11171471&scoped=true&lang=css&
-var search_treevue_type_style_index_0_id_11171471_scoped_true_lang_css_ = __webpack_require__("a3e3");
+// EXTERNAL MODULE: ./src/components/vue-search-tree/src/search-tree.vue?vue&type=style&index=0&id=77a7f8d8&scoped=true&lang=css&
+var search_treevue_type_style_index_0_id_77a7f8d8_scoped_true_lang_css_ = __webpack_require__("3564");
 
 // CONCATENATED MODULE: ./src/components/vue-search-tree/src/search-tree.vue
 var search_tree_render, search_tree_staticRenderFns
@@ -5332,7 +5956,7 @@ var search_tree_component = normalizeComponent(
   search_tree_staticRenderFns,
   false,
   null,
-  "11171471",
+  "77a7f8d8",
   null
   
 )
