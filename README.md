@@ -9,6 +9,10 @@
 
 > https://100px.net/vue-search-tree/
 
+<br />
+
+## 与`<el-tree />`性能对比
+
 ![computed-tree](./img/computed-tree.gif)
 
 <br />
