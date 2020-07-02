@@ -31,6 +31,7 @@ Vue.use(SearchTree)
 |  :-:                  | :-: | :-: | :-:
 | data                  | 源数据 | Array | 必填项
 | node-key              | 节点的唯一标识 | String | 'id'
+| theme-color           | 主题色 | String | '#409eff'
 | search                | 模糊搜索的关键词 | String | ''
 | hide-misses           | 是否隐藏模糊搜索不匹配的节点 | Boolean | true
 | expand-misses         | 是否展开模糊搜索不匹配的节点 | Boolean | false
@@ -83,4 +84,5 @@ Vue.use(SearchTree)
 | getTotalOfNodes | 获取所有满足条件的节点数量 | - | Function | 所有满足条件的节点数量
 
 - **`getTotalOfNodes` 使用示例:**
+
   - 获取所有名称包含'北京'的节点: `getTotalOfNodes(node => node.name.indexOf('北京') > -1)`

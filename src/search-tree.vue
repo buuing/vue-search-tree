@@ -13,6 +13,10 @@ export default {
       type: String,
       default: 'id'
     },
+    themeColor: {          // 主题色
+      type: String,
+      default: '#409eff'
+    },
     search: {              // 模糊搜索关键词
       type: String,
       default: ''
