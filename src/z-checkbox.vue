@@ -5,18 +5,9 @@ export default {
   render (h, ctx) {
     const { props } = ctx
     const renderIcon = function (props) {
-      if (props.indeterminate) return <svg width="12" height="12">
-        <rect x="0" y="0" width="12" height="12" stroke="#2080f0" fill="#2080f0" stroke-width="2"/>
-        <rect x="1.5" y="5" width="9" height="2" stroke="#2080f0" fill="#fff" stroke-width="0"/>
-      </svg>
-      if (props.value) return <svg width="12" height="12">
-        <rect x="0" y="0" width="12" height="12" stroke="#2080f0" fill="#2080f0" stroke-width="2"/>
-        <line x1="1.5" x2="5.5" y1="5.5" y2="10.5" stroke="#fff" fill="transparent" stroke-width="1.5"/>
-        <line x1="10.5" x2="5" y1="2" y2="10" stroke="#fff" fill="transparent" stroke-width="1.5"/>
-      </svg>
-      return <svg width="12" height="12">
-        <rect x="0" y="0" width="12" height="12" stroke="#2080f0" fill="transparent" stroke-width="2"/>
-      </svg>
+      if (props.indeterminate) return <svg t="1593660826979" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19241" width="18" height="18"><path d="M170.666667 128h682.666666a42.666667 42.666667 0 0 1 42.666667 42.666667v682.666666a42.666667 42.666667 0 0 1-42.666667 42.666667H170.666667a42.666667 42.666667 0 0 1-42.666667-42.666667V170.666667a42.666667 42.666667 0 0 1 42.666667-42.666667z m42.666666 85.333333v597.333334h597.333334V213.333333H213.333333z m85.333334 256h426.666666v85.333334H298.666667v-85.333334z" p-id="19242" fill="#2080F0"></path></svg>
+      if (props.value) return <svg t="1593660847492" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19489" width="18" height="18"><path d="M170.666667 128h682.666666a42.666667 42.666667 0 0 1 42.666667 42.666667v682.666666a42.666667 42.666667 0 0 1-42.666667 42.666667H170.666667a42.666667 42.666667 0 0 1-42.666667-42.666667V170.666667a42.666667 42.666667 0 0 1 42.666667-42.666667z m298.794666 554.666667l301.653334-301.696-60.330667-60.330667-241.322667 241.365333-120.704-120.704-60.330666 60.330667L469.461333 682.666667z" p-id="19490" fill="#2080F0"></path></svg>
+      return <svg t="1593660598710" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="18740" width="18" height="18"><path d="M170.666667 128h682.666666a42.666667 42.666667 0 0 1 42.666667 42.666667v682.666666a42.666667 42.666667 0 0 1-42.666667 42.666667H170.666667a42.666667 42.666667 0 0 1-42.666667-42.666667V170.666667a42.666667 42.666667 0 0 1 42.666667-42.666667z m42.666666 85.333333v597.333334h597.333334V213.333333H213.333333z" p-id="18741" fill="#2080f0"></path></svg>
     }
     return <div class="tree-checkbox" style={{
       filter: `grayscale(${props.disabled ? 100 : 0}%)`,
@@ -29,13 +20,10 @@ export default {
 <style scoped>
 div {
   display: block;
-  width: 12px;
-  height: 12px;
+  width: 18px;
+  height: 18px;
   cursor: pointer;
-  margin: 0 0 0 4px;
+  margin: 0 0 0 3px;
   cursor: pointer;
-}
-svg {
-  vertical-align: super;
 }
 </style>

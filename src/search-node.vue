@@ -111,7 +111,7 @@ export default {
 <style scoped>
   .tree-ul {
     margin: 0;
-    padding: 0 0 0 15px;
+    padding: 0 0 0 17px;
   }
   .tree-li {
     margin: 0;
@@ -120,6 +120,9 @@ export default {
     display: flex;
     align-items: center;
     transform: translate(0);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .tree-content {
     width: 100%;
