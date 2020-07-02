@@ -11,12 +11,6 @@
 
 <br />
 
-## 与`<el-tree />`性能对比
-
-![computed-tree](./img/computed-tree.gif)
-
-<br />
-
 ## 使用
 
 > 先找到`main.js`引入插件并`use`
