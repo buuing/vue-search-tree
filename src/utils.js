@@ -1,6 +1,6 @@
 // 计算匹配优先值
 export const computSortNum = keys => {
-  keys = JSON.parse(JSON.stringify(keys))
+  keys = keys.slice(0)
   let lev = 0, curr = keys.shift()
   return keys.length < 1 ? +!!(curr + 1) : keys.reduce((s, next, i) => {
     if (next - curr === 1) lev += 1
@@ -21,7 +21,7 @@ export const getSortData = arr => {
 export const getDictionary = (name, word) => {
   word = word.replace(/\s*/g, '')
   let res = []
-  const _deep = word => {
+  const dfs = word => {
     let keys = [], len = word.length
     for (let i = len; i > 0; i--) {
       for (let j = 0; j < len + 1 - i; j++) {
@@ -39,10 +39,10 @@ export const getDictionary = (name, word) => {
       return true
     })) return false
     while (step > index) res.push(index++)
-    if (start - 0) _deep(word.slice(0, start))
-    if (end - len) _deep(word.slice(end, len))
+    if (start - 0) dfs(word.slice(0, start))
+    if (end - len) dfs(word.slice(end, len))
   }
-  _deep(word)
+  dfs(word)
   return res
 }
 // 深拷贝 (这个随便复制的)

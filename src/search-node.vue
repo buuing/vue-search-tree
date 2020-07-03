@@ -50,9 +50,9 @@ export default {
           {
             root.$scopedSlots.default ? root.$scopedSlots.default(data) : <p class="tree-text">
               {
-                data.$keys?.length ? data[name].split('').map(
-                  (curr, i) => <span style={{ color: data.$keys.indexOf(i) > -1 ? 'red': '#666' }}>{curr}</span>
-                ) : <span style={{ color: '#666' }}>{data[name]}</span>
+                data.$keys.length ? data[name].split('').map((curr, i) => {
+                  return <span class={ data.$keys.includes(i) ? 'red': 'gary' }>{curr}</span>
+                }) : <span class="gary">{data[name]}</span>
               }
             </p>
           }
@@ -140,5 +140,11 @@ export default {
   }
   .point {
     cursor: pointer;
+  }
+  .red {
+    color: red;
+  }
+  .gary {
+    color: gray;
   }
 </style>

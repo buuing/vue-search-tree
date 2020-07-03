@@ -61,10 +61,6 @@ export default {
       type: Array,
       default: () => []
     },
-    clearRecovery: {       // 清空搜索关键词时, 是否复原排序顺序
-      type: Boolean,
-      default: false
-    },
     props: {               // 配置项
       type: Object,
       default: () => {
@@ -104,14 +100,17 @@ export default {
     _search (val) {
       clearTimeout(this.timer)
       this.timer = setTimeout(_ => {
-        if (val || !this.clearRecovery) return this.deepData = this._getLdqTree(this.deepData)
-        /**
-         * 如果清空搜索关键词时, 开启了复原初始结构 clearRecovery = true 时
-         * 经测试 4k+ 的单一树节点卡顿在15秒左右, 建议分散处理可以降到2秒左右
-         */
+        if (val) return this.deepData = this._getLdqTree(this.deepData)
         const keys = this.showCheckbox ? this.getCheckedKeys() : []
-        this.deepData = deepCopy(this.sourceData)
-        this.setCheckedByKeys(keys, true)
+        /**
+         * 这里必须先清空数据, 再进行赋值, 不然会产生严重的性能问题
+         * 很有可能是vue内部对多次赋值操作进行合并所产生的
+         */
+        this.deepData = []
+        this.$nextTick(_ => {
+          this.deepData = deepCopy(this.sourceData)
+          this.setCheckedByKeys(keys, true)
+        })
       }, this.searchDebounce)
     }
   },
@@ -199,12 +198,12 @@ export default {
     },
     _initData () { // 初始化数据
       const { children } = this.defaultProps
-      const _deep = (arr, parent) => {
+      const dfs = (arr, parent) => {
         let checkedNum = 0, anyOne = false
         arr.forEach(item => {
           this._initNode(item, parent)
           checkedNum += +item.checked
-          item[children].length && _deep(item[children], item)
+          item[children].length && dfs(item[children], item)
           item.expand && parent && (parent.expand = true)
           if (item.indeterminate) anyOne = true
         })
@@ -215,7 +214,7 @@ export default {
           parent.indeterminate = anyOne || (!!checkedNum && checkedNum != arr.length) || (!parent.checked && !!this._preorder(arr, item => item.checked))
         }
       }
-      _deep(this.sourceData)
+      dfs(this.sourceData)
       const data = deepCopy(this.sourceData)
       this.deepData = this._getLdqTree(data)
     },
