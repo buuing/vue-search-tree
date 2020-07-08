@@ -24,7 +24,7 @@ export default {
   render () {
     const { data, root } = this
     const { name, children, disabled } = root.defaultProps
-    let hideMisses = root.filterNode(deepCopy(data)) && (!root.hideMisses || data.visible)
+    let hideMisses = (!root.hideMisses || data.visible) && (root.filterNode ? root.filterNode(data) : true)
     return hideMisses ? <ul class="tree-ul">
       <li class="tree-li">
         <i class="tree-triangle point" style={{

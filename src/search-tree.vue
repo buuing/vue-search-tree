@@ -1,3 +1,9 @@
+<template>
+  <div class="ldq-tree">
+    <search-node v-for="item of deepData" :key="item[nodeKey]" :index="item[nodeKey]" :data="item"></search-node>
+  </div>
+</template>
+
 <script>
 import searchNode from './search-node.vue'
 import { computSortNum, getSortData, getDictionary, deepCopy } from './utils.js'
@@ -68,10 +74,7 @@ export default {
       }
     },
     filterNode: {          // 过滤节点的方法
-      type: Function,
-      default: function () {
-        return true
-      }
+      type: Function
     }
   },
   data () {
@@ -102,15 +105,8 @@ export default {
       this.timer = setTimeout(_ => {
         if (val) return this.deepData = this._getLdqTree(this.deepData)
         const keys = this.showCheckbox ? this.getCheckedKeys() : []
-        /**
-         * 这里必须先清空数据, 再进行赋值, 不然会产生严重的性能问题
-         * 很有可能是vue内部对多次赋值操作进行合并所产生的
-         */
-        this.deepData = []
-        this.$nextTick(_ => {
-          this.deepData = deepCopy(this.sourceData)
-          this.setCheckedByKeys(keys, true)
-        })
+        this.deepData = deepCopy(this.sourceData)
+        this.setCheckedByKeys(keys, true)
       }, this.searchDebounce)
     }
   },
@@ -121,11 +117,6 @@ export default {
       disabled: this.props.disabled || 'disabled'
     }
     this._initData()
-  },
-  render () {
-    return <div class="ldq-tree">
-      { this.deepData.map(item => <search-node key={item[this.nodeKey]} data={item}></search-node>) }
-    </div>
   },
   methods: {
     /**
@@ -152,7 +143,7 @@ export default {
     _levelOrder (nodes, callback) {
       if (!nodes.length) return null
       const { children } = this.defaultProps
-      let queue = [...nodes], res = []
+      let queue = [...nodes]
       while (queue.length) {
         let len = queue.length
         while (len--) {
@@ -211,7 +202,7 @@ export default {
           // 子节点是否全选 || 子节点的叶子节点全部选中
           parent.checked = checkedNum === arr.length || !this._levelOrder(arr, item => !item.checked)
           // 子节点有一个是半选 || 被选中的节点不为零并且被选中的节点不等于子节点长度 || 该节点不是全选并且子节点中任意一个被选中
-          parent.indeterminate = anyOne || (!!checkedNum && checkedNum != arr.length) || (!parent.checked && !!this._preorder(arr, item => item.checked))
+          parent.indeterminate = anyOne || (!!checkedNum && checkedNum !== arr.length) || (!parent.checked && !!this._preorder(arr, item => item.checked))
         }
       }
       dfs(this.sourceData)
