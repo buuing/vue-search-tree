@@ -361,5 +361,7 @@ export default {
 <style scoped>
   .ldq-tree {
     user-select: none;
+    transform: translate(0);
+    z-index: 99999;
   }
 </style>

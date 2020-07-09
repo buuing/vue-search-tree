@@ -33,6 +33,7 @@ export default {
         }} onClick={e => this.handlerExpand(e)}></i>
         {
           root.showCheckbox && <zCheckbox
+            class="tree-checkbox"
             theme-color={root.themeColor}
             value={data.checked}
             disabled={data[disabled]}
@@ -121,7 +122,6 @@ export default {
     list-style: none;
     display: flex;
     align-items: center;
-    transform: translate(0);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
