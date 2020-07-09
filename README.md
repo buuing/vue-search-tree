@@ -13,6 +13,22 @@
 
 ## 使用
 
+### 方式1: 通过 script 标签引入 (适用于前后不分离项目)
+
+> 在dist目录下找到一个css和一个js文件, 然后在页面上假如如下两行代码
+
+其中`js`文件记得要放在引入vue的script后面
+
+```html
+<link rel="stylesheet" href="./dist/search-tree@2.2.3.css">
+...
+<script src="./dist/search-tree@2.2.3.min.js"></script>
+```
+
+<br />
+
+### 方式2: 通过 import 方式引入
+
 > 先找到`main.js`引入插件并`use`
 
 ```js
@@ -43,7 +59,7 @@ Vue.use(SearchTree)
 | check-on-click-node   | 点击节点时是否选中节点 | Boolean | false
 | default-expanded-keys | 默认展开节点的keys | Array | []
 | default-checked-keys  | 默认选中节点的keys | Array | []
-| filter-node           | 过滤显示的节点 (父节点全选时会选中隐藏的节点) | Function | -
+| filter-node           | 过滤显示的节点 (该方法得到的是引用节点) | Function | -
 | props                 | 配置选项，请看下表 | Object | 
 
 <br />
