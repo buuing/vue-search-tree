@@ -211,7 +211,7 @@ export default {
     },
     _getLdqTree (tree) { // 获取关键词索引并排序
       const { name, children } = this.defaultProps
-      tree.forEach(item => {
+      for (let item of tree) {
         if (this._search) {
           const keys = getDictionary(item[name], this._search)
           item.$keys = keys
@@ -230,7 +230,7 @@ export default {
           item.expand = this.defaultExpandAll || this.defaultExpandedKeys.indexOf(item[this.nodeKey]) > -1
           if (item[children].length) item[children] = this._getLdqTree(item[children])
         }
-      })
+      }
       return getSortData(tree)
     },
     _updateChecked (data, checked) { // 更新当前节点的状态

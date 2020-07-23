@@ -18,8 +18,8 @@ export const getSortData = arr => {
   return usable.concat(disable)
 }
 // 反推字典表
-export const getDictionary = (name, word) => {
-  word = word.replace(/\s*/g, '')
+export const getDictionary = (text, input) => {
+  let words = input.trim().split(' ')
   let res = []
   const dfs = word => {
     let keys = [], len = word.length
@@ -29,20 +29,25 @@ export const getDictionary = (name, word) => {
       }
     }
     let start = 0, end = 0, index = 0, step = 0
-    if (!keys.some(item => {
-      index = name.indexOf(item)
-      if (index === -1) return false
-      if (res.length && res.indexOf(index) > -1) return false
-      start = word.indexOf(item)
-      end = start + item.length
-      step = index + item.length
-      return true
-    })) return false
+    let flag = true
+    for (let key of keys) {
+      index = text.indexOf(key)
+      if (index === -1) continue
+      if (res.length && res.indexOf(index) > -1) continue
+      start = word.indexOf(key)
+      end = start + key.length
+      step = index + key.length
+      flag = false
+      break
+    }
+    if (flag) return
     while (step > index) res.push(index++)
     if (start - 0) dfs(word.slice(0, start))
     if (end - len) dfs(word.slice(end, len))
   }
-  dfs(word)
+  for (let word of words) {
+    dfs(word)
+  }
   return res
 }
 // 深拷贝 (这个随便复制的)
