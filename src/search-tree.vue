@@ -127,7 +127,7 @@ export default {
     _preorder (nodes, callback) {
       if (!nodes.length) return null
       const { children } = this.defaultProps
-      let stack = [...nodes]
+      let stack = nodes.slice()
       while (stack.length) {
         const curr = stack.shift()
         if (callback(curr)) return curr
@@ -143,7 +143,7 @@ export default {
     _levelOrder (nodes, callback) {
       if (!nodes.length) return null
       const { children } = this.defaultProps
-      let queue = [...nodes]
+      let queue = nodes.slice()
       while (queue.length) {
         let len = queue.length
         while (len--) {
@@ -193,16 +193,16 @@ export default {
         let checkedNum = 0, anyOne = false
         arr.forEach(item => {
           this._initNode(item, parent)
-          checkedNum += +item.checked
           item[children].length && dfs(item[children], item)
           item.expand && parent && (parent.expand = true)
+          checkedNum += +item.checked
           if (item.indeterminate) anyOne = true
         })
         if (parent) {
           // 子节点是否全选 || 子节点的叶子节点全部选中
-          parent.checked = checkedNum === arr.length || !this._levelOrder(arr, item => !item.checked)
+          parent.checked = checkedNum === arr.length
           // 子节点有一个是半选 || 被选中的节点不为零并且被选中的节点不等于子节点长度 || 该节点不是全选并且子节点中任意一个被选中
-          parent.indeterminate = anyOne || (!!checkedNum && checkedNum !== arr.length) || (!parent.checked && !!this._preorder(arr, item => item.checked))
+          parent.indeterminate = anyOne || (!!checkedNum && checkedNum !== arr.length)
         }
       }
       dfs(this.sourceData)
