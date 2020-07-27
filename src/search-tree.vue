@@ -37,7 +37,11 @@ export default {
     },
     searchDebounce: {      // 输入关键词防抖
       type: Number,
-      default: 500
+      default: 300
+    },
+    clearRecovery: {       // 清空搜索关键词时复原排序
+      type: Boolean,
+      default: true
     },
     emptyText: {           // 内容为空时展示的文本
       type: String,
@@ -103,10 +107,16 @@ export default {
     _search (val) {
       clearTimeout(this.timer)
       this.timer = setTimeout(_ => {
-        if (val) return this.deepData = this._getLdqTree(this.deepData)
+        this.$emit('search-start')
+        if (val || !this.clearRecovery) {
+          this.deepData = this._getLdqTree(this.deepData)
+          setTimeout(_ => this.$emit('search-end'))
+          return false
+        }
         const keys = this.showCheckbox ? this.getCheckedKeys() : []
         this.deepData = deepCopy(this.sourceData)
         this.setCheckedByKeys(keys, true)
+        setTimeout(_ => this.$emit('search-end'))
       }, this.searchDebounce)
     }
   },
@@ -183,7 +193,7 @@ export default {
       this.$set(node, 'level', parent ? ~~parent.level + 1 : 1)
       this.$set(node, 'checked', Reflect.has(node, 'checked') ? node.checked : (parent && parent.checked) || this.defaultCheckedKeys.includes(key))
       this.$set(node, 'indeterminate', false)
-      this.$set(node, 'expand', Reflect.has(node, 'expand') ? node.expand : this.defaultExpandAll || this.defaultExpandedKeys.includes(key))
+      this.$set(node, 'expand', this.defaultExpandAll || this.defaultExpandedKeys.includes(key))
       this.$set(node, '$keys', [])
       this.$set(node, '$sort', 0)
     },
@@ -227,7 +237,7 @@ export default {
           item.$keys = []
           item.$sort = 0
           item.visible = true
-          item.expand = this.defaultExpandAll || this.defaultExpandedKeys.indexOf(item[this.nodeKey]) > -1
+          item.expand = this.defaultExpandAll || this.defaultExpandedKeys.includes(item[this.nodeKey])
           if (item[children].length) item[children] = this._getLdqTree(item[children])
         }
       }

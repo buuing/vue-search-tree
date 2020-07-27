@@ -1,6 +1,6 @@
 // 计算匹配优先值
 export const computSortNum = keys => {
-  keys = keys.slice(0)
+  keys = keys.slice()
   let lev = 0, curr = keys.shift()
   return keys.length < 1 ? +!!(curr + 1) : keys.reduce((s, next, i) => {
     if (next - curr === 1) lev += 1
