@@ -19,36 +19,29 @@ export const getSortData = arr => {
 }
 // 反推字典表
 export const getDictionary = (text, input) => {
-  let words = input.trim().split(' ')
-  let res = []
+  input = input.replace(/\s/g, '')
+  const keys = []
   const dfs = word => {
-    let keys = [], len = word.length
+    let len = word.length,
+      start = 0, end = 0, index = 0, step = 0
     for (let i = len; i > 0; i--) {
       for (let j = 0; j < len + 1 - i; j++) {
-        keys.push(word.substr(j, i))
+        let curr = word.substr(j, i)
+        index = getIndex(text, curr, keys)
+        if (index === -1) continue
+        start = word.indexOf(curr)
+        end = start + curr.length
+        step = index + curr.length
+        values.push(curr)
+        while (step > index) keys.push(index++)
+        if (start - 0) dfs(word.slice(0, start))
+        if (end - len) dfs(word.slice(end, len))
+        return
       }
     }
-    let start = 0, end = 0, index = 0, step = 0
-    let flag = true
-    for (let key of keys) {
-      index = text.indexOf(key)
-      if (index === -1) continue
-      if (res.length && res.indexOf(index) > -1) continue
-      start = word.indexOf(key)
-      end = start + key.length
-      step = index + key.length
-      flag = false
-      break
-    }
-    if (flag) return
-    while (step > index) res.push(index++)
-    if (start - 0) dfs(word.slice(0, start))
-    if (end - len) dfs(word.slice(end, len))
   }
-  for (let word of words) {
-    dfs(word)
-  }
-  return res
+  dfs(input)
+  return keys
 }
 // 深拷贝 (这个随便复制的)
 export const deepCopy = data => {
