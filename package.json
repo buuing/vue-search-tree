@@ -7,8 +7,19 @@
     "build": "vue-cli-service build --dest ./src/components/vue-search-tree/docs ./src/main.js",
     "package": "vue-cli-service build --target lib --name index --dest ./src/components/vue-search-tree/dist/ ./src/components/vue-search-tree/src/index.js"
   },
-  "keywords": ["vue树型控件", "vue树型插件", "vue树型列表"],
+  "keywords": [
+    "vue树型控件",
+    "vue树型插件",
+    "vue树型列表"
+  ],
   "author": "ldq <17778888138@189.cn>",
   "license": "ISC",
-  "files": ["package.json", "dist", "index.js"]
+  "files": [
+    "package.json",
+    "dist",
+    "index.js"
+  ],
+  "dependencies": {
+    "fuzzy-match-js": "0.0.3"
+  }
 }

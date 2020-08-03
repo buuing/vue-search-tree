@@ -32,7 +32,6 @@ export const getDictionary = (text, input) => {
         start = word.indexOf(curr)
         end = start + curr.length
         step = index + curr.length
-        values.push(curr)
         while (step > index) keys.push(index++)
         if (start - 0) dfs(word.slice(0, start))
         if (end - len) dfs(word.slice(end, len))
@@ -42,6 +41,21 @@ export const getDictionary = (text, input) => {
   }
   dfs(input)
   return keys
+}
+const getIndex = (text, target, exclude = []) => {
+  let len = target.length
+  for (let i = 0; i < text.length - len + 1; i++) {
+    if (text[i] !== target[0]) continue
+    let flag = true
+    for (let j = 0; j < len; j++) {
+      if (target[j] !== text[i + j] || exclude.includes(i + j)) {
+        flag = false
+        break
+      }
+    }
+    if (flag) return i
+  }
+  return -1
 }
 // 深拷贝 (这个随便复制的)
 export const deepCopy = data => {

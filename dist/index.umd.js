@@ -868,6 +868,13 @@ module.exports = function (it) {
 
 /***/ }),
 
+/***/ "35ba":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "37e8":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -947,6 +954,17 @@ defineIterator(String, 'String', function (iterated) {
 
 module.exports = {};
 
+
+/***/ }),
+
+/***/ "4145":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_250d58c4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("35ba");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_250d58c4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_250d58c4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_250d58c4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -1046,30 +1064,6 @@ module.exports = function (it) {
   var isRegExp;
   return isObject(it) && ((isRegExp = it[MATCH]) !== undefined ? !!isRegExp : classof(it) == 'RegExp');
 };
-
-
-/***/ }),
-
-/***/ "45fc":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var $ = __webpack_require__("23e7");
-var $some = __webpack_require__("b727").some;
-var arrayMethodIsStrict = __webpack_require__("a640");
-var arrayMethodUsesToLength = __webpack_require__("ae40");
-
-var STRICT_METHOD = arrayMethodIsStrict('some');
-var USES_TO_LENGTH = arrayMethodUsesToLength('some');
-
-// `Array.prototype.some` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.some
-$({ target: 'Array', proto: true, forced: !STRICT_METHOD || !USES_TO_LENGTH }, {
-  some: function some(callbackfn /* , thisArg */) {
-    return $some(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
-  }
-});
 
 
 /***/ }),
@@ -1422,17 +1416,6 @@ module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
 
 /***/ }),
 
-/***/ "5846":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_3a82ede4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("fb3b");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_3a82ede4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_3a82ede4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
- /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_tree_vue_vue_type_style_index_0_id_3a82ede4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
 /***/ "5899":
 /***/ (function(module, exports) {
 
@@ -1475,17 +1458,6 @@ module.exports = {
   trim: createMethod(3)
 };
 
-
-/***/ }),
-
-/***/ "59f0":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_a25ec248_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("c938");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_a25ec248_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_a25ec248_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
- /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_a25ec248_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -3549,6 +3521,13 @@ if (DESCRIPTORS && !(NAME in FunctionPrototype)) {
 
 /***/ }),
 
+/***/ "b3ba":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "b622":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3806,13 +3785,6 @@ module.exports = function (METHOD_NAME) {
 
 /***/ }),
 
-/***/ "c938":
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
 /***/ "c975":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3964,6 +3936,17 @@ module.exports = function (namespace, method) {
     : path[namespace] && path[namespace][method] || global[namespace] && global[namespace][method];
 };
 
+
+/***/ }),
+
+/***/ "d16e":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_3434e936_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("b3ba");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_3434e936_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_3434e936_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_node_vue_vue_type_style_index_0_id_3434e936_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -4726,12 +4709,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1f5f4219-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/vue-search-tree/src/search-tree.vue?vue&type=template&id=3a82ede4&scoped=true&
-var search_treevue_type_template_id_3a82ede4_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"ldq-tree"},_vm._l((_vm.deepData),function(item){return _c('search-node',{key:item[_vm.nodeKey],attrs:{"index":item[_vm.nodeKey],"data":item}})}),1)}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1f5f4219-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/vue-search-tree/src/search-tree.vue?vue&type=template&id=250d58c4&scoped=true&
+var search_treevue_type_template_id_250d58c4_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"ldq-tree"},_vm._l((_vm.deepData),function(item){return _c('search-node',{key:item[_vm.nodeKey],attrs:{"index":item[_vm.nodeKey],"data":item}})}),1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/vue-search-tree/src/search-tree.vue?vue&type=template&id=3a82ede4&scoped=true&
+// CONCATENATED MODULE: ./src/components/vue-search-tree/src/search-tree.vue?vue&type=template&id=250d58c4&scoped=true&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
 var es_array_concat = __webpack_require__("99af");
@@ -4753,6 +4736,9 @@ var es_array_iterator = __webpack_require__("e260");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.reduce.js
 var es_array_reduce = __webpack_require__("13d5");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.slice.js
+var es_array_slice = __webpack_require__("fb6a");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.splice.js
 var es_array_splice = __webpack_require__("a434");
@@ -4796,21 +4782,6 @@ var web_dom_collections_for_each = __webpack_require__("159b");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.iterator.js
 var web_dom_collections_iterator = __webpack_require__("ddb0");
 
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-
-  return arr2;
-}
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js
-
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
-}
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.js
 var es_symbol = __webpack_require__("a4d3");
 
@@ -4823,21 +4794,16 @@ var es_symbol_iterator = __webpack_require__("d28b");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.from.js
 var es_array_from = __webpack_require__("a630");
 
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/iterableToArray.js
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
 
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
 
-
-
-
-
-
-
-function _iterableToArray(iter) {
-  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
+  return arr2;
 }
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.slice.js
-var es_array_slice = __webpack_require__("fb6a");
-
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
 
 
@@ -4853,6 +4819,86 @@ function _unsupportedIterableToArray(o, minLen) {
   if (n === "Object" && o.constructor) n = o.constructor.name;
   if (n === "Map" || n === "Set") return Array.from(n);
   if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/createForOfIteratorHelper.js
+
+
+
+
+
+
+
+
+function _createForOfIteratorHelper(o) {
+  if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {
+    if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) {
+      var i = 0;
+
+      var F = function F() {};
+
+      return {
+        s: F,
+        n: function n() {
+          if (i >= o.length) return {
+            done: true
+          };
+          return {
+            done: false,
+            value: o[i++]
+          };
+        },
+        e: function e(_e) {
+          throw _e;
+        },
+        f: F
+      };
+    }
+
+    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }
+
+  var it,
+      normalCompletion = true,
+      didErr = false,
+      err;
+  return {
+    s: function s() {
+      it = o[Symbol.iterator]();
+    },
+    n: function n() {
+      var step = it.next();
+      normalCompletion = step.done;
+      return step;
+    },
+    e: function e(_e2) {
+      didErr = true;
+      err = _e2;
+    },
+    f: function f() {
+      try {
+        if (!normalCompletion && it["return"] != null) it["return"]();
+      } finally {
+        if (didErr) throw err;
+      }
+    }
+  };
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/iterableToArray.js
+
+
+
+
+
+
+
+
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
 }
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js
 function _nonIterableSpread() {
@@ -4872,9 +4918,6 @@ var es_array_map = __webpack_require__("d81d");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.split.js
 var es_string_split = __webpack_require__("1276");
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.some.js
-var es_array_some = __webpack_require__("45fc");
-
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace.js
 var es_string_replace = __webpack_require__("5319");
 
@@ -4890,9 +4933,10 @@ var es_string_replace = __webpack_require__("5319");
 
 
 
+
 // 计算匹配优先值
 var computSortNum = function computSortNum(keys) {
-  keys = keys.slice(0);
+  keys = keys.slice();
   var lev = 0,
       curr = keys.shift();
   return keys.length < 1 ? +!!(curr + 1) : keys.reduce(function (s, next, i) {
@@ -4915,48 +4959,64 @@ var getSortData = function getSortData(arr) {
   return usable.concat(disable);
 }; // 反推字典表
 
-var getDictionary = function getDictionary(name, word) {
-  word = word.replace(/\s*/g, '');
-  var res = [];
+var getDictionary = function getDictionary(text, input) {
+  input = input.replace(/\s/g, '');
+  var keys = [];
 
   var dfs = function dfs(word) {
-    var keys = [],
-        len = word.length;
-
-    for (var i = len; i > 0; i--) {
-      for (var j = 0; j < len + 1 - i; j++) {
-        keys.push(word.substr(j, i));
-      }
-    }
-
-    var start = 0,
+    var len = word.length,
+        start = 0,
         end = 0,
         index = 0,
         step = 0;
-    if (!keys.some(function (item) {
-      index = name.indexOf(item);
-      if (index === -1) return false;
-      if (res.length && res.indexOf(index) > -1) return false;
-      start = word.indexOf(item);
-      end = start + item.length;
-      step = index + item.length;
-      return true;
-    })) return false;
 
-    while (step > index) {
-      res.push(index++);
+    for (var i = len; i > 0; i--) {
+      for (var j = 0; j < len + 1 - i; j++) {
+        var curr = word.substr(j, i);
+        index = getIndex(text, curr, keys);
+        if (index === -1) continue;
+        start = word.indexOf(curr);
+        end = start + curr.length;
+        step = index + curr.length;
+
+        while (step > index) {
+          keys.push(index++);
+        }
+
+        if (start - 0) dfs(word.slice(0, start));
+        if (end - len) dfs(word.slice(end, len));
+        return;
+      }
     }
-
-    if (start - 0) dfs(word.slice(0, start));
-    if (end - len) dfs(word.slice(end, len));
   };
 
-  dfs(word);
-  return res;
+  dfs(input);
+  return keys;
+};
+
+var getIndex = function getIndex(text, target) {
+  var exclude = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+  var len = target.length;
+
+  for (var i = 0; i < text.length - len + 1; i++) {
+    if (text[i] !== target[0]) continue;
+    var flag = true;
+
+    for (var j = 0; j < len; j++) {
+      if (target[j] !== text[i + j] || exclude.includes(i + j)) {
+        flag = false;
+        break;
+      }
+    }
+
+    if (flag) return i;
+  }
+
+  return -1;
 }; // 深拷贝 (这个随便复制的)
 
+
 var deepCopy = function deepCopy(data) {
-  window.num = ~~window.num + 1;
   var t = Object.prototype.toString.call(data);
   var o;
 
@@ -5241,6 +5301,7 @@ var component = normalizeComponent(
         }
       }
     }), root.showCheckbox && h(z_checkbox, {
+      "class": "tree-checkbox",
       "attrs": {
         "theme-color": root.themeColor,
         "value": data.checked,
@@ -5329,8 +5390,8 @@ var component = normalizeComponent(
 });
 // CONCATENATED MODULE: ./src/components/vue-search-tree/src/search-node.vue?vue&type=script&lang=js&
  /* harmony default export */ var src_search_nodevue_type_script_lang_js_ = (search_nodevue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/vue-search-tree/src/search-node.vue?vue&type=style&index=0&id=a25ec248&scoped=true&lang=css&
-var search_nodevue_type_style_index_0_id_a25ec248_scoped_true_lang_css_ = __webpack_require__("59f0");
+// EXTERNAL MODULE: ./src/components/vue-search-tree/src/search-node.vue?vue&type=style&index=0&id=3434e936&scoped=true&lang=css&
+var search_nodevue_type_style_index_0_id_3434e936_scoped_true_lang_css_ = __webpack_require__("d16e");
 
 // CONCATENATED MODULE: ./src/components/vue-search-tree/src/search-node.vue
 var search_node_render, search_node_staticRenderFns
@@ -5347,13 +5408,15 @@ var search_node_component = normalizeComponent(
   search_node_staticRenderFns,
   false,
   null,
-  "a25ec248",
+  "3434e936",
   null
   
 )
 
 /* harmony default export */ var search_node = (search_node_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/vue-search-tree/src/search-tree.vue?vue&type=script&lang=js&
+
+
 
 
 
@@ -5423,7 +5486,12 @@ var search_node_component = normalizeComponent(
     searchDebounce: {
       // 输入关键词防抖
       type: Number,
-      default: 500
+      default: 300
+    },
+    clearRecovery: {
+      // 清空搜索关键词时复原排序
+      type: Boolean,
+      default: true
     },
     emptyText: {
       // 内容为空时展示的文本
@@ -5505,11 +5573,24 @@ var search_node_component = normalizeComponent(
 
       clearTimeout(this.timer);
       this.timer = setTimeout(function (_) {
-        if (val) return _this.deepData = _this._getLdqTree(_this.deepData);
+        _this.$emit('search-start');
+
+        if (val || !_this.clearRecovery) {
+          _this.deepData = _this._getLdqTree(_this.deepData);
+          setTimeout(function (_) {
+            return _this.$emit('search-end');
+          });
+          return false;
+        }
+
         var keys = _this.showCheckbox ? _this.getCheckedKeys() : [];
         _this.deepData = deepCopy(_this.sourceData);
 
         _this.setCheckedByKeys(keys, true);
+
+        setTimeout(function (_) {
+          return _this.$emit('search-end');
+        });
       }, this.searchDebounce);
     }
   },
@@ -5531,8 +5612,7 @@ var search_node_component = normalizeComponent(
     _preorder: function _preorder(nodes, callback) {
       if (!nodes.length) return null;
       var children = this.defaultProps.children;
-
-      var stack = _toConsumableArray(nodes);
+      var stack = nodes.slice();
 
       while (stack.length) {
         var curr = stack.shift();
@@ -5551,8 +5631,7 @@ var search_node_component = normalizeComponent(
     _levelOrder: function _levelOrder(nodes, callback) {
       if (!nodes.length) return null;
       var children = this.defaultProps.children;
-
-      var queue = _toConsumableArray(nodes);
+      var queue = nodes.slice();
 
       while (queue.length) {
         var len = queue.length;
@@ -5607,7 +5686,7 @@ var search_node_component = normalizeComponent(
       this.$set(node, 'level', parent ? ~~parent.level + 1 : 1);
       this.$set(node, 'checked', Reflect.has(node, 'checked') ? node.checked : parent && parent.checked || this.defaultCheckedKeys.includes(key));
       this.$set(node, 'indeterminate', false);
-      this.$set(node, 'expand', Reflect.has(node, 'expand') ? node.expand : this.defaultExpandAll || this.defaultExpandedKeys.includes(key));
+      this.$set(node, 'expand', this.defaultExpandAll || this.defaultExpandedKeys.includes(key));
       this.$set(node, '$keys', []);
       this.$set(node, '$sort', 0);
     },
@@ -5623,21 +5702,17 @@ var search_node_component = normalizeComponent(
         arr.forEach(function (item) {
           _this2._initNode(item, parent);
 
-          checkedNum += +item.checked;
           item[children].length && dfs(item[children], item);
           item.expand && parent && (parent.expand = true);
+          checkedNum += +item.checked;
           if (item.indeterminate) anyOne = true;
         });
 
         if (parent) {
           // 子节点是否全选 || 子节点的叶子节点全部选中
-          parent.checked = checkedNum === arr.length || !_this2._levelOrder(arr, function (item) {
-            return !item.checked;
-          }); // 子节点有一个是半选 || 被选中的节点不为零并且被选中的节点不等于子节点长度 || 该节点不是全选并且子节点中任意一个被选中
+          parent.checked = checkedNum === arr.length; // 子节点有一个是半选 || 被选中的节点不为零并且被选中的节点不等于子节点长度 || 该节点不是全选并且子节点中任意一个被选中
 
-          parent.indeterminate = anyOne || !!checkedNum && checkedNum !== arr.length || !parent.checked && !!_this2._preorder(arr, function (item) {
-            return item.checked;
-          });
+          parent.indeterminate = anyOne || !!checkedNum && checkedNum !== arr.length;
         }
       };
 
@@ -5646,34 +5721,45 @@ var search_node_component = normalizeComponent(
       this.deepData = this._getLdqTree(data);
     },
     _getLdqTree: function _getLdqTree(tree) {
-      var _this3 = this;
-
       // 获取关键词索引并排序
       var _this$defaultProps2 = this.defaultProps,
           name = _this$defaultProps2.name,
           children = _this$defaultProps2.children;
-      tree.forEach(function (item) {
-        if (_this3._search) {
-          var keys = getDictionary(item[name], _this3._search);
-          item.$keys = keys;
-          item.$sort = computSortNum(keys);
-          if (item[children].length) item[children] = _this3._getLdqTree(item[children]);
-          var childrenSort = item[children].reduce(function (max, item) {
-            return max > item.$sort ? max : item.$sort;
-          }, 0);
-          item.$sort += childrenSort; // 是否隐藏未命中节点
 
-          item.visible = !!item.$sort; // 由于不匹配关键词的数据可能很多, 这里折叠未命中的节点
+      var _iterator = _createForOfIteratorHelper(tree),
+          _step;
 
-          !_this3.expandMisses && (item.expand = !!childrenSort);
-        } else {
-          item.$keys = [];
-          item.$sort = 0;
-          item.visible = true;
-          item.expand = _this3.defaultExpandAll || _this3.defaultExpandedKeys.indexOf(item[_this3.nodeKey]) > -1;
-          if (item[children].length) item[children] = _this3._getLdqTree(item[children]);
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var item = _step.value;
+
+          if (this._search) {
+            var keys = getDictionary(item[name], this._search);
+            item.$keys = keys;
+            item.$sort = computSortNum(keys);
+            if (item[children].length) item[children] = this._getLdqTree(item[children]);
+            var childrenSort = item[children].reduce(function (max, item) {
+              return max > item.$sort ? max : item.$sort;
+            }, 0);
+            item.$sort += childrenSort; // 是否隐藏未命中节点
+
+            item.visible = !!item.$sort; // 由于不匹配关键词的数据可能很多, 这里折叠未命中的节点
+
+            !this.expandMisses && (item.expand = !!childrenSort);
+          } else {
+            item.$keys = [];
+            item.$sort = 0;
+            item.visible = true;
+            item.expand = this.defaultExpandAll || this.defaultExpandedKeys.includes(item[this.nodeKey]);
+            if (item[children].length) item[children] = this._getLdqTree(item[children]);
+          }
         }
-      });
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
       return getSortData(tree);
     },
     _updateChecked: function _updateChecked(data, checked) {
@@ -5708,7 +5794,7 @@ var search_node_component = normalizeComponent(
       if (oneNodeIsDisabledAndUncheck) data.checked = false;
     },
     _downwardUpdateChecked: function _downwardUpdateChecked(data, checked) {
-      var _this4 = this;
+      var _this3 = this;
 
       // 向下处理树节点的checked
       var children = this.defaultProps.children;
@@ -5716,7 +5802,7 @@ var search_node_component = normalizeComponent(
       this._updateChecked(data, checked);
 
       data[children].forEach(function (item) {
-        return _this4._downwardUpdateChecked(item, checked);
+        return _this3._downwardUpdateChecked(item, checked);
       });
     },
     getNodeByKey: function getNodeByKey(key) {
@@ -5724,23 +5810,23 @@ var search_node_component = normalizeComponent(
       return deepCopy(this._getNode(key));
     },
     _getNode: function _getNode(key) {
-      var _this5 = this;
+      var _this4 = this;
 
       // 根据key获取对应引用节点
       return this._preorder(this.deepData, function (item) {
-        return item[_this5.nodeKey] == key;
+        return item[_this4.nodeKey] == key;
       });
     },
     resetChecked: function resetChecked() {
-      var _this6 = this;
+      var _this5 = this;
 
       // 取消所有节点的选中状态
       this.deepData.forEach(function (item) {
-        return _this6._downwardUpdateChecked(item, false);
+        return _this5._downwardUpdateChecked(item, false);
       });
     },
     setCheckedByKeys: function setCheckedByKeys(keys, checked) {
-      var _this7 = this;
+      var _this6 = this;
 
       // 设置指定keys节点的checked
       if (!keys.length) return null;
@@ -5748,10 +5834,10 @@ var search_node_component = normalizeComponent(
       var nodes = []; // 向下处理节点的选中状态, 并记录nodes
 
       this._preorder(this.deepData, function (item) {
-        var index = keys.indexOf(item[_this7.nodeKey]);
+        var index = keys.indexOf(item[_this6.nodeKey]);
         if (index === -1) return false;
 
-        _this7._downwardUpdateChecked(item, checked);
+        _this6._downwardUpdateChecked(item, checked);
 
         nodes.push(item);
         keys.splice(index, 1);
@@ -5761,13 +5847,13 @@ var search_node_component = normalizeComponent(
 
       var ancestorNodes = [];
       nodes.forEach(function (item) {
-        var nodePath = _this7._getRootPath(item);
+        var nodePath = _this6._getRootPath(item);
 
         nodePath.pop();
         ancestorNodes = _toConsumableArray(new Set([].concat(_toConsumableArray(ancestorNodes), _toConsumableArray(nodePath))));
       });
       ancestorNodes.forEach(function (item) {
-        return _this7._updateChecked(item, checked);
+        return _this6._updateChecked(item, checked);
       });
     },
     getCheckedKeys: function getCheckedKeys() {
@@ -5877,8 +5963,8 @@ var search_node_component = normalizeComponent(
 });
 // CONCATENATED MODULE: ./src/components/vue-search-tree/src/search-tree.vue?vue&type=script&lang=js&
  /* harmony default export */ var src_search_treevue_type_script_lang_js_ = (search_treevue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/vue-search-tree/src/search-tree.vue?vue&type=style&index=0&id=3a82ede4&scoped=true&lang=css&
-var search_treevue_type_style_index_0_id_3a82ede4_scoped_true_lang_css_ = __webpack_require__("5846");
+// EXTERNAL MODULE: ./src/components/vue-search-tree/src/search-tree.vue?vue&type=style&index=0&id=250d58c4&scoped=true&lang=css&
+var search_treevue_type_style_index_0_id_250d58c4_scoped_true_lang_css_ = __webpack_require__("4145");
 
 // CONCATENATED MODULE: ./src/components/vue-search-tree/src/search-tree.vue
 
@@ -5891,11 +5977,11 @@ var search_treevue_type_style_index_0_id_3a82ede4_scoped_true_lang_css_ = __webp
 
 var search_tree_component = normalizeComponent(
   src_search_treevue_type_script_lang_js_,
-  search_treevue_type_template_id_3a82ede4_scoped_true_render,
+  search_treevue_type_template_id_250d58c4_scoped_true_render,
   staticRenderFns,
   false,
   null,
-  "3a82ede4",
+  "250d58c4",
   null
   
 )
@@ -5921,13 +6007,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 /* harmony default export */ var entry_lib = __webpack_exports__["default"] = (vue_search_tree_src);
 
 
-
-/***/ }),
-
-/***/ "fb3b":
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
 
 /***/ }),
 
