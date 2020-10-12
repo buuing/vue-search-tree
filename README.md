@@ -7,7 +7,7 @@
 
 ## Demo演示
 
-> https://100px.net/vue-search-tree/
+> https://buuing.github.io/vue-search-tree/
 
 <br />
 
